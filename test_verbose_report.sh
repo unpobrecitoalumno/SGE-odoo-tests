@@ -8,14 +8,14 @@ PRIVATE_IP=$(ifconfig $(route -n |awk '/0[.]0[.]0[.]0/{print $NF;exit}') | awk '
 cd "${TESTER_PATH}"
 source run.sh
 source .venv/bin/activate
-main "$FUNCION" "updated"
+main "$FUNCION" "all" # "updated"
 
 cp -r "${TESTER_PATH}/projects/${RESULTS_DIR}/${REPORTS_DIR}/" "${PUBLIC_PATH}/reports_${FECHA}" 
 
 cd "$PUBLIC_PATH"
-chmod +rx -R reports_*
+chmod +rx -R docs
 git pull
-git add reports_${FECHA}\*
+git add docs/reports_${FECHA}/\*
 git add --all
 git commit -m "Tests from ${PRIVATE_IP} on ${FECHA}"
 git push

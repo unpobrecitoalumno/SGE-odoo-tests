@@ -50,6 +50,7 @@ generate_index() {
   echo "El archivo index.html ha sido creado en: $dir"
 }
 
+generate_index "docs/"
 # Recorrer todos los directorios dentro de docs y generar el índice
 for dir in docs/*; do
   if [ -d "$dir" ]; then

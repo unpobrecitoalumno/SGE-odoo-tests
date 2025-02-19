@@ -10,7 +10,7 @@ source run.sh
 source .venv/bin/activate
 main "$FUNCION" "updated"
 
-cp -r "${TESTER_PATH}/projects/${RESULTS_DIR}/${REPORTS_DIR}/" "${PUBLIC_PATH}/reports_${FECHA}" 
+cp -r "${TESTER_PATH}/projects/${RESULTS_DIR}/${REPORTS_DIR}/" "${PUBLIC_PATH}/docs/reports_${FECHA}" 
 
 cd "$PUBLIC_PATH"
 

@@ -10,7 +10,7 @@ source run.sh
 source .venv/bin/activate
 main "$FUNCION" "updated"
 
-cp -r "${TESTER_PATH}/projects/${RESULTS_DIR}/${REPORTS_DIR}/" "${PUBLIC_PATH}/docs/reports_${FECHA}" 
+cp -r "${TESTER_PATH}/projects/${RESULTS_DIR}/${REPORTS_DIR}/" "${PUBLIC_PATH}/docs/" 
 
 cd "$PUBLIC_PATH"
 
@@ -69,7 +69,7 @@ done
 chmod +rx -R docs
 
 git pull
-git add docs/reports_${FECHA}/\*
+git add docs/\*
 git add --all
 git commit -m "Tests from ${PRIVATE_IP} on ${FECHA}"
 git push

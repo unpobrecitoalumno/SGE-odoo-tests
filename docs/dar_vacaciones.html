@@ -1,0 +1,2346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dar_vacaciones-pytest.xml</title>
+    <style type="text/css">
+        body {
+    background-color: white;
+    padding-bottom: 20em;
+    margin: 0;
+    min-height: 15cm;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+    font-family: sans-serif;
+}
+
+h1 {
+    background-color: #007acc;
+    color: white;
+    padding: 3mm;
+    margin-top: 0;
+    margin-bottom: 1mm;
+}
+
+.footer {
+    font-style: italic;
+    font-size: small;
+    text-align: right;
+    padding: 1em;
+}
+
+.testsuite {
+    padding-bottom: 2em;
+    margin-left: 1em;
+}
+
+.proplist {
+    width: 100%;
+    margin-bottom: 2em;
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+.proplist th {
+    background-color: silver;
+    width: 5em;
+    padding: 2px;
+    padding-right: 1em;
+    text-align: left;
+}
+
+.proplist td {
+    padding: 2px;
+}
+
+.index-table {
+    width: 90%;
+    margin-left: 1em;
+}
+
+.index-table td {
+    vertical-align: top;
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.failure-index {
+
+}
+
+.toc {
+    margin-bottom: 2em;
+    font-family: monospace;
+}
+
+.stdio, pre {
+    min-height: 1em;
+    background-color: #1e1e1e;
+    color: silver;
+    padding: 0.5em;
+}
+.tdpre {
+    background-color: #1e1e1e;
+}
+
+.test {
+    margin-left: 0.5cm;
+}
+
+.outcome {
+    border-left: 1em;
+    padding: 2px;
+}
+
+.outcome-failed {
+    border-left: 1em solid lightcoral;
+}
+
+.outcome-passed {
+    border-left: 1em solid lightgreen;
+}
+
+.outcome-skipped {
+    border-left: 1em dotted silver;
+}
+
+.stats-table {
+}
+
+.stats-table td {
+    min-width: 4em;
+    text-align: right;
+}
+
+.stats-table .failed {
+    background-color: lightcoral;
+}
+
+.stats-table .passed {
+    background-color: lightgreen;
+}
+
+.matrix-table {
+    table-layout: fixed;
+    border-spacing: 0;
+    width: available;
+    margin-left: 1em;
+}
+
+.matrix-table td {
+    vertical-align: center;
+}
+
+.matrix-table td:last-child {
+    width: 0;
+}
+
+.matrix-table tr:hover {
+    background-color: yellow;
+}
+
+.matrix-axis-name {
+    white-space: nowrap;
+    padding-right: 0.5em;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    text-align: right;
+}
+
+.matrix-axis-line {
+    border-left: 1px solid black;
+    width: 0.5em;
+}
+
+.matrix-classname {
+    text-align: left;
+    width: 100%;
+    border-top: 2px solid grey;
+    border-bottom: 1px solid silver;
+}
+
+.matrix-casename {
+    text-align: left;
+    font-weight: normal;
+    font-style: italic;
+    padding-left: 1em;
+    border-bottom: 1px solid silver;
+}
+
+.matrix-result {
+    display: block;
+    width: 1em;
+    text-align: center;
+    padding: 1mm;
+    margin: 0;
+}
+
+.matrix-result-combined {
+    white-space: nowrap;
+    padding-right: 0.2em;
+    text-align: right;
+}
+
+.matrix-result-failed {
+    background-color: lightcoral;
+}
+
+.matrix-result-passed {
+    background-color: lightgreen;
+}
+
+.matrix-result-skipped {
+    background-color: lightyellow;
+}
+
+.matrix-even {
+    background-color: lightgray;
+}
+    </style>
+</head>
+<body>
+    
+<h1>
+    Test Report : dar_vacaciones-pytest.xml
+</h1>
+<a id="toc"></a>
+<table class="index-table">
+    <tr>
+        <td>
+            <ul class="toc">
+            
+                
+                <li>test_minimal_requirements.TestRNF1
+                <ul>
+                    
+                    <li><a href="#aab36de2-77fe-4ca7-903e-b2e1ed3980e6">test_app_tiene_al_menos_4_modelos</a></li>
+                    
+                    <li><a href="#ab3e9f25-6f68-41df-afa5-0f66ba777e0d">test_modelos_en_ficheros_individuales</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF2
+                <ul>
+                    
+                    <li><a href="#fc936cb2-5ea2-4afc-88e2-274fe5074f7e">test_relacion_many2many</a></li>
+                    
+                    <li><a href="#f2b4153e-89c5-4206-bff1-f4e7edf0ea06">test_modelos_tienen_algun_campo_relacion[one2many]</a></li>
+                    
+                    <li><a href="#6c3f21a3-d474-4d18-9954-f3621ba84e03">test_modelos_tienen_algun_campo_relacion[many2one]</a></li>
+                    
+                    <li><a href="#dd5fd0e4-f657-457e-be1e-37212c3cfee2">test_unknown_comodel_name</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF3
+                <ul>
+                    
+                    <li><a href="#a903e49c-2828-49ba-8140-bdad633aebb3">test_modelos_tienen_vista[tree]</a></li>
+                    
+                    <li><a href="#ce4ebd08-6a8a-4354-818c-9ff51795d8ce">test_modelos_tienen_vista[form]</a></li>
+                    
+                    <li><a href="#5c447e1c-76d8-4aed-9da6-5f73448dfc2f">test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</a></li>
+                    
+                    <li><a href="#bb1279dd-f2aa-4fa2-b2c2-6880d500c129">test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF4
+                <ul>
+                    
+                    <li><a href="#1ca47b31-f999-4dae-8c1c-d1f6d1f6fc97">test_vistas_en_ficheros_individuales</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF5
+                <ul>
+                    
+                    <li><a href="#ff796905-4458-447f-9b2e-639cfadaf190">test_modelos_tienen_algun_posible_campo_imagen</a></li>
+                    
+                    <li><a href="#5e03494a-25d8-491b-8e3b-87afbb8396dd">test_alguna_vista_tiene_campo_imagen</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF6
+                <ul>
+                    
+                    <li><a href="#d1246316-65bb-4be3-a4cf-1f80357db75d">test_modelos_tienen_acciones</a></li>
+                    
+                    <li><a href="#d36a8664-c05a-4abe-96aa-301d81228eaa">test_hay_elementos_de_menu[.//menuitem[@action]]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF7
+                <ul>
+                    
+                    <li><a href="#fe11b6eb-07f3-4e43-96c9-005654255e57">test_modelos_tienen_permisos</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF8
+                <ul>
+                    
+                    <li><a href="#ddbd25f3-2b6e-424b-852f-ec84cca03eba">test_app_tiene_icono</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF9
+                <ul>
+                    
+                    <li><a href="#969e76c8-c245-45b2-a069-5b441144a2b4">test_modelos_tienen_datos_demo</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFGit
+                <ul>
+                    
+                    <li><a href="#ea0eb466-d6f1-4de3-8a3a-62a196139104">test_git_commit_frecuentes</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFCalidad
+                <ul>
+                    
+                    <li><a href="#b7b6c0da-1906-4be1-adf4-bbc2982f7cca">test_odoo_disponible</a></li>
+                    
+                    <li><a href="#8f8f6842-98c1-4830-9a7a-2cbd99e68a27">test_app_instalada</a></li>
+                    
+                    <li><a href="#6bcdc3ed-4e58-4f92-948b-58ac280ee911">test_solo_una_app_entregada</a></li>
+                    
+                    <li><a href="#6909b549-0f38-4ff3-a323-407b098f9986">test_no_hay_elementos_xml_comentados</a></li>
+                    
+                    <li><a href="#9484fddc-209e-435d-99f7-0c4d92a85ed5">test_no_hay_codigo_python_comentado</a></li>
+                    
+                    <li><a href="#1b4bd289-510a-4819-85fb-bd3baf264cfc">test_log_servidor_sin_errores</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionales
+                <ul>
+                    
+                    <li><a href="#269d62c3-1cb6-4646-a4c4-97f8e3635812">test_vista_kanban[/kanban]</a>[s]</li>
+                    
+                    <li><a href="#fe44e1d8-b2c7-4b34-a9fc-10a9b5a2f70e">test_vista_kanban[/kanban[@default_group_by]]</a>[s]</li>
+                    
+                    <li><a href="#ed3fcb66-1e5f-48b4-883c-686f7304ae97">test_vista_search[/search]</a>[s]</li>
+                    
+                    <li><a href="#7f87bab2-674f-498a-88ab-b4db0bbf6fed">test_vista_search[/search//filter[@domain]]</a>[s]</li>
+                    
+                    <li><a href="#5300ae87-0c52-4a2e-882e-ff09570fdd13">test_vista_search[/search//group//filter[@context]]</a>[s]</li>
+                    
+                    <li><a href="#41a81d73-35f6-4bb8-a9b1-392138e70327">test_otras_vistas_adicionales[activity]</a>[s]</li>
+                    
+                    <li><a href="#93d9d9bf-11bb-4523-911a-fe5df0bf49db">test_otras_vistas_adicionales[calendar]</a>[s]</li>
+                    
+                    <li><a href="#ac18fa52-2c00-43a7-bdb4-f7f632c57967">test_otras_vistas_adicionales[graph]</a>[s]</li>
+                    
+                    <li><a href="#65c1c5ff-d422-4191-b4c7-71539338ed78">test_otras_vistas_adicionales[pivot]</a>[s]</li>
+                    
+                    <li><a href="#17b18025-d57d-4d1e-a105-22e3c262c330">test_seguridad_con_grupos_propios</a>[s]</li>
+                    
+                    <li><a href="#ad84a3c3-8284-4d8b-921d-b171a5c79e05">test_herencia_en_vistas_con_position</a>[s]</li>
+                    
+                    <li><a href="#deeb935b-f4cb-45f4-b6e4-011a6185fdd7">test_herencia_en_vistas_con_inherit_id</a>[s]</li>
+                    
+                    <li><a href="#fec891bc-2ceb-4b2e-a40a-c9d262069d69">test_herencia_en_modelos</a>[s]</li>
+                    
+                    <li><a href="#4b7d750f-9a07-4bc3-addd-ca922d9703cb">test_datos_maestros_o_demo_avanzados[binary]</a>[s]</li>
+                    
+                    <li><a href="#a0c87285-b743-481e-ae20-98cce7a5f616">test_datos_maestros_o_demo_avanzados[many2many]</a>[s]</li>
+                    
+                    <li><a href="#a89bf9e7-e549-43de-ae95-6502f76f2e29">test_datos_maestros_o_demo_avanzados[many2one]</a>[s]</li>
+                    
+                    <li><a href="#34d5b95c-6907-4eec-a72b-458bbc1cb46d">test_i18n</a>[s]</li>
+                    
+                    <li><a href="#a2eec7b3-06dd-4ed6-b149-956518a58334">test_informes[report]</a>[s]</li>
+                    
+                    <li><a href="#4dd087cd-60a3-4fef-b22c-0d455667ebee">test_informes[template]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestOtros
+                <ul>
+                    
+                    <li><a href="#da4b21ce-e0cf-465c-93d1-c7de188f989a">test_log_sin_warnings</a></li>
+                    
+                </ul>
+                </li>
+                
+            
+            </ul>
+        </td>
+        <td class="failure-index">
+            <ul class="toc">
+            
+                
+                    
+                    
+                    <li><a href="#aab36de2-77fe-4ca7-903e-b2e1ed3980e6">[F] test_minimal_requirements.TestRNF1 : test_app_tiene_al_menos_4_modelos</a></li>
+                    
+                    
+                    
+                    <li><a href="#ab3e9f25-6f68-41df-afa5-0f66ba777e0d">[F] test_minimal_requirements.TestRNF1 : test_modelos_en_ficheros_individuales</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#fc936cb2-5ea2-4afc-88e2-274fe5074f7e">[F] test_minimal_requirements.TestRNF2 : test_relacion_many2many</a></li>
+                    
+                    
+                    
+                    <li><a href="#f2b4153e-89c5-4206-bff1-f4e7edf0ea06">[F] test_minimal_requirements.TestRNF2 : test_modelos_tienen_algun_campo_relacion[one2many]</a></li>
+                    
+                    
+                    
+                    <li><a href="#6c3f21a3-d474-4d18-9954-f3621ba84e03">[F] test_minimal_requirements.TestRNF2 : test_modelos_tienen_algun_campo_relacion[many2one]</a></li>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#a903e49c-2828-49ba-8140-bdad633aebb3">[F] test_minimal_requirements.TestRNF3 : test_modelos_tienen_vista[tree]</a></li>
+                    
+                    
+                    
+                    <li><a href="#ce4ebd08-6a8a-4354-818c-9ff51795d8ce">[F] test_minimal_requirements.TestRNF3 : test_modelos_tienen_vista[form]</a></li>
+                    
+                    
+                    
+                    <li><a href="#5c447e1c-76d8-4aed-9da6-5f73448dfc2f">[F] test_minimal_requirements.TestRNF3 : test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</a></li>
+                    
+                    
+                    
+                    <li><a href="#bb1279dd-f2aa-4fa2-b2c2-6880d500c129">[F] test_minimal_requirements.TestRNF3 : test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#ff796905-4458-447f-9b2e-639cfadaf190">[F] test_minimal_requirements.TestRNF5 : test_modelos_tienen_algun_posible_campo_imagen</a></li>
+                    
+                    
+                    
+                    <li><a href="#5e03494a-25d8-491b-8e3b-87afbb8396dd">[F] test_minimal_requirements.TestRNF5 : test_alguna_vista_tiene_campo_imagen</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#d1246316-65bb-4be3-a4cf-1f80357db75d">[F] test_minimal_requirements.TestRNF6 : test_modelos_tienen_acciones</a></li>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#fe11b6eb-07f3-4e43-96c9-005654255e57">[F] test_minimal_requirements.TestRNF7 : test_modelos_tienen_permisos</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#969e76c8-c245-45b2-a069-5b441144a2b4">[F] test_minimal_requirements.TestRNF9 : test_modelos_tienen_datos_demo</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#ea0eb466-d6f1-4de3-8a3a-62a196139104">[F] test_minimal_requirements.TestRNFGit : test_git_commit_frecuentes</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <li><a href="#8f8f6842-98c1-4830-9a7a-2cbd99e68a27">[F] test_minimal_requirements.TestRNFCalidad : test_app_instalada</a></li>
+                    
+                    
+                    
+                    <li><a href="#6bcdc3ed-4e58-4f92-948b-58ac280ee911">[F] test_minimal_requirements.TestRNFCalidad : test_solo_una_app_entregada</a></li>
+                    
+                    
+                    
+                    <li><a href="#6909b549-0f38-4ff3-a323-407b098f9986">[F] test_minimal_requirements.TestRNFCalidad : test_no_hay_elementos_xml_comentados</a></li>
+                    
+                    
+                    
+                    <li><a href="#9484fddc-209e-435d-99f7-0c4d92a85ed5">[F] test_minimal_requirements.TestRNFCalidad : test_no_hay_codigo_python_comentado</a></li>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+            
+            </ul>
+        </td>
+    </tr>
+</table>
+
+
+    <div class="testsuite">
+        <h2>Test Suite: pytest</h2>
+        <a id="e40ef396-46d6-4e4d-a24b-f8e1466c03ea"></a>
+        
+        
+        <h3>Results</h3>
+        <table class="proplist">
+            <tr>
+                <th>Duration</th><td>76.723 sec</td>
+            </tr>
+            <tr>
+                <th>Tests</th><td>45</td>
+            </tr>
+            <tr>
+                <th>Failures</th><td>19</td>
+            </tr>
+        </table>
+
+        <div class="testclasses">
+            <h3>Tests</h3>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF1</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="aab36de2-77fe-4ca7-903e-b2e1ed3980e6"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_tiene_al_menos_4_modelos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>71.347 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Al menos **4 clases**, implementadas en ficheros diferentes.
+assert 0 &gt;= 4
+ +  where 0 = len([])
+ +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.basename_app_models
+ +  and   4 = &lt;test_minimal_requirements.TestRNF1 object at 0x7fb0a14cea60&gt;.MIN</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF1 object at 0x7fb0a14cea60&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+
+&gt;   ???
+E   AssertionError: Al menos **4 clases**, implementadas en ficheros diferentes.
+E   assert 0 &gt;= 4
+E    +  where 0 = len([])
+E    +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.basename_app_models
+E    +  and   4 = &lt;test_minimal_requirements.TestRNF1 object at 0x7fb0a14cea60&gt;.MIN
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:221: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="ab3e9f25-6f68-41df-afa5-0f66ba777e0d"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_en_ficheros_individuales</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No coinciden el número de modelos de datos de la aplicación con el número de ficheros Python en el paquete models - Al menos **4 clases**, implementadas en ficheros diferentes.
+assert (0 + 0) == 5
+ +  where 0 = len([])
+ +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.basename_app_models
+ +  and   0 = len([])
+ +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.basename_app_inherited_models
+ +  and   5 = len([&#39;DAR_Aprobacion.py&#39;, &#39;DAR_Asignacion.py&#39;, &#39;DAR_Solicitud.py&#39;, &#39;models.py&#39;, &#39;DAR_Tipo.py&#39;])
+ +    where [&#39;DAR_Aprobacion.py&#39;, &#39;DAR_Asignacion.py&#39;, &#39;DAR_Solicitud.py&#39;, &#39;models.py&#39;, &#39;DAR_Tipo.py&#39;] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.basename_model_files</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF1 object at 0x7fb0a14cedf0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+
+&gt;   ???
+E   AssertionError: No coinciden el número de modelos de datos de la aplicación con el número de ficheros Python en el paquete models - Al menos **4 clases**, implementadas en ficheros diferentes.
+E   assert (0 + 0) == 5
+E    +  where 0 = len([])
+E    +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.basename_app_models
+E    +  and   0 = len([])
+E    +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.basename_app_inherited_models
+E    +  and   5 = len([&#39;DAR_Aprobacion.py&#39;, &#39;DAR_Asignacion.py&#39;, &#39;DAR_Solicitud.py&#39;, &#39;models.py&#39;, &#39;DAR_Tipo.py&#39;])
+E    +    where [&#39;DAR_Aprobacion.py&#39;, &#39;DAR_Asignacion.py&#39;, &#39;DAR_Solicitud.py&#39;, &#39;models.py&#39;, &#39;DAR_Tipo.py&#39;] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.basename_model_files
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:224: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF2</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="fc936cb2-5ea2-4afc-88e2-274fe5074f7e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_relacion_many2many</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.023 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Diferentes tipos de campos simples y relacionales (_one2many_, _many2one_ y _many2many_).
+      En tu proyecto se debe implementar **al menos uno de cada tipo**.
+assert 0 &gt;= 1
+ +  where 0 = len([])
+ +  and   1 = &lt;test_minimal_requirements.TestRNF2 object at 0x7fb0a14e3280&gt;.MIN</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF2 object at 0x7fb0a14e3280&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+
+&gt;   ???
+E   AssertionError: Diferentes tipos de campos simples y relacionales (_one2many_, _many2one_ y _many2many_).
+E         En tu proyecto se debe implementar **al menos uno de cada tipo**.
+E   assert 0 &gt;= 1
+E    +  where 0 = len([])
+E    +  and   1 = &lt;test_minimal_requirements.TestRNF2 object at 0x7fb0a14e3280&gt;.MIN
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:238: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="f2b4153e-89c5-4206-bff1-f4e7edf0ea06"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_campo_relacion[one2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF2 object at 0x7fb0a14e3670&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+relationship = &#39;one2many&#39;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:242: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+type = &#39;one2many&#39;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:112: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="6c3f21a3-d474-4d18-9954-f3621ba84e03"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_campo_relacion[many2one]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF2 object at 0x7fb0a14e3a90&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+relationship = &#39;many2one&#39;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:242: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+type = &#39;many2one&#39;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:112: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="dd5fd0e4-f657-457e-be1e-37212c3cfee2"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_unknown_comodel_name</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF3</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="a903e49c-2828-49ba-8140-bdad633aebb3"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_vista[tree]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x7fb0a14ed190&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+view_type = &#39;tree&#39;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:258: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+type = &#39;tree&#39;
+
+&gt;   ???
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:122: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="ce4ebd08-6a8a-4354-818c-9ff51795d8ce"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_vista[form]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x7fb0a14ed370&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+view_type = &#39;form&#39;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:258: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+type = &#39;form&#39;
+
+&gt;   ???
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:122: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="5c447e1c-76d8-4aed-9da6-5f73448dfc2f"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x7fb0a14ed790&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+relationship = &#39;one2many&#39;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:269: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+type = &#39;one2many&#39;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:112: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="bb1279dd-f2aa-4fa2-b2c2-6880d500c129"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x7fb0a14ed970&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+relationship = &#39;many2many&#39;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:269: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+type = &#39;many2many&#39;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:112: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF4</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="1ca47b31-f999-4dae-8c1c-d1f6d1f6fc97"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vistas_en_ficheros_individuales</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF5</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="ff796905-4458-447f-9b2e-639cfadaf190"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_posible_campo_imagen</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF5 object at 0x7fb0a14ed820&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:289: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+type = &#39;binary&#39;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:112: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="5e03494a-25d8-491b-8e3b-87afbb8396dd"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_alguna_vista_tiene_campo_imagen</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF5 object at 0x7fb0a1472190&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:294: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+type = &#39;binary&#39;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:112: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF6</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="d1246316-65bb-4be3-a4cf-1f80357db75d"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_acciones</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.basename_app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF6 object at 0x7fb0a1472610&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+
+&gt;   ???
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.basename_app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:301: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="d36a8664-c05a-4abe-96aa-301d81228eaa"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_hay_elementos_de_menu[.//menuitem[@action]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF7</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="fe11b6eb-07f3-4e43-96c9-005654255e57"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_permisos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF7 object at 0x7fb0a1472fa0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+
+&gt;   ???
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:322: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF8</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="ddbd25f3-2b6e-424b-852f-ec84cca03eba"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_tiene_icono</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.015 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF9</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="969e76c8-c245-45b2-a069-5b441144a2b4"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_datos_demo</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF9 object at 0x7fb0a1475910&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:349: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFGit</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="ea0eb466-d6f1-4de3-8a3a-62a196139104"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_git_commit_frecuentes</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: El proyecto se desarrollará a partir de un _fork_ del repositorio javnitram/SGE-odoo-it-yourself, 
+      sincronizando frecuentemente (mínimo 1 _commit_ &amp; _push_ por semana)
+assert 5 &gt; 5
+ +  where 5 = len([&#39;commit b2ca959fda3519f17b12eb012ad5f57d1e1a56df\n&#39;, &#39;commit a584420ce9c3d8d4004ca68d3d4f42f4e58880d9\n&#39;, &#39;commit 7bab015ec75bcc706f75462c66655f62881e16a5\n&#39;, &#39;commit acce160e4dcf6845bcb70294d7cf2471c76e3a1f\n&#39;, &#39;commit 84429dc76268aeb76f4905d97e2e71d0eda1c4c2\n&#39;])</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFGit object at 0x7fb0a1475dc0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+
+&gt;   ???
+E   AssertionError: El proyecto se desarrollará a partir de un _fork_ del repositorio javnitram/SGE-odoo-it-yourself, 
+E         sincronizando frecuentemente (mínimo 1 _commit_ &amp; _push_ por semana)
+E   assert 5 &gt; 5
+E    +  where 5 = len([&#39;commit b2ca959fda3519f17b12eb012ad5f57d1e1a56df\n&#39;, &#39;commit a584420ce9c3d8d4004ca68d3d4f42f4e58880d9\n&#39;, &#39;commit 7bab015ec75bcc706f75462c66655f62881e16a5\n&#39;, &#39;commit acce160e4dcf6845bcb70294d7cf2471c76e3a1f\n&#39;, &#39;commit 84429dc76268aeb76f4905d97e2e71d0eda1c4c2\n&#39;])
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:370: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFCalidad</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="b7b6c0da-1906-4be1-adf4-bbc2982f7cca"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_odoo_disponible</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.008 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="8f8f6842-98c1-4830-9a7a-2cbd99e68a27"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_instalada</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.015 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: La aplicación no ha quedado instalada con éxito - El módulo tiene que ser instalable a partir del código entregado sin necesidad de hacer ningún cambio o modificación.
+assert &#39;uninstalled&#39; == &#39;installed&#39;
+  
+  - installed
+  + uninstalled
+  ? ++</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFCalidad object at 0x7fb0a147a5e0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+
+&gt;   ???
+E   AssertionError: La aplicación no ha quedado instalada con éxito - El módulo tiene que ser instalable a partir del código entregado sin necesidad de hacer ningún cambio o modificación.
+E   assert &#39;uninstalled&#39; == &#39;installed&#39;
+E     
+E     - installed
+E     + uninstalled
+E     ? ++
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:389: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="6bcdc3ed-4e58-4f92-948b-58ac280ee911"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_solo_una_app_entregada</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Se ha encontrado más de una aplicación - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+assert 2 == 1
+ +  where 2 = len([&#39;/home/madrid/Escritorio/SGE/SGE-odoo-project-tester/projects/dar_vacaciones/odoo/addons/dar_vacaciones/../dar_vacaciones/__manifest__.py&#39;, &#39;/home/madrid/Escritorio/SGE/SGE-odoo-project-tester/projects/dar_vacaciones/odoo/addons/dar_vacaciones/../libreria/__manifest__.py&#39;])</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFCalidad object at 0x7fb0a147aa00&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+
+&gt;   ???
+E   AssertionError: Se ha encontrado más de una aplicación - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+E   assert 2 == 1
+E    +  where 2 = len([&#39;/home/madrid/Escritorio/SGE/SGE-odoo-project-tester/projects/dar_vacaciones/odoo/addons/dar_vacaciones/../dar_vacaciones/__manifest__.py&#39;, &#39;/home/madrid/Escritorio/SGE/SGE-odoo-project-tester/projects/dar_vacaciones/odoo/addons/dar_vacaciones/../libreria/__manifest__.py&#39;])
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:394: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="6909b549-0f38-4ff3-a323-407b098f9986"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_no_hay_elementos_xml_comentados</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.004 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Se ha encontrado XML comentado {&#39;demo.xml&#39;: [&#39;\n          &lt;record id=&#34;object0&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object1&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object2&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object3&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object4&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n          &lt;/record&gt;\n&#39;], &#39;templates.xml&#39;: [&#39;\n        &lt;template id=&#34;listing&#34;&gt;\n          &lt;ul&gt;\n            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n              &lt;/a&gt;\n            &lt;/li&gt;\n          &lt;/ul&gt;\n        &lt;/template&gt;\n        &lt;template id=&#34;object&#34;&gt;\n          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n          &lt;dl&gt;\n            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n            &lt;/t&gt;\n          &lt;/dl&gt;\n        &lt;/template&gt;\n&#39;], &#39;views.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;dar_vacaciones.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;dar_vacaciones list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;dar_vacaciones.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;dar_vacaciones window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;dar_vacaciones.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;dar_vacaciones server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_dar_vacaciones_dar_vacaciones&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;]} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+assert {&#39;demo.xml&#39;: [&#39;\n          &lt;record id=&#34;object0&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object1&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object2&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object3&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object4&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n          &lt;/record&gt;\n&#39;], &#39;templates.xml&#39;: [&#39;\n        &lt;template id=&#34;listing&#34;&gt;\n          &lt;ul&gt;\n            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n              &lt;/a&gt;\n            &lt;/li&gt;\n          &lt;/ul&gt;\n        &lt;/template&gt;\n        &lt;template id=&#34;object&#34;&gt;\n          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n          &lt;dl&gt;\n            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n            &lt;/t&gt;\n          &lt;/dl&gt;\n        &lt;/template&gt;\n&#39;], &#39;views.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;dar_vacaciones.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;dar_vacaciones list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;dar_vacaciones.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;dar_vacaciones window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;dar_vacaciones.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;dar_vacaciones server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_dar_vacaciones_dar_vacaciones&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;]} == {}
+  
+  Left contains 3 more items:
+  {&#39;demo.xml&#39;: [&#39;\n&#39;
+                &#39;          &lt;record id=&#34;object0&#34; &#39;
+                &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;
+                &#39;\n&#39;
+                &#39;          &lt;record id=&#34;object1&#34; &#39;
+                &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;
+                &#39;\n&#39;
+                &#39;          &lt;record id=&#34;object2&#34; &#39;
+                &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;
+                &#39;\n&#39;
+                &#39;          &lt;record id=&#34;object3&#34; &#39;
+                &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;
+                &#39;\n&#39;
+                &#39;          &lt;record id=&#34;object4&#34; &#39;
+                &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;],
+   &#39;templates.xml&#39;: [&#39;\n&#39;
+                     &#39;        &lt;template id=&#34;listing&#34;&gt;\n&#39;
+                     &#39;          &lt;ul&gt;\n&#39;
+                     &#39;            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n&#39;
+                     &#39;              &lt;a t-attf-href=&#34;#{ root }/objects/#{ &#39;
+                     &#39;object.id }&#34;&gt;\n&#39;
+                     &#39;                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n&#39;
+                     &#39;              &lt;/a&gt;\n&#39;
+                     &#39;            &lt;/li&gt;\n&#39;
+                     &#39;          &lt;/ul&gt;\n&#39;
+                     &#39;        &lt;/template&gt;\n&#39;
+                     &#39;        &lt;template id=&#34;object&#34;&gt;\n&#39;
+                     &#39;          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n&#39;
+                     &#39;          &lt;dl&gt;\n&#39;
+                     &#39;            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n&#39;
+                     &#39;              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n&#39;
+                     &#39;              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n&#39;
+                     &#39;            &lt;/t&gt;\n&#39;
+                     &#39;          &lt;/dl&gt;\n&#39;
+                     &#39;        &lt;/template&gt;\n&#39;],
+   &#39;views.xml&#39;: [&#39;\n&#39;
+                 &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;dar_vacaciones.list&#34;&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;name&#34;&gt;dar_vacaciones list&lt;/field&gt;\n&#39;
+                 &#39;      &lt;field &#39;
+                 &#39;name=&#34;model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+                 &#39;        &lt;tree&gt;\n&#39;
+                 &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+                 &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+                 &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+                 &#39;        &lt;/tree&gt;\n&#39;
+                 &#39;      &lt;/field&gt;\n&#39;
+                 &#39;    &lt;/record&gt;\n&#39;,
+                 &#39;\n&#39;
+                 &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+                 &#39;id=&#34;dar_vacaciones.action_window&#34;&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;name&#34;&gt;dar_vacaciones window&lt;/field&gt;\n&#39;
+                 &#39;      &lt;field &#39;
+                 &#39;name=&#34;res_model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+                 &#39;    &lt;/record&gt;\n&#39;,
+                 &#39;\n&#39;
+                 &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+                 &#39;id=&#34;dar_vacaciones.action_server&#34;&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;name&#34;&gt;dar_vacaciones server&lt;/field&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;model_id&#34; &#39;
+                 &#39;ref=&#34;model_dar_vacaciones_dar_vacaciones&#34;/&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+                 &#39;        action = {\n&#39;
+                 &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+                 &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+                 &#39;          &#34;res_model&#34;: model._name,\n&#39;
+                 &#39;        }\n&#39;
+                 &#39;      &lt;/field&gt;\n&#39;
+                 &#39;    &lt;/record&gt;\n&#39;]}
+  
+  Full diff:
+  - {}
+  + {
+  +     &#39;demo.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object0&#34; &#39;
+  +         &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object1&#34; &#39;
+  +         &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object2&#34; &#39;
+  +         &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object3&#34; &#39;
+  +         &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object4&#34; &#39;
+  +         &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;,
+  +     ],
+  +     &#39;templates.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;        &lt;template id=&#34;listing&#34;&gt;\n&#39;
+  +         &#39;          &lt;ul&gt;\n&#39;
+  +         &#39;            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n&#39;
+  +         &#39;              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n&#39;
+  +         &#39;                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n&#39;
+  +         &#39;              &lt;/a&gt;\n&#39;
+  +         &#39;            &lt;/li&gt;\n&#39;
+  +         &#39;          &lt;/ul&gt;\n&#39;
+  +         &#39;        &lt;/template&gt;\n&#39;
+  +         &#39;        &lt;template id=&#34;object&#34;&gt;\n&#39;
+  +         &#39;          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n&#39;
+  +         &#39;          &lt;dl&gt;\n&#39;
+  +         &#39;            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n&#39;
+  +         &#39;              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n&#39;
+  +         &#39;              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n&#39;
+  +         &#39;            &lt;/t&gt;\n&#39;
+  +         &#39;          &lt;/dl&gt;\n&#39;
+  +         &#39;        &lt;/template&gt;\n&#39;,
+  +     ],
+  +     &#39;views.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;dar_vacaciones.list&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;dar_vacaciones list&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+  +         &#39;        &lt;tree&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+  +         &#39;        &lt;/tree&gt;\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+  +         &#39;id=&#34;dar_vacaciones.action_window&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;dar_vacaciones window&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;res_model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+  +         &#39;id=&#34;dar_vacaciones.action_server&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;dar_vacaciones server&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model_id&#34; &#39;
+  +         &#39;ref=&#34;model_dar_vacaciones_dar_vacaciones&#34;/&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+  +         &#39;        action = {\n&#39;
+  +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+  +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+  +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+  +         &#39;        }\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +     ],
+  + }</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFCalidad object at 0x7fb0a147ae20&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+
+&gt;   ???
+E   AssertionError: Se ha encontrado XML comentado {&#39;demo.xml&#39;: [&#39;\n          &lt;record id=&#34;object0&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object1&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object2&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object3&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object4&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n          &lt;/record&gt;\n&#39;], &#39;templates.xml&#39;: [&#39;\n        &lt;template id=&#34;listing&#34;&gt;\n          &lt;ul&gt;\n            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n              &lt;/a&gt;\n            &lt;/li&gt;\n          &lt;/ul&gt;\n        &lt;/template&gt;\n        &lt;template id=&#34;object&#34;&gt;\n          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n          &lt;dl&gt;\n            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n            &lt;/t&gt;\n          &lt;/dl&gt;\n        &lt;/template&gt;\n&#39;], &#39;views.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;dar_vacaciones.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;dar_vacaciones list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;dar_vacaciones.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;dar_vacaciones window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;dar_vacaciones.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;dar_vacaciones server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_dar_vacaciones_dar_vacaciones&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;]} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+E   assert {&#39;demo.xml&#39;: [&#39;\n          &lt;record id=&#34;object0&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object1&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object2&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object3&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object4&#34; model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n          &lt;/record&gt;\n&#39;], &#39;templates.xml&#39;: [&#39;\n        &lt;template id=&#34;listing&#34;&gt;\n          &lt;ul&gt;\n            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n              &lt;/a&gt;\n            &lt;/li&gt;\n          &lt;/ul&gt;\n        &lt;/template&gt;\n        &lt;template id=&#34;object&#34;&gt;\n          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n          &lt;dl&gt;\n            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n            &lt;/t&gt;\n          &lt;/dl&gt;\n        &lt;/template&gt;\n&#39;], &#39;views.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;dar_vacaciones.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;dar_vacaciones list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;dar_vacaciones.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;dar_vacaciones window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;dar_vacaciones.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;dar_vacaciones server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_dar_vacaciones_dar_vacaciones&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;]} == {}
+E     
+E     Left contains 3 more items:
+E     {&#39;demo.xml&#39;: [&#39;\n&#39;
+E                   &#39;          &lt;record id=&#34;object0&#34; &#39;
+E                   &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n&#39;
+E                   &#39;          &lt;/record&gt;\n&#39;
+E                   &#39;\n&#39;
+E                   &#39;          &lt;record id=&#34;object1&#34; &#39;
+E                   &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n&#39;
+E                   &#39;          &lt;/record&gt;\n&#39;
+E                   &#39;\n&#39;
+E                   &#39;          &lt;record id=&#34;object2&#34; &#39;
+E                   &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n&#39;
+E                   &#39;          &lt;/record&gt;\n&#39;
+E                   &#39;\n&#39;
+E                   &#39;          &lt;record id=&#34;object3&#34; &#39;
+E                   &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n&#39;
+E                   &#39;          &lt;/record&gt;\n&#39;
+E                   &#39;\n&#39;
+E                   &#39;          &lt;record id=&#34;object4&#34; &#39;
+E                   &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n&#39;
+E                   &#39;          &lt;/record&gt;\n&#39;],
+E      &#39;templates.xml&#39;: [&#39;\n&#39;
+E                        &#39;        &lt;template id=&#34;listing&#34;&gt;\n&#39;
+E                        &#39;          &lt;ul&gt;\n&#39;
+E                        &#39;            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n&#39;
+E                        &#39;              &lt;a t-attf-href=&#34;#{ root }/objects/#{ &#39;
+E                        &#39;object.id }&#34;&gt;\n&#39;
+E                        &#39;                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n&#39;
+E                        &#39;              &lt;/a&gt;\n&#39;
+E                        &#39;            &lt;/li&gt;\n&#39;
+E                        &#39;          &lt;/ul&gt;\n&#39;
+E                        &#39;        &lt;/template&gt;\n&#39;
+E                        &#39;        &lt;template id=&#34;object&#34;&gt;\n&#39;
+E                        &#39;          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n&#39;
+E                        &#39;          &lt;dl&gt;\n&#39;
+E                        &#39;            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n&#39;
+E                        &#39;              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n&#39;
+E                        &#39;              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n&#39;
+E                        &#39;            &lt;/t&gt;\n&#39;
+E                        &#39;          &lt;/dl&gt;\n&#39;
+E                        &#39;        &lt;/template&gt;\n&#39;],
+E      &#39;views.xml&#39;: [&#39;\n&#39;
+E                    &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;dar_vacaciones.list&#34;&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;name&#34;&gt;dar_vacaciones list&lt;/field&gt;\n&#39;
+E                    &#39;      &lt;field &#39;
+E                    &#39;name=&#34;model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E                    &#39;        &lt;tree&gt;\n&#39;
+E                    &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E                    &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E                    &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E                    &#39;        &lt;/tree&gt;\n&#39;
+E                    &#39;      &lt;/field&gt;\n&#39;
+E                    &#39;    &lt;/record&gt;\n&#39;,
+E                    &#39;\n&#39;
+E                    &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E                    &#39;id=&#34;dar_vacaciones.action_window&#34;&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;name&#34;&gt;dar_vacaciones window&lt;/field&gt;\n&#39;
+E                    &#39;      &lt;field &#39;
+E                    &#39;name=&#34;res_model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E                    &#39;    &lt;/record&gt;\n&#39;,
+E                    &#39;\n&#39;
+E                    &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+E                    &#39;id=&#34;dar_vacaciones.action_server&#34;&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;name&#34;&gt;dar_vacaciones server&lt;/field&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;model_id&#34; &#39;
+E                    &#39;ref=&#34;model_dar_vacaciones_dar_vacaciones&#34;/&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E                    &#39;        action = {\n&#39;
+E                    &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E                    &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E                    &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E                    &#39;        }\n&#39;
+E                    &#39;      &lt;/field&gt;\n&#39;
+E                    &#39;    &lt;/record&gt;\n&#39;]}
+E     
+E     Full diff:
+E     - {}
+E     + {
+E     +     &#39;demo.xml&#39;: [
+E     +         &#39;\n&#39;
+E     +         &#39;          &lt;record id=&#34;object0&#34; &#39;
+E     +         &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n&#39;
+E     +         &#39;          &lt;/record&gt;\n&#39;
+E     +         &#39;\n&#39;
+E     +         &#39;          &lt;record id=&#34;object1&#34; &#39;
+E     +         &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n&#39;
+E     +         &#39;          &lt;/record&gt;\n&#39;
+E     +         &#39;\n&#39;
+E     +         &#39;          &lt;record id=&#34;object2&#34; &#39;
+E     +         &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n&#39;
+E     +         &#39;          &lt;/record&gt;\n&#39;
+E     +         &#39;\n&#39;
+E     +         &#39;          &lt;record id=&#34;object3&#34; &#39;
+E     +         &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n&#39;
+E     +         &#39;          &lt;/record&gt;\n&#39;
+E     +         &#39;\n&#39;
+E     +         &#39;          &lt;record id=&#34;object4&#34; &#39;
+E     +         &#39;model=&#34;dar_vacaciones.dar_vacaciones&#34;&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n&#39;
+E     +         &#39;          &lt;/record&gt;\n&#39;,
+E     +     ],
+E     +     &#39;templates.xml&#39;: [
+E     +         &#39;\n&#39;
+E     +         &#39;        &lt;template id=&#34;listing&#34;&gt;\n&#39;
+E     +         &#39;          &lt;ul&gt;\n&#39;
+E     +         &#39;            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n&#39;
+E     +         &#39;              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n&#39;
+E     +         &#39;                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n&#39;
+E     +         &#39;              &lt;/a&gt;\n&#39;
+E     +         &#39;            &lt;/li&gt;\n&#39;
+E     +         &#39;          &lt;/ul&gt;\n&#39;
+E     +         &#39;        &lt;/template&gt;\n&#39;
+E     +         &#39;        &lt;template id=&#34;object&#34;&gt;\n&#39;
+E     +         &#39;          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n&#39;
+E     +         &#39;          &lt;dl&gt;\n&#39;
+E     +         &#39;            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n&#39;
+E     +         &#39;              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n&#39;
+E     +         &#39;              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n&#39;
+E     +         &#39;            &lt;/t&gt;\n&#39;
+E     +         &#39;          &lt;/dl&gt;\n&#39;
+E     +         &#39;        &lt;/template&gt;\n&#39;,
+E     +     ],
+E     +     &#39;views.xml&#39;: [
+E     +         &#39;\n&#39;
+E     +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;dar_vacaciones.list&#34;&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;name&#34;&gt;dar_vacaciones list&lt;/field&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E     +         &#39;        &lt;tree&gt;\n&#39;
+E     +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E     +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E     +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E     +         &#39;        &lt;/tree&gt;\n&#39;
+E     +         &#39;      &lt;/field&gt;\n&#39;
+E     +         &#39;    &lt;/record&gt;\n&#39;,
+E     +         &#39;\n&#39;
+E     +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E     +         &#39;id=&#34;dar_vacaciones.action_window&#34;&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;name&#34;&gt;dar_vacaciones window&lt;/field&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;res_model&#34;&gt;dar_vacaciones.dar_vacaciones&lt;/field&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E     +         &#39;    &lt;/record&gt;\n&#39;,
+E     +         &#39;\n&#39;
+E     +         &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+E     +         &#39;id=&#34;dar_vacaciones.action_server&#34;&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;name&#34;&gt;dar_vacaciones server&lt;/field&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;model_id&#34; &#39;
+E     +         &#39;ref=&#34;model_dar_vacaciones_dar_vacaciones&#34;/&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E     +         &#39;        action = {\n&#39;
+E     +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E     +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E     +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E     +         &#39;        }\n&#39;
+E     +         &#39;      &lt;/field&gt;\n&#39;
+E     +         &#39;    &lt;/record&gt;\n&#39;,
+E     +     ],
+E     + }
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:417: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="9484fddc-209e-435d-99f7-0c4d92a85ed5"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_no_hay_codigo_python_comentado</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.328 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Se ha encontrado código Python comentado {&#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n-#     _name = \&#39;dar_vacaciones.dar_vacaciones\&#39;\n-#     _description = \&#39;dar_vacaciones.dar_vacaciones\&#39;\n-#     name = fields.Char()\n-#     value = fields.Integer()\n-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n-#     description = fields.Text()\n-#             record.value2 = float(record.value) / 100\n&#39;, &#39;controllers.py&#39;: &#39;-# from odoo import http\n-#         return &#34;Hello, world&#34;\n-#             \&#39;root\&#39;: \&#39;/dar_vacaciones/dar_vacaciones\&#39;,\n-#             \&#39;objects\&#39;: http.request.env[\&#39;dar_vacaciones.dar_vacaciones\&#39;].search([]),\n-#         })\n-#         })\n&#39;} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+assert {&#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n-#     _name = \&#39;dar_vacaciones.dar_vacaciones\&#39;\n-#     _description = \&#39;dar_vacaciones.dar_vacaciones\&#39;\n-#     name = fields.Char()\n-#     value = fields.Integer()\n-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n-#     description = fields.Text()\n-#             record.value2 = float(record.value) / 100\n&#39;, &#39;controllers.py&#39;: &#39;-# from odoo import http\n-#         return &#34;Hello, world&#34;\n-#             \&#39;root\&#39;: \&#39;/dar_vacaciones/dar_vacaciones\&#39;,\n-#             \&#39;objects\&#39;: http.request.env[\&#39;dar_vacaciones.dar_vacaciones\&#39;].search([]),\n-#         })\n-#         })\n&#39;} == {}
+  
+  Left contains 2 more items:
+  {&#39;controllers.py&#39;: &#39;-# from odoo import http\n&#39;
+                     &#39;-#         return &#34;Hello, world&#34;\n&#39;
+                     &#34;-#             &#39;root&#39;: &#39;/dar_vacaciones/dar_vacaciones&#39;,\n&#34;
+                     &#34;-#             &#39;objects&#39;: &#34;
+                     &#34;http.request.env[&#39;dar_vacaciones.dar_vacaciones&#39;].search([]),\n&#34;
+                     &#39;-#         })\n&#39;
+                     &#39;-#         })\n&#39;,
+   &#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n&#39;
+                &#34;-#     _name = &#39;dar_vacaciones.dar_vacaciones&#39;\n&#34;
+                &#34;-#     _description = &#39;dar_vacaciones.dar_vacaciones&#39;\n&#34;
+                &#39;-#     name = fields.Char()\n&#39;
+                &#39;-#     value = fields.Integer()\n&#39;
+                &#39;-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n&#39;
+                &#39;-#     description = fields.Text()\n&#39;
+                &#39;-#             record.value2 = float(record.value) / 100\n&#39;}
+  
+  Full diff:
+  - {}
+  + {
+  +     &#39;controllers.py&#39;: &#39;-# from odoo import http\n&#39;
+  +     &#39;-#         return &#34;Hello, world&#34;\n&#39;
+  +     &#34;-#             &#39;root&#39;: &#39;/dar_vacaciones/dar_vacaciones&#39;,\n&#34;
+  +     &#34;-#             &#39;objects&#39;: &#34;
+  +     &#34;http.request.env[&#39;dar_vacaciones.dar_vacaciones&#39;].search([]),\n&#34;
+  +     &#39;-#         })\n&#39;
+  +     &#39;-#         })\n&#39;,
+  +     &#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n&#39;
+  +     &#34;-#     _name = &#39;dar_vacaciones.dar_vacaciones&#39;\n&#34;
+  +     &#34;-#     _description = &#39;dar_vacaciones.dar_vacaciones&#39;\n&#34;
+  +     &#39;-#     name = fields.Char()\n&#39;
+  +     &#39;-#     value = fields.Integer()\n&#39;
+  +     &#39;-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n&#39;
+  +     &#39;-#     description = fields.Text()\n&#39;
+  +     &#39;-#             record.value2 = float(record.value) / 100\n&#39;,
+  + }</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFCalidad object at 0x7fb0a1480280&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fb0a14ce6d0&gt;
+
+&gt;   ???
+E   AssertionError: Se ha encontrado código Python comentado {&#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n-#     _name = \&#39;dar_vacaciones.dar_vacaciones\&#39;\n-#     _description = \&#39;dar_vacaciones.dar_vacaciones\&#39;\n-#     name = fields.Char()\n-#     value = fields.Integer()\n-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n-#     description = fields.Text()\n-#             record.value2 = float(record.value) / 100\n&#39;, &#39;controllers.py&#39;: &#39;-# from odoo import http\n-#         return &#34;Hello, world&#34;\n-#             \&#39;root\&#39;: \&#39;/dar_vacaciones/dar_vacaciones\&#39;,\n-#             \&#39;objects\&#39;: http.request.env[\&#39;dar_vacaciones.dar_vacaciones\&#39;].search([]),\n-#         })\n-#         })\n&#39;} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+E   assert {&#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n-#     _name = \&#39;dar_vacaciones.dar_vacaciones\&#39;\n-#     _description = \&#39;dar_vacaciones.dar_vacaciones\&#39;\n-#     name = fields.Char()\n-#     value = fields.Integer()\n-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n-#     description = fields.Text()\n-#             record.value2 = float(record.value) / 100\n&#39;, &#39;controllers.py&#39;: &#39;-# from odoo import http\n-#         return &#34;Hello, world&#34;\n-#             \&#39;root\&#39;: \&#39;/dar_vacaciones/dar_vacaciones\&#39;,\n-#             \&#39;objects\&#39;: http.request.env[\&#39;dar_vacaciones.dar_vacaciones\&#39;].search([]),\n-#         })\n-#         })\n&#39;} == {}
+E     
+E     Left contains 2 more items:
+E     {&#39;controllers.py&#39;: &#39;-# from odoo import http\n&#39;
+E                        &#39;-#         return &#34;Hello, world&#34;\n&#39;
+E                        &#34;-#             &#39;root&#39;: &#39;/dar_vacaciones/dar_vacaciones&#39;,\n&#34;
+E                        &#34;-#             &#39;objects&#39;: &#34;
+E                        &#34;http.request.env[&#39;dar_vacaciones.dar_vacaciones&#39;].search([]),\n&#34;
+E                        &#39;-#         })\n&#39;
+E                        &#39;-#         })\n&#39;,
+E      &#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n&#39;
+E                   &#34;-#     _name = &#39;dar_vacaciones.dar_vacaciones&#39;\n&#34;
+E                   &#34;-#     _description = &#39;dar_vacaciones.dar_vacaciones&#39;\n&#34;
+E                   &#39;-#     name = fields.Char()\n&#39;
+E                   &#39;-#     value = fields.Integer()\n&#39;
+E                   &#39;-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n&#39;
+E                   &#39;-#     description = fields.Text()\n&#39;
+E                   &#39;-#             record.value2 = float(record.value) / 100\n&#39;}
+E     
+E     Full diff:
+E     - {}
+E     + {
+E     +     &#39;controllers.py&#39;: &#39;-# from odoo import http\n&#39;
+E     +     &#39;-#         return &#34;Hello, world&#34;\n&#39;
+E     +     &#34;-#             &#39;root&#39;: &#39;/dar_vacaciones/dar_vacaciones&#39;,\n&#34;
+E     +     &#34;-#             &#39;objects&#39;: &#34;
+E     +     &#34;http.request.env[&#39;dar_vacaciones.dar_vacaciones&#39;].search([]),\n&#34;
+E     +     &#39;-#         })\n&#39;
+E     +     &#39;-#         })\n&#39;,
+E     +     &#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n&#39;
+E     +     &#34;-#     _name = &#39;dar_vacaciones.dar_vacaciones&#39;\n&#34;
+E     +     &#34;-#     _description = &#39;dar_vacaciones.dar_vacaciones&#39;\n&#34;
+E     +     &#39;-#     name = fields.Char()\n&#39;
+E     +     &#39;-#     value = fields.Integer()\n&#39;
+E     +     &#39;-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n&#39;
+E     +     &#39;-#     description = fields.Text()\n&#39;
+E     +     &#39;-#             record.value2 = float(record.value) / 100\n&#39;,
+E     + }
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:428: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="1b4bd289-510a-4819-85fb-bd3baf264cfc"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_log_servidor_sin_errores</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionales</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="269d62c3-1cb6-4646-a4c4-97f8e3635812"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban[/kanban]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="fe44e1d8-b2c7-4b34-a9fc-10a9b5a2f70e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban[/kanban[@default_group_by]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="ed3fcb66-1e5f-48b4-883c-686f7304ae97"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search[/search]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="7f87bab2-674f-498a-88ab-b4db0bbf6fed"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search[/search//filter[@domain]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="5300ae87-0c52-4a2e-882e-ff09570fdd13"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search[/search//group//filter[@context]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="41a81d73-35f6-4bb8-a9b1-392138e70327"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[activity]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="93d9d9bf-11bb-4523-911a-fe5df0bf49db"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[calendar]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="ac18fa52-2c00-43a7-bdb4-f7f632c57967"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[graph]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="65c1c5ff-d422-4191-b4c7-71539338ed78"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[pivot]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="17b18025-d57d-4d1e-a105-22e3c262c330"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_seguridad_con_grupos_propios</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="ad84a3c3-8284-4d8b-921d-b171a5c79e05"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_vistas_con_position</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="deeb935b-f4cb-45f4-b6e4-011a6185fdd7"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_vistas_con_inherit_id</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="fec891bc-2ceb-4b2e-a40a-c9d262069d69"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_modelos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="4b7d750f-9a07-4bc3-addd-ca922d9703cb"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[binary]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="a0c87285-b743-481e-ae20-98cce7a5f616"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[many2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="a89bf9e7-e549-43de-ae95-6502f76f2e29"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[many2one]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="34d5b95c-6907-4eec-a72b-458bbc1cb46d"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_i18n</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="a2eec7b3-06dd-4ed6-b149-956518a58334"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes[report]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="4dd087cd-60a3-4fef-b22c-0d455667ebee"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes[template]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestOtros</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="da4b21ce-e0cf-465c-93d1-c7de188f989a"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_log_sin_warnings</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>4.786 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+
+
+<p class="footer">
+    Generated by junit2html
+</p>
+</body>
+</html>

@@ -1,0 +1,2508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>hda_videojuegos-pytest.xml</title>
+    <style type="text/css">
+        body {
+    background-color: white;
+    padding-bottom: 20em;
+    margin: 0;
+    min-height: 15cm;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+    font-family: sans-serif;
+}
+
+h1 {
+    background-color: #007acc;
+    color: white;
+    padding: 3mm;
+    margin-top: 0;
+    margin-bottom: 1mm;
+}
+
+.footer {
+    font-style: italic;
+    font-size: small;
+    text-align: right;
+    padding: 1em;
+}
+
+.testsuite {
+    padding-bottom: 2em;
+    margin-left: 1em;
+}
+
+.proplist {
+    width: 100%;
+    margin-bottom: 2em;
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+.proplist th {
+    background-color: silver;
+    width: 5em;
+    padding: 2px;
+    padding-right: 1em;
+    text-align: left;
+}
+
+.proplist td {
+    padding: 2px;
+}
+
+.index-table {
+    width: 90%;
+    margin-left: 1em;
+}
+
+.index-table td {
+    vertical-align: top;
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.failure-index {
+
+}
+
+.toc {
+    margin-bottom: 2em;
+    font-family: monospace;
+}
+
+.stdio, pre {
+    min-height: 1em;
+    background-color: #1e1e1e;
+    color: silver;
+    padding: 0.5em;
+}
+.tdpre {
+    background-color: #1e1e1e;
+}
+
+.test {
+    margin-left: 0.5cm;
+}
+
+.outcome {
+    border-left: 1em;
+    padding: 2px;
+}
+
+.outcome-failed {
+    border-left: 1em solid lightcoral;
+}
+
+.outcome-passed {
+    border-left: 1em solid lightgreen;
+}
+
+.outcome-skipped {
+    border-left: 1em dotted silver;
+}
+
+.stats-table {
+}
+
+.stats-table td {
+    min-width: 4em;
+    text-align: right;
+}
+
+.stats-table .failed {
+    background-color: lightcoral;
+}
+
+.stats-table .passed {
+    background-color: lightgreen;
+}
+
+.matrix-table {
+    table-layout: fixed;
+    border-spacing: 0;
+    width: available;
+    margin-left: 1em;
+}
+
+.matrix-table td {
+    vertical-align: center;
+}
+
+.matrix-table td:last-child {
+    width: 0;
+}
+
+.matrix-table tr:hover {
+    background-color: yellow;
+}
+
+.matrix-axis-name {
+    white-space: nowrap;
+    padding-right: 0.5em;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    text-align: right;
+}
+
+.matrix-axis-line {
+    border-left: 1px solid black;
+    width: 0.5em;
+}
+
+.matrix-classname {
+    text-align: left;
+    width: 100%;
+    border-top: 2px solid grey;
+    border-bottom: 1px solid silver;
+}
+
+.matrix-casename {
+    text-align: left;
+    font-weight: normal;
+    font-style: italic;
+    padding-left: 1em;
+    border-bottom: 1px solid silver;
+}
+
+.matrix-result {
+    display: block;
+    width: 1em;
+    text-align: center;
+    padding: 1mm;
+    margin: 0;
+}
+
+.matrix-result-combined {
+    white-space: nowrap;
+    padding-right: 0.2em;
+    text-align: right;
+}
+
+.matrix-result-failed {
+    background-color: lightcoral;
+}
+
+.matrix-result-passed {
+    background-color: lightgreen;
+}
+
+.matrix-result-skipped {
+    background-color: lightyellow;
+}
+
+.matrix-even {
+    background-color: lightgray;
+}
+    </style>
+</head>
+<body>
+    
+<h1>
+    Test Report : hda_videojuegos-pytest.xml
+</h1>
+<a id="toc"></a>
+<table class="index-table">
+    <tr>
+        <td>
+            <ul class="toc">
+            
+                
+                <li>test_minimal_requirements.TestRNF1
+                <ul>
+                    
+                    <li><a href="#a4968ff1-1371-4d6a-9f0c-ec51065ab1ab">test_app_tiene_al_menos_4_modelos</a></li>
+                    
+                    <li><a href="#a7ff21b6-ca12-48c3-8f8d-b017c2fa1bc3">test_modelos_en_ficheros_individuales</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF2
+                <ul>
+                    
+                    <li><a href="#8ea5a3f9-5202-4c2b-ab4d-d9f684cb6ace">test_relacion_many2many</a></li>
+                    
+                    <li><a href="#0280596d-cd68-49a2-a066-662e54d9ad72">test_modelos_tienen_algun_campo_relacion[one2many]</a></li>
+                    
+                    <li><a href="#29601ee9-921a-4630-848e-85b9ca6108a9">test_modelos_tienen_algun_campo_relacion[many2one]</a></li>
+                    
+                    <li><a href="#15b4acf2-0919-47d6-bc7c-d48168a3dd75">test_unknown_comodel_name</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF3
+                <ul>
+                    
+                    <li><a href="#5a4f5f28-d85d-4bfc-b035-1883a7cfa68d">test_modelos_tienen_vista[tree]</a></li>
+                    
+                    <li><a href="#4d5f3f66-199c-4c44-8939-a8de5eec0aa6">test_modelos_tienen_vista[form]</a></li>
+                    
+                    <li><a href="#ceed93d6-2ccd-4620-aa25-ff5d20084f89">test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</a></li>
+                    
+                    <li><a href="#1490f813-7060-4a2b-b1f7-6aca7789335d">test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF4
+                <ul>
+                    
+                    <li><a href="#ae12b14d-f3f3-4836-b3f0-4180aa70686f">test_vistas_en_ficheros_individuales</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF5
+                <ul>
+                    
+                    <li><a href="#4112b490-f58d-41bb-828a-c30d8d807649">test_modelos_tienen_algun_posible_campo_imagen</a></li>
+                    
+                    <li><a href="#817b3835-c319-43bb-8e68-af8c2d65d193">test_alguna_vista_tiene_campo_imagen</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF6
+                <ul>
+                    
+                    <li><a href="#2f92ca1a-3246-4de2-9987-3405ac40b107">test_modelos_tienen_acciones</a></li>
+                    
+                    <li><a href="#92b3975e-8fd8-4e82-a4c8-7835083e5aa5">test_hay_elementos_de_menu[.//menuitem[@action]]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF7
+                <ul>
+                    
+                    <li><a href="#00f8a5b3-e7e5-40ab-a73a-4c060e16f29a">test_modelos_tienen_permisos</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF8
+                <ul>
+                    
+                    <li><a href="#0d01c065-0f49-4970-b5e1-a094a59024f0">test_app_tiene_icono</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF9
+                <ul>
+                    
+                    <li><a href="#b91c2831-51d0-4ff7-8df3-3a341fc4ab8e">test_modelos_tienen_datos_demo</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFGit
+                <ul>
+                    
+                    <li><a href="#f171c294-b594-48ad-b11c-05456773950b">test_git_commit_frecuentes</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFCalidad
+                <ul>
+                    
+                    <li><a href="#847c7b15-284f-41e8-8352-10d6013db088">test_odoo_disponible</a></li>
+                    
+                    <li><a href="#1ac30569-836f-4d71-bf6e-38bf35ba505a">test_app_instalada</a></li>
+                    
+                    <li><a href="#d149cbea-c0f7-4031-aa40-1083c76f503b">test_solo_una_app_entregada</a></li>
+                    
+                    <li><a href="#c2f008d0-d8da-48e6-9c29-61864fb3a349">test_no_hay_elementos_xml_comentados</a></li>
+                    
+                    <li><a href="#d05d6d27-5944-4602-9e4a-1553d1ae0196">test_no_hay_codigo_python_comentado</a></li>
+                    
+                    <li><a href="#c6d2c128-5abb-4111-ba37-4998ec085435">test_log_servidor_sin_errores</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionales
+                <ul>
+                    
+                    <li><a href="#d71b2473-2948-48f2-a8f4-76ac18a074b5">test_vista_kanban[/kanban]</a>[s]</li>
+                    
+                    <li><a href="#6f06436a-5e0b-4261-853d-70f0595d7f3e">test_vista_kanban[/kanban[@default_group_by]]</a>[s]</li>
+                    
+                    <li><a href="#8cadd913-a96f-44b5-8742-e26e097d0aff">test_vista_search[/search]</a>[s]</li>
+                    
+                    <li><a href="#d9807480-a448-4d5c-a99f-776dedd5df27">test_vista_search[/search//filter[@domain]]</a>[s]</li>
+                    
+                    <li><a href="#ff4fcf6f-a357-4e9b-98ee-c3e8f381f244">test_vista_search[/search//group//filter[@context]]</a>[s]</li>
+                    
+                    <li><a href="#57ba6657-82b4-40aa-80ba-708533b93706">test_otras_vistas_adicionales[activity]</a>[s]</li>
+                    
+                    <li><a href="#b16768f9-4a32-4933-b05b-f6d903e08bcb">test_otras_vistas_adicionales[calendar]</a>[s]</li>
+                    
+                    <li><a href="#a80e7b92-db58-4adc-a150-caa73a0959ea">test_otras_vistas_adicionales[graph]</a>[s]</li>
+                    
+                    <li><a href="#7fe1f9fd-7db2-40f4-9097-13c95f68e30c">test_otras_vistas_adicionales[pivot]</a>[s]</li>
+                    
+                    <li><a href="#a18ffca9-b18c-4a1e-99eb-ffcae48fa035">test_seguridad_con_grupos_propios</a>[s]</li>
+                    
+                    <li><a href="#23bd0d71-086e-4518-8b11-374b06b3103d">test_herencia_en_vistas_con_position</a>[s]</li>
+                    
+                    <li><a href="#e67ce2ac-66cb-4504-a581-038da9011534">test_herencia_en_vistas_con_inherit_id</a>[s]</li>
+                    
+                    <li><a href="#fe5ea527-2ca5-4644-b624-ea86b0d1ae06">test_herencia_en_modelos</a>[s]</li>
+                    
+                    <li><a href="#6bc2b153-0959-455d-9a75-2af185ecd06d">test_datos_maestros_o_demo_avanzados[binary]</a>[s]</li>
+                    
+                    <li><a href="#338c93ab-8b06-4a68-8bf8-0fa13c69f045">test_datos_maestros_o_demo_avanzados[many2many]</a>[s]</li>
+                    
+                    <li><a href="#29639949-533d-4b73-86b6-697534c1a082">test_datos_maestros_o_demo_avanzados[many2one]</a>[s]</li>
+                    
+                    <li><a href="#2ee47377-1baa-45b9-b289-51fcebc7ae6f">test_i18n</a>[s]</li>
+                    
+                    <li><a href="#3b14838c-47cf-45a2-b1fc-541dcb6ca7af">test_informes[report]</a>[s]</li>
+                    
+                    <li><a href="#ce8152b9-76e4-4760-adfd-868ae3fa4105">test_informes[template]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestOtros
+                <ul>
+                    
+                    <li><a href="#55da39a9-e932-4942-a3f9-27ce9c16b37d">test_log_sin_warnings</a></li>
+                    
+                </ul>
+                </li>
+                
+            
+            </ul>
+        </td>
+        <td class="failure-index">
+            <ul class="toc">
+            
+                
+                    
+                    
+                    <li><a href="#a4968ff1-1371-4d6a-9f0c-ec51065ab1ab">[F] test_minimal_requirements.TestRNF1 : test_app_tiene_al_menos_4_modelos</a></li>
+                    
+                    
+                    
+                    <li><a href="#a7ff21b6-ca12-48c3-8f8d-b017c2fa1bc3">[F] test_minimal_requirements.TestRNF1 : test_modelos_en_ficheros_individuales</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#8ea5a3f9-5202-4c2b-ab4d-d9f684cb6ace">[F] test_minimal_requirements.TestRNF2 : test_relacion_many2many</a></li>
+                    
+                    
+                    
+                    <li><a href="#0280596d-cd68-49a2-a066-662e54d9ad72">[F] test_minimal_requirements.TestRNF2 : test_modelos_tienen_algun_campo_relacion[one2many]</a></li>
+                    
+                    
+                    
+                    <li><a href="#29601ee9-921a-4630-848e-85b9ca6108a9">[F] test_minimal_requirements.TestRNF2 : test_modelos_tienen_algun_campo_relacion[many2one]</a></li>
+                    
+                    
+                    
+                    <li><a href="#15b4acf2-0919-47d6-bc7c-d48168a3dd75">[F] test_minimal_requirements.TestRNF2 : test_unknown_comodel_name</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#5a4f5f28-d85d-4bfc-b035-1883a7cfa68d">[F] test_minimal_requirements.TestRNF3 : test_modelos_tienen_vista[tree]</a></li>
+                    
+                    
+                    
+                    <li><a href="#4d5f3f66-199c-4c44-8939-a8de5eec0aa6">[F] test_minimal_requirements.TestRNF3 : test_modelos_tienen_vista[form]</a></li>
+                    
+                    
+                    
+                    <li><a href="#ceed93d6-2ccd-4620-aa25-ff5d20084f89">[F] test_minimal_requirements.TestRNF3 : test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</a></li>
+                    
+                    
+                    
+                    <li><a href="#1490f813-7060-4a2b-b1f7-6aca7789335d">[F] test_minimal_requirements.TestRNF3 : test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#ae12b14d-f3f3-4836-b3f0-4180aa70686f">[F] test_minimal_requirements.TestRNF4 : test_vistas_en_ficheros_individuales</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#4112b490-f58d-41bb-828a-c30d8d807649">[F] test_minimal_requirements.TestRNF5 : test_modelos_tienen_algun_posible_campo_imagen</a></li>
+                    
+                    
+                    
+                    <li><a href="#817b3835-c319-43bb-8e68-af8c2d65d193">[F] test_minimal_requirements.TestRNF5 : test_alguna_vista_tiene_campo_imagen</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#2f92ca1a-3246-4de2-9987-3405ac40b107">[F] test_minimal_requirements.TestRNF6 : test_modelos_tienen_acciones</a></li>
+                    
+                    
+                    
+                    <li><a href="#92b3975e-8fd8-4e82-a4c8-7835083e5aa5">[F] test_minimal_requirements.TestRNF6 : test_hay_elementos_de_menu[.//menuitem[@action]]</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#00f8a5b3-e7e5-40ab-a73a-4c060e16f29a">[F] test_minimal_requirements.TestRNF7 : test_modelos_tienen_permisos</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#0d01c065-0f49-4970-b5e1-a094a59024f0">[F] test_minimal_requirements.TestRNF8 : test_app_tiene_icono</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#b91c2831-51d0-4ff7-8df3-3a341fc4ab8e">[F] test_minimal_requirements.TestRNF9 : test_modelos_tienen_datos_demo</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#f171c294-b594-48ad-b11c-05456773950b">[F] test_minimal_requirements.TestRNFGit : test_git_commit_frecuentes</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#847c7b15-284f-41e8-8352-10d6013db088">[F] test_minimal_requirements.TestRNFCalidad : test_odoo_disponible</a></li>
+                    
+                    
+                    
+                    <li><a href="#1ac30569-836f-4d71-bf6e-38bf35ba505a">[F] test_minimal_requirements.TestRNFCalidad : test_app_instalada</a></li>
+                    
+                    
+                    
+                    <li><a href="#d149cbea-c0f7-4031-aa40-1083c76f503b">[F] test_minimal_requirements.TestRNFCalidad : test_solo_una_app_entregada</a></li>
+                    
+                    
+                    
+                    <li><a href="#c2f008d0-d8da-48e6-9c29-61864fb3a349">[F] test_minimal_requirements.TestRNFCalidad : test_no_hay_elementos_xml_comentados</a></li>
+                    
+                    
+                    
+                    <li><a href="#d05d6d27-5944-4602-9e4a-1553d1ae0196">[F] test_minimal_requirements.TestRNFCalidad : test_no_hay_codigo_python_comentado</a></li>
+                    
+                    
+                    
+                    <li><a href="#c6d2c128-5abb-4111-ba37-4998ec085435">[F] test_minimal_requirements.TestRNFCalidad : test_log_servidor_sin_errores</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#55da39a9-e932-4942-a3f9-27ce9c16b37d">[F] test_minimal_requirements.TestOtros : test_log_sin_warnings</a></li>
+                    
+                    
+                
+            
+            </ul>
+        </td>
+    </tr>
+</table>
+
+
+    <div class="testsuite">
+        <h2>Test Suite: pytest</h2>
+        <a id="c0a2dbde-8c74-4d0c-8760-ae69d8acd42a"></a>
+        
+        
+        <h3>Results</h3>
+        <table class="proplist">
+            <tr>
+                <th>Duration</th><td>78.126 sec</td>
+            </tr>
+            <tr>
+                <th>Tests</th><td>45</td>
+            </tr>
+            <tr>
+                <th>Failures</th><td>26</td>
+            </tr>
+        </table>
+
+        <div class="testclasses">
+            <h3>Tests</h3>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF1</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="a4968ff1-1371-4d6a-9f0c-ec51065ab1ab"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_tiene_al_menos_4_modelos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>73.329 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="a7ff21b6-ca12-48c3-8f8d-b017c2fa1bc3"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_en_ficheros_individuales</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF2</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="8ea5a3f9-5202-4c2b-ab4d-d9f684cb6ace"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_relacion_many2many</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="0280596d-cd68-49a2-a066-662e54d9ad72"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_campo_relacion[one2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="29601ee9-921a-4630-848e-85b9ca6108a9"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_campo_relacion[many2one]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="15b4acf2-0919-47d6-bc7c-d48168a3dd75"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_unknown_comodel_name</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF3</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="5a4f5f28-d85d-4bfc-b035-1883a7cfa68d"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_vista[tree]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="4d5f3f66-199c-4c44-8939-a8de5eec0aa6"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_vista[form]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="ceed93d6-2ccd-4620-aa25-ff5d20084f89"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="1490f813-7060-4a2b-b1f7-6aca7789335d"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF4</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="ae12b14d-f3f3-4836-b3f0-4180aa70686f"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vistas_en_ficheros_individuales</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF5</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="4112b490-f58d-41bb-828a-c30d8d807649"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_posible_campo_imagen</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="817b3835-c319-43bb-8e68-af8c2d65d193"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_alguna_vista_tiene_campo_imagen</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF6</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="2f92ca1a-3246-4de2-9987-3405ac40b107"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_acciones</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="92b3975e-8fd8-4e82-a4c8-7835083e5aa5"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_hay_elementos_de_menu[.//menuitem[@action]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF7</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="00f8a5b3-e7e5-40ab-a73a-4c060e16f29a"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_permisos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF8</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="0d01c065-0f49-4970-b5e1-a094a59024f0"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_tiene_icono</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF9</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="b91c2831-51d0-4ff7-8df3-3a341fc4ab8e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_datos_demo</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFGit</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="f171c294-b594-48ad-b11c-05456773950b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_git_commit_frecuentes</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFCalidad</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="847c7b15-284f-41e8-8352-10d6013db088"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_odoo_disponible</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="1ac30569-836f-4d71-bf6e-38bf35ba505a"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_instalada</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="d149cbea-c0f7-4031-aa40-1083c76f503b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_solo_una_app_entregada</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="c2f008d0-d8da-48e6-9c29-61864fb3a349"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_no_hay_elementos_xml_comentados</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="d05d6d27-5944-4602-9e4a-1553d1ae0196"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_no_hay_codigo_python_comentado</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="c6d2c128-5abb-4111-ba37-4998ec085435"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_log_servidor_sin_errores</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionales</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="d71b2473-2948-48f2-a8f4-76ac18a074b5"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban[/kanban]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="6f06436a-5e0b-4261-853d-70f0595d7f3e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban[/kanban[@default_group_by]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="8cadd913-a96f-44b5-8742-e26e097d0aff"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search[/search]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="d9807480-a448-4d5c-a99f-776dedd5df27"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search[/search//filter[@domain]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="ff4fcf6f-a357-4e9b-98ee-c3e8f381f244"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search[/search//group//filter[@context]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="57ba6657-82b4-40aa-80ba-708533b93706"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[activity]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="b16768f9-4a32-4933-b05b-f6d903e08bcb"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[calendar]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="a80e7b92-db58-4adc-a150-caa73a0959ea"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[graph]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="7fe1f9fd-7db2-40f4-9097-13c95f68e30c"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[pivot]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="a18ffca9-b18c-4a1e-99eb-ffcae48fa035"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_seguridad_con_grupos_propios</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="23bd0d71-086e-4518-8b11-374b06b3103d"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_vistas_con_position</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="e67ce2ac-66cb-4504-a581-038da9011534"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_vistas_con_inherit_id</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="fe5ea527-2ca5-4644-b624-ea86b0d1ae06"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_modelos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="6bc2b153-0959-455d-9a75-2af185ecd06d"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[binary]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="338c93ab-8b06-4a68-8bf8-0fa13c69f045"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[many2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="29639949-533d-4b73-86b6-697534c1a082"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[many2one]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="2ee47377-1baa-45b9-b289-51fcebc7ae6f"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_i18n</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="3b14838c-47cf-45a2-b1fc-541dcb6ca7af"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes[report]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="ce8152b9-76e4-4760-adfd-868ae3fa4105"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes[template]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.0 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestOtros</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="55da39a9-e932-4942-a3f9-27ce9c16b37d"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_log_sin_warnings</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>3.738 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>failed on setup with &#34;Exception: Timeout reached while waiting on service!&#34;</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>docker_ip = &#39;127.0.0.1&#39;
+docker_services = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:164: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = Services(_docker_compose=DockerComposeExecutor(_compose_command=&#39;docker compose&#39;, _compose_files=[&#39;/home/madrid/Escrit...o-project-tester/projects/docker-compose.yml&#39;], _compose_project_name=&#39;pytest13145&#39;), _services={&#39;odoo&#39;: {8069: 8069}})
+check = &lt;function http_service.&lt;locals&gt;.&lt;lambda&gt; at 0x7f3b91cfe670&gt;
+timeout = 60.0, pause = 10, clock = &lt;built-in function perf_counter&gt;
+
+    def wait_until_responsive(
+        self,
+        check: Any,
+        timeout: float,
+        pause: float,
+        clock: Any = timeit.default_timer,
+    ) -&gt; None:
+        &#34;&#34;&#34;Wait until a service is responsive.&#34;&#34;&#34;
+    
+        ref = clock()
+        now = ref
+        while (now - ref) &lt; timeout:
+            if check():
+                return
+            time.sleep(pause)
+            now = clock()
+    
+&gt;       raise Exception(&#34;Timeout reached while waiting on service!&#34;)
+E       Exception: Timeout reached while waiting on service!
+
+.venv/lib/python3.8/site-packages/pytest_docker/plugin.py:120: Exception</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+
+
+<p class="footer">
+    Generated by junit2html
+</p>
+</body>
+</html>

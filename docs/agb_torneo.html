@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>agb_torneo-pytest.xml</title>
+    <style type="text/css">
+        body {
+    background-color: white;
+    padding-bottom: 20em;
+    margin: 0;
+    min-height: 15cm;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+    font-family: sans-serif;
+}
+
+h1 {
+    background-color: #007acc;
+    color: white;
+    padding: 3mm;
+    margin-top: 0;
+    margin-bottom: 1mm;
+}
+
+.footer {
+    font-style: italic;
+    font-size: small;
+    text-align: right;
+    padding: 1em;
+}
+
+.testsuite {
+    padding-bottom: 2em;
+    margin-left: 1em;
+}
+
+.proplist {
+    width: 100%;
+    margin-bottom: 2em;
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+.proplist th {
+    background-color: silver;
+    width: 5em;
+    padding: 2px;
+    padding-right: 1em;
+    text-align: left;
+}
+
+.proplist td {
+    padding: 2px;
+}
+
+.index-table {
+    width: 90%;
+    margin-left: 1em;
+}
+
+.index-table td {
+    vertical-align: top;
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.failure-index {
+
+}
+
+.toc {
+    margin-bottom: 2em;
+    font-family: monospace;
+}
+
+.stdio, pre {
+    min-height: 1em;
+    background-color: #1e1e1e;
+    color: silver;
+    padding: 0.5em;
+}
+.tdpre {
+    background-color: #1e1e1e;
+}
+
+.test {
+    margin-left: 0.5cm;
+}
+
+.outcome {
+    border-left: 1em;
+    padding: 2px;
+}
+
+.outcome-failed {
+    border-left: 1em solid lightcoral;
+}
+
+.outcome-passed {
+    border-left: 1em solid lightgreen;
+}
+
+.outcome-skipped {
+    border-left: 1em dotted silver;
+}
+
+.stats-table {
+}
+
+.stats-table td {
+    min-width: 4em;
+    text-align: right;
+}
+
+.stats-table .failed {
+    background-color: lightcoral;
+}
+
+.stats-table .passed {
+    background-color: lightgreen;
+}
+
+.matrix-table {
+    table-layout: fixed;
+    border-spacing: 0;
+    width: available;
+    margin-left: 1em;
+}
+
+.matrix-table td {
+    vertical-align: center;
+}
+
+.matrix-table td:last-child {
+    width: 0;
+}
+
+.matrix-table tr:hover {
+    background-color: yellow;
+}
+
+.matrix-axis-name {
+    white-space: nowrap;
+    padding-right: 0.5em;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    text-align: right;
+}
+
+.matrix-axis-line {
+    border-left: 1px solid black;
+    width: 0.5em;
+}
+
+.matrix-classname {
+    text-align: left;
+    width: 100%;
+    border-top: 2px solid grey;
+    border-bottom: 1px solid silver;
+}
+
+.matrix-casename {
+    text-align: left;
+    font-weight: normal;
+    font-style: italic;
+    padding-left: 1em;
+    border-bottom: 1px solid silver;
+}
+
+.matrix-result {
+    display: block;
+    width: 1em;
+    text-align: center;
+    padding: 1mm;
+    margin: 0;
+}
+
+.matrix-result-combined {
+    white-space: nowrap;
+    padding-right: 0.2em;
+    text-align: right;
+}
+
+.matrix-result-failed {
+    background-color: lightcoral;
+}
+
+.matrix-result-passed {
+    background-color: lightgreen;
+}
+
+.matrix-result-skipped {
+    background-color: lightyellow;
+}
+
+.matrix-even {
+    background-color: lightgray;
+}
+    </style>
+</head>
+<body>
+    
+<h1>
+    Test Report : agb_torneo-pytest.xml
+</h1>
+<a id="toc"></a>
+<table class="index-table">
+    <tr>
+        <td>
+            <ul class="toc">
+            
+                
+                <li>test_minimal_requirements.TestRNF1
+                <ul>
+                    
+                    <li><a href="#2b6cd266-3ff5-4a41-9c45-37db60ece81c">test_app_tiene_al_menos_4_modelos</a></li>
+                    
+                    <li><a href="#bedc0ac4-22c0-4a95-a6f6-89633e62169e">test_modelos_en_ficheros_individuales</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF2
+                <ul>
+                    
+                    <li><a href="#fd9a21f5-cd23-486b-80e5-e8a314337196">test_relacion_many2many</a></li>
+                    
+                    <li><a href="#f75b6a81-601b-47a4-b541-735c2a82bf9f">test_modelos_tienen_algun_campo_relacion[one2many]</a></li>
+                    
+                    <li><a href="#c48c6475-4a2e-40b2-816c-0dd0b12c2ad3">test_modelos_tienen_algun_campo_relacion[many2one]</a></li>
+                    
+                    <li><a href="#41be7610-9742-436c-bbbb-1ddedc2da405">test_unknown_comodel_name</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF3
+                <ul>
+                    
+                    <li><a href="#79c14bff-323e-41b5-b044-7a1422deae14">test_modelos_tienen_vista[tree]</a></li>
+                    
+                    <li><a href="#1d0fba5d-4f3b-4737-8214-dff8c3729b11">test_modelos_tienen_vista[form]</a></li>
+                    
+                    <li><a href="#16ff7cff-0834-4247-8eb1-d1d1d5df83a3">test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</a></li>
+                    
+                    <li><a href="#19a719e5-fd2e-4520-af07-bc1c0dcc5cd7">test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF4
+                <ul>
+                    
+                    <li><a href="#311289eb-fb14-467f-9605-6fd50a353e22">test_vistas_en_ficheros_individuales</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF5
+                <ul>
+                    
+                    <li><a href="#f1af5ea1-7e9c-4423-9ae4-84abaceb4ffb">test_modelos_tienen_algun_posible_campo_imagen</a></li>
+                    
+                    <li><a href="#b18992e9-2af1-4f19-955a-47b266250183">test_alguna_vista_tiene_campo_imagen</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF6
+                <ul>
+                    
+                    <li><a href="#0713746b-1185-4670-8449-a135e782291e">test_modelos_tienen_acciones</a></li>
+                    
+                    <li><a href="#43e76ced-78ff-475b-9b8b-b1f754c6c6f7">test_hay_elementos_de_menu[.//menuitem[@action]]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF7
+                <ul>
+                    
+                    <li><a href="#3bee3e03-1702-4ad1-93c7-6cb9c8e1eef1">test_modelos_tienen_permisos</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF8
+                <ul>
+                    
+                    <li><a href="#eddeddf5-a57f-42f1-b1ce-ad3f38d44dde">test_app_tiene_icono</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF9
+                <ul>
+                    
+                    <li><a href="#28b0853b-d75c-4b6b-9d96-e1b4fb1a8be2">test_modelos_tienen_datos_demo</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFGit
+                <ul>
+                    
+                    <li><a href="#23bd4163-be25-4dcc-a04c-1e250f1843d7">test_git_commit_frecuentes</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFCalidad
+                <ul>
+                    
+                    <li><a href="#5730dc32-350a-402f-8c4f-05c3d5b8eb0f">test_odoo_disponible</a></li>
+                    
+                    <li><a href="#14103e4a-f750-4e91-90f5-43bf31a8c98a">test_app_instalada</a></li>
+                    
+                    <li><a href="#07647d98-959d-4e0c-b5a9-a15ec445fe48">test_solo_una_app_entregada</a></li>
+                    
+                    <li><a href="#c80a0d1a-bccf-4bb0-8e62-41212047b457">test_no_hay_elementos_xml_comentados</a></li>
+                    
+                    <li><a href="#d96b23f8-1717-449a-a25d-ac62b82bc47b">test_no_hay_codigo_python_comentado</a></li>
+                    
+                    <li><a href="#c6f89566-9c72-45a5-9462-3fed7b0973a0">test_log_servidor_sin_errores</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionales
+                <ul>
+                    
+                    <li><a href="#1560cbc1-882d-4e1b-ad6e-510c90dd4fa8">test_vista_kanban[/kanban]</a>[s]</li>
+                    
+                    <li><a href="#25f5dad9-8447-40d9-a8c2-3dee3a937d23">test_vista_kanban[/kanban[@default_group_by]]</a>[s]</li>
+                    
+                    <li><a href="#84359545-c398-44a3-b3f5-4bacc90f06ac">test_vista_search[/search]</a>[s]</li>
+                    
+                    <li><a href="#e24743f6-09ce-4cf6-9729-14d98af45548">test_vista_search[/search//filter[@domain]]</a>[s]</li>
+                    
+                    <li><a href="#cdc4607c-76d0-4211-bf47-a09ec43ab033">test_vista_search[/search//group//filter[@context]]</a>[s]</li>
+                    
+                    <li><a href="#f9d0c1a8-26a2-4a16-bbfe-4f4e509c312b">test_otras_vistas_adicionales[activity]</a>[s]</li>
+                    
+                    <li><a href="#afa37cbc-13f3-44ab-88e0-09ce67c6d0d2">test_otras_vistas_adicionales[calendar]</a>[s]</li>
+                    
+                    <li><a href="#2a6b83ad-2c0e-4684-9c5f-baf9fc484a45">test_otras_vistas_adicionales[graph]</a>[s]</li>
+                    
+                    <li><a href="#6a6be008-c81c-4982-a03f-315ce3a80abc">test_otras_vistas_adicionales[pivot]</a>[s]</li>
+                    
+                    <li><a href="#20e47687-fe7d-4ddc-b742-45b6a28b109c">test_seguridad_con_grupos_propios</a>[s]</li>
+                    
+                    <li><a href="#d7d62211-74f3-4a44-b926-cc6a5b4d6e1f">test_herencia_en_vistas_con_position</a>[s]</li>
+                    
+                    <li><a href="#88eb94b0-94a7-48ee-884a-44f4fa211dfc">test_herencia_en_vistas_con_inherit_id</a>[s]</li>
+                    
+                    <li><a href="#84af6e34-f1cf-43bf-9951-96bdfbd8396f">test_herencia_en_modelos</a>[s]</li>
+                    
+                    <li><a href="#7b5d06e7-42e4-495e-8384-bb7e0e634d31">test_datos_maestros_o_demo_avanzados[binary]</a>[s]</li>
+                    
+                    <li><a href="#d9f010e3-917d-49f7-90fb-f1a8578b497b">test_datos_maestros_o_demo_avanzados[many2many]</a>[s]</li>
+                    
+                    <li><a href="#1f6e512f-ed77-4fdc-927c-f1bd6567726f">test_datos_maestros_o_demo_avanzados[many2one]</a>[s]</li>
+                    
+                    <li><a href="#848e4f72-b127-4594-b75b-1488cf881cf9">test_i18n</a>[s]</li>
+                    
+                    <li><a href="#d70e8f76-ba28-4773-911a-63b5ac7fbc50">test_informes[report]</a>[s]</li>
+                    
+                    <li><a href="#0add2c41-86e7-4976-a350-e2a9e5aeefc2">test_informes[template]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestOtros
+                <ul>
+                    
+                    <li><a href="#d434d2ad-f04e-4435-b7f6-2f1ad14f92d4">test_log_sin_warnings</a></li>
+                    
+                </ul>
+                </li>
+                
+            
+            </ul>
+        </td>
+        <td class="failure-index">
+            <ul class="toc">
+            
+                
+                    
+                    
+                    <li><a href="#2b6cd266-3ff5-4a41-9c45-37db60ece81c">[F] test_minimal_requirements.TestRNF1 : test_app_tiene_al_menos_4_modelos</a></li>
+                    
+                    
+                    
+                    <li><a href="#bedc0ac4-22c0-4a95-a6f6-89633e62169e">[F] test_minimal_requirements.TestRNF1 : test_modelos_en_ficheros_individuales</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#fd9a21f5-cd23-486b-80e5-e8a314337196">[F] test_minimal_requirements.TestRNF2 : test_relacion_many2many</a></li>
+                    
+                    
+                    
+                    <li><a href="#f75b6a81-601b-47a4-b541-735c2a82bf9f">[F] test_minimal_requirements.TestRNF2 : test_modelos_tienen_algun_campo_relacion[one2many]</a></li>
+                    
+                    
+                    
+                    <li><a href="#c48c6475-4a2e-40b2-816c-0dd0b12c2ad3">[F] test_minimal_requirements.TestRNF2 : test_modelos_tienen_algun_campo_relacion[many2one]</a></li>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#79c14bff-323e-41b5-b044-7a1422deae14">[F] test_minimal_requirements.TestRNF3 : test_modelos_tienen_vista[tree]</a></li>
+                    
+                    
+                    
+                    <li><a href="#1d0fba5d-4f3b-4737-8214-dff8c3729b11">[F] test_minimal_requirements.TestRNF3 : test_modelos_tienen_vista[form]</a></li>
+                    
+                    
+                    
+                    <li><a href="#16ff7cff-0834-4247-8eb1-d1d1d5df83a3">[F] test_minimal_requirements.TestRNF3 : test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</a></li>
+                    
+                    
+                    
+                    <li><a href="#19a719e5-fd2e-4520-af07-bc1c0dcc5cd7">[F] test_minimal_requirements.TestRNF3 : test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#f1af5ea1-7e9c-4423-9ae4-84abaceb4ffb">[F] test_minimal_requirements.TestRNF5 : test_modelos_tienen_algun_posible_campo_imagen</a></li>
+                    
+                    
+                    
+                    <li><a href="#b18992e9-2af1-4f19-955a-47b266250183">[F] test_minimal_requirements.TestRNF5 : test_alguna_vista_tiene_campo_imagen</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#0713746b-1185-4670-8449-a135e782291e">[F] test_minimal_requirements.TestRNF6 : test_modelos_tienen_acciones</a></li>
+                    
+                    
+                    
+                    <li><a href="#43e76ced-78ff-475b-9b8b-b1f754c6c6f7">[F] test_minimal_requirements.TestRNF6 : test_hay_elementos_de_menu[.//menuitem[@action]]</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#3bee3e03-1702-4ad1-93c7-6cb9c8e1eef1">[F] test_minimal_requirements.TestRNF7 : test_modelos_tienen_permisos</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#28b0853b-d75c-4b6b-9d96-e1b4fb1a8be2">[F] test_minimal_requirements.TestRNF9 : test_modelos_tienen_datos_demo</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#23bd4163-be25-4dcc-a04c-1e250f1843d7">[F] test_minimal_requirements.TestRNFGit : test_git_commit_frecuentes</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="#c80a0d1a-bccf-4bb0-8e62-41212047b457">[F] test_minimal_requirements.TestRNFCalidad : test_no_hay_elementos_xml_comentados</a></li>
+                    
+                    
+                    
+                    <li><a href="#d96b23f8-1717-449a-a25d-ac62b82bc47b">[F] test_minimal_requirements.TestRNFCalidad : test_no_hay_codigo_python_comentado</a></li>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+            
+            </ul>
+        </td>
+    </tr>
+</table>
+
+
+    <div class="testsuite">
+        <h2>Test Suite: pytest</h2>
+        <a id="a4caca96-cfdd-4575-b091-9226efbaebbf"></a>
+        
+        
+        <h3>Results</h3>
+        <table class="proplist">
+            <tr>
+                <th>Duration</th><td>34.504 sec</td>
+            </tr>
+            <tr>
+                <th>Tests</th><td>45</td>
+            </tr>
+            <tr>
+                <th>Failures</th><td>18</td>
+            </tr>
+        </table>
+
+        <div class="testclasses">
+            <h3>Tests</h3>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF1</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="2b6cd266-3ff5-4a41-9c45-37db60ece81c"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_tiene_al_menos_4_modelos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>30.226 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Al menos **4 clases**, implementadas en ficheros diferentes.
+assert 0 &gt;= 4
+ +  where 0 = len([])
+ +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.basename_app_models
+ +  and   4 = &lt;test_minimal_requirements.TestRNF1 object at 0x7fe422eb2ac0&gt;.MIN</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF1 object at 0x7fe422eb2ac0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+
+&gt;   ???
+E   AssertionError: Al menos **4 clases**, implementadas en ficheros diferentes.
+E   assert 0 &gt;= 4
+E    +  where 0 = len([])
+E    +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.basename_app_models
+E    +  and   4 = &lt;test_minimal_requirements.TestRNF1 object at 0x7fe422eb2ac0&gt;.MIN
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:221: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="bedc0ac4-22c0-4a95-a6f6-89633e62169e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_en_ficheros_individuales</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No coinciden el número de modelos de datos de la aplicación con el número de ficheros Python en el paquete models - Al menos **4 clases**, implementadas en ficheros diferentes.
+assert (0 + 0) == 1
+ +  where 0 = len([])
+ +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.basename_app_models
+ +  and   0 = len([])
+ +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.basename_app_inherited_models
+ +  and   1 = len([&#39;models.py&#39;])
+ +    where [&#39;models.py&#39;] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.basename_model_files</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF1 object at 0x7fe422eb2e50&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+
+&gt;   ???
+E   AssertionError: No coinciden el número de modelos de datos de la aplicación con el número de ficheros Python en el paquete models - Al menos **4 clases**, implementadas en ficheros diferentes.
+E   assert (0 + 0) == 1
+E    +  where 0 = len([])
+E    +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.basename_app_models
+E    +  and   0 = len([])
+E    +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.basename_app_inherited_models
+E    +  and   1 = len([&#39;models.py&#39;])
+E    +    where [&#39;models.py&#39;] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.basename_model_files
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:224: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF2</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="fd9a21f5-cd23-486b-80e5-e8a314337196"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_relacion_many2many</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.023 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Diferentes tipos de campos simples y relacionales (_one2many_, _many2one_ y _many2many_).
+      En tu proyecto se debe implementar **al menos uno de cada tipo**.
+assert 0 &gt;= 1
+ +  where 0 = len([])
+ +  and   1 = &lt;test_minimal_requirements.TestRNF2 object at 0x7fe422ec72e0&gt;.MIN</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF2 object at 0x7fe422ec72e0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+
+&gt;   ???
+E   AssertionError: Diferentes tipos de campos simples y relacionales (_one2many_, _many2one_ y _many2many_).
+E         En tu proyecto se debe implementar **al menos uno de cada tipo**.
+E   assert 0 &gt;= 1
+E    +  where 0 = len([])
+E    +  and   1 = &lt;test_minimal_requirements.TestRNF2 object at 0x7fe422ec72e0&gt;.MIN
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:238: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="f75b6a81-601b-47a4-b541-735c2a82bf9f"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_campo_relacion[one2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF2 object at 0x7fe422ec76d0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+relationship = &#39;one2many&#39;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:242: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+type = &#39;one2many&#39;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:112: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="c48c6475-4a2e-40b2-816c-0dd0b12c2ad3"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_campo_relacion[many2one]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF2 object at 0x7fe422ec7af0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+relationship = &#39;many2one&#39;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:242: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+type = &#39;many2one&#39;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:112: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="41be7610-9742-436c-bbbb-1ddedc2da405"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_unknown_comodel_name</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF3</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="79c14bff-323e-41b5-b044-7a1422deae14"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_vista[tree]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x7fe422ed11f0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+view_type = &#39;tree&#39;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:258: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+type = &#39;tree&#39;
+
+&gt;   ???
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:122: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="1d0fba5d-4f3b-4737-8214-dff8c3729b11"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_vista[form]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x7fe422ed13d0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+view_type = &#39;form&#39;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:258: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+type = &#39;form&#39;
+
+&gt;   ???
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:122: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="16ff7cff-0834-4247-8eb1-d1d1d5df83a3"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x7fe422ed17f0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+relationship = &#39;one2many&#39;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:269: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+type = &#39;one2many&#39;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:112: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="19a719e5-fd2e-4520-af07-bc1c0dcc5cd7"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x7fe422ed19d0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+relationship = &#39;many2many&#39;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:269: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+type = &#39;many2many&#39;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:112: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF4</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="311289eb-fb14-467f-9605-6fd50a353e22"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vistas_en_ficheros_individuales</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF5</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="f1af5ea1-7e9c-4423-9ae4-84abaceb4ffb"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_posible_campo_imagen</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF5 object at 0x7fe422ed1880&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:289: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+type = &#39;binary&#39;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:112: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="b18992e9-2af1-4f19-955a-47b266250183"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_alguna_vista_tiene_campo_imagen</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF5 object at 0x7fe422e561f0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+
+&gt;   ???
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:294: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+type = &#39;binary&#39;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:112: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF6</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="0713746b-1185-4670-8449-a135e782291e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_acciones</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.basename_app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF6 object at 0x7fe422e56670&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+
+&gt;   ???
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.basename_app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:301: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="43e76ced-78ff-475b-9b8b-b1f754c6c6f7"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_hay_elementos_de_menu[.//menuitem[@action]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>assert [] != []</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF6 object at 0x7fe422e56b80&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+xpath = &#39;.//menuitem[@action]&#39;
+
+&gt;   ???
+E   assert [] != []
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:312: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF7</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="3bee3e03-1702-4ad1-93c7-6cb9c8e1eef1"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_permisos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF7 object at 0x7fe422e56fd0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+
+&gt;   ???
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:322: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF8</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="eddeddf5-a57f-42f1-b1ce-ad3f38d44dde"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_tiene_icono</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.014 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF9</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="28b0853b-d75c-4b6b-9d96-e1b4fb1a8be2"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_datos_demo</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF9 object at 0x7fe422e59970&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+
+&gt;   ???
+E   AssertionError: No hay modelos de datos
+E   assert []
+E    +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;.app_models
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:349: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFGit</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="23bd4163-be25-4dcc-a04c-1e250f1843d7"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_git_commit_frecuentes</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: El proyecto se desarrollará a partir de un _fork_ del repositorio javnitram/SGE-odoo-it-yourself, 
+      sincronizando frecuentemente (mínimo 1 _commit_ &amp; _push_ por semana)
+assert 1 &gt; 5
+ +  where 1 = len([&#39;commit 192e56e8113e043b2478b44bba65610b19abaa5d\n&#39;])</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFGit object at 0x7fe422e59e20&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+
+&gt;   ???
+E   AssertionError: El proyecto se desarrollará a partir de un _fork_ del repositorio javnitram/SGE-odoo-it-yourself, 
+E         sincronizando frecuentemente (mínimo 1 _commit_ &amp; _push_ por semana)
+E   assert 1 &gt; 5
+E    +  where 1 = len([&#39;commit 192e56e8113e043b2478b44bba65610b19abaa5d\n&#39;])
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:370: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFCalidad</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="5730dc32-350a-402f-8c4f-05c3d5b8eb0f"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_odoo_disponible</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.01 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="14103e4a-f750-4e91-90f5-43bf31a8c98a"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_instalada</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.016 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="07647d98-959d-4e0c-b5a9-a15ec445fe48"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_solo_una_app_entregada</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="c80a0d1a-bccf-4bb0-8e62-41212047b457"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_no_hay_elementos_xml_comentados</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.004 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Se ha encontrado XML comentado {&#39;demo.xml&#39;: [&#39;\n          &lt;record id=&#34;object0&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object1&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object2&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object3&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object4&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n          &lt;/record&gt;\n&#39;], &#39;templates.xml&#39;: [&#39;\n        &lt;template id=&#34;listing&#34;&gt;\n          &lt;ul&gt;\n            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n              &lt;/a&gt;\n            &lt;/li&gt;\n          &lt;/ul&gt;\n        &lt;/template&gt;\n        &lt;template id=&#34;object&#34;&gt;\n          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n          &lt;dl&gt;\n            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n            &lt;/t&gt;\n          &lt;/dl&gt;\n        &lt;/template&gt;\n&#39;], &#39;views.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;agb_torneo.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;agb_torneo list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;agb_torneo.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;agb_torneo window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;agb_torneo.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;agb_torneo server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_agb_torneo_agb_torneo&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;]} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+assert {&#39;demo.xml&#39;: [&#39;\n          &lt;record id=&#34;object0&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object1&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object2&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object3&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object4&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n          &lt;/record&gt;\n&#39;], &#39;templates.xml&#39;: [&#39;\n        &lt;template id=&#34;listing&#34;&gt;\n          &lt;ul&gt;\n            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n              &lt;/a&gt;\n            &lt;/li&gt;\n          &lt;/ul&gt;\n        &lt;/template&gt;\n        &lt;template id=&#34;object&#34;&gt;\n          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n          &lt;dl&gt;\n            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n            &lt;/t&gt;\n          &lt;/dl&gt;\n        &lt;/template&gt;\n&#39;], &#39;views.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;agb_torneo.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;agb_torneo list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;agb_torneo.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;agb_torneo window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;agb_torneo.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;agb_torneo server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_agb_torneo_agb_torneo&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;]} == {}
+  
+  Left contains 3 more items:
+  {&#39;demo.xml&#39;: [&#39;\n&#39;
+                &#39;          &lt;record id=&#34;object0&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;
+                &#39;\n&#39;
+                &#39;          &lt;record id=&#34;object1&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;
+                &#39;\n&#39;
+                &#39;          &lt;record id=&#34;object2&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;
+                &#39;\n&#39;
+                &#39;          &lt;record id=&#34;object3&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;
+                &#39;\n&#39;
+                &#39;          &lt;record id=&#34;object4&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;],
+   &#39;templates.xml&#39;: [&#39;\n&#39;
+                     &#39;        &lt;template id=&#34;listing&#34;&gt;\n&#39;
+                     &#39;          &lt;ul&gt;\n&#39;
+                     &#39;            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n&#39;
+                     &#39;              &lt;a t-attf-href=&#34;#{ root }/objects/#{ &#39;
+                     &#39;object.id }&#34;&gt;\n&#39;
+                     &#39;                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n&#39;
+                     &#39;              &lt;/a&gt;\n&#39;
+                     &#39;            &lt;/li&gt;\n&#39;
+                     &#39;          &lt;/ul&gt;\n&#39;
+                     &#39;        &lt;/template&gt;\n&#39;
+                     &#39;        &lt;template id=&#34;object&#34;&gt;\n&#39;
+                     &#39;          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n&#39;
+                     &#39;          &lt;dl&gt;\n&#39;
+                     &#39;            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n&#39;
+                     &#39;              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n&#39;
+                     &#39;              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n&#39;
+                     &#39;            &lt;/t&gt;\n&#39;
+                     &#39;          &lt;/dl&gt;\n&#39;
+                     &#39;        &lt;/template&gt;\n&#39;],
+   &#39;views.xml&#39;: [&#39;\n&#39;
+                 &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;agb_torneo.list&#34;&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;name&#34;&gt;agb_torneo list&lt;/field&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+                 &#39;        &lt;tree&gt;\n&#39;
+                 &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+                 &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+                 &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+                 &#39;        &lt;/tree&gt;\n&#39;
+                 &#39;      &lt;/field&gt;\n&#39;
+                 &#39;    &lt;/record&gt;\n&#39;,
+                 &#39;\n&#39;
+                 &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+                 &#39;id=&#34;agb_torneo.action_window&#34;&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;name&#34;&gt;agb_torneo window&lt;/field&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;res_model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+                 &#39;    &lt;/record&gt;\n&#39;,
+                 &#39;\n&#39;
+                 &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+                 &#39;id=&#34;agb_torneo.action_server&#34;&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;name&#34;&gt;agb_torneo server&lt;/field&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;model_id&#34; &#39;
+                 &#39;ref=&#34;model_agb_torneo_agb_torneo&#34;/&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+                 &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+                 &#39;        action = {\n&#39;
+                 &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+                 &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+                 &#39;          &#34;res_model&#34;: model._name,\n&#39;
+                 &#39;        }\n&#39;
+                 &#39;      &lt;/field&gt;\n&#39;
+                 &#39;    &lt;/record&gt;\n&#39;]}
+  
+  Full diff:
+  - {}
+  + {
+  +     &#39;demo.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object0&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object1&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object2&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object3&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object4&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;,
+  +     ],
+  +     &#39;templates.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;        &lt;template id=&#34;listing&#34;&gt;\n&#39;
+  +         &#39;          &lt;ul&gt;\n&#39;
+  +         &#39;            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n&#39;
+  +         &#39;              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n&#39;
+  +         &#39;                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n&#39;
+  +         &#39;              &lt;/a&gt;\n&#39;
+  +         &#39;            &lt;/li&gt;\n&#39;
+  +         &#39;          &lt;/ul&gt;\n&#39;
+  +         &#39;        &lt;/template&gt;\n&#39;
+  +         &#39;        &lt;template id=&#34;object&#34;&gt;\n&#39;
+  +         &#39;          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n&#39;
+  +         &#39;          &lt;dl&gt;\n&#39;
+  +         &#39;            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n&#39;
+  +         &#39;              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n&#39;
+  +         &#39;              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n&#39;
+  +         &#39;            &lt;/t&gt;\n&#39;
+  +         &#39;          &lt;/dl&gt;\n&#39;
+  +         &#39;        &lt;/template&gt;\n&#39;,
+  +     ],
+  +     &#39;views.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;agb_torneo.list&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;agb_torneo list&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+  +         &#39;        &lt;tree&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+  +         &#39;        &lt;/tree&gt;\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+  +         &#39;id=&#34;agb_torneo.action_window&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;agb_torneo window&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;res_model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.server&#34; id=&#34;agb_torneo.action_server&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;agb_torneo server&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model_id&#34; ref=&#34;model_agb_torneo_agb_torneo&#34;/&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+  +         &#39;        action = {\n&#39;
+  +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+  +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+  +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+  +         &#39;        }\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +     ],
+  + }</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFCalidad object at 0x7fe422e5fe80&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+
+&gt;   ???
+E   AssertionError: Se ha encontrado XML comentado {&#39;demo.xml&#39;: [&#39;\n          &lt;record id=&#34;object0&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object1&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object2&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object3&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object4&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n          &lt;/record&gt;\n&#39;], &#39;templates.xml&#39;: [&#39;\n        &lt;template id=&#34;listing&#34;&gt;\n          &lt;ul&gt;\n            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n              &lt;/a&gt;\n            &lt;/li&gt;\n          &lt;/ul&gt;\n        &lt;/template&gt;\n        &lt;template id=&#34;object&#34;&gt;\n          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n          &lt;dl&gt;\n            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n            &lt;/t&gt;\n          &lt;/dl&gt;\n        &lt;/template&gt;\n&#39;], &#39;views.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;agb_torneo.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;agb_torneo list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;agb_torneo.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;agb_torneo window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;agb_torneo.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;agb_torneo server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_agb_torneo_agb_torneo&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;]} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+E   assert {&#39;demo.xml&#39;: [&#39;\n          &lt;record id=&#34;object0&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object1&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object2&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object3&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object4&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n          &lt;/record&gt;\n&#39;], &#39;templates.xml&#39;: [&#39;\n        &lt;template id=&#34;listing&#34;&gt;\n          &lt;ul&gt;\n            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n              &lt;/a&gt;\n            &lt;/li&gt;\n          &lt;/ul&gt;\n        &lt;/template&gt;\n        &lt;template id=&#34;object&#34;&gt;\n          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n          &lt;dl&gt;\n            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n            &lt;/t&gt;\n          &lt;/dl&gt;\n        &lt;/template&gt;\n&#39;], &#39;views.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;agb_torneo.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;agb_torneo list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;agb_torneo.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;agb_torneo window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;agb_torneo.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;agb_torneo server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_agb_torneo_agb_torneo&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;]} == {}
+E     
+E     Left contains 3 more items:
+E     {&#39;demo.xml&#39;: [&#39;\n&#39;
+E                   &#39;          &lt;record id=&#34;object0&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n&#39;
+E                   &#39;          &lt;/record&gt;\n&#39;
+E                   &#39;\n&#39;
+E                   &#39;          &lt;record id=&#34;object1&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n&#39;
+E                   &#39;          &lt;/record&gt;\n&#39;
+E                   &#39;\n&#39;
+E                   &#39;          &lt;record id=&#34;object2&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n&#39;
+E                   &#39;          &lt;/record&gt;\n&#39;
+E                   &#39;\n&#39;
+E                   &#39;          &lt;record id=&#34;object3&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n&#39;
+E                   &#39;          &lt;/record&gt;\n&#39;
+E                   &#39;\n&#39;
+E                   &#39;          &lt;record id=&#34;object4&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n&#39;
+E                   &#39;            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n&#39;
+E                   &#39;          &lt;/record&gt;\n&#39;],
+E      &#39;templates.xml&#39;: [&#39;\n&#39;
+E                        &#39;        &lt;template id=&#34;listing&#34;&gt;\n&#39;
+E                        &#39;          &lt;ul&gt;\n&#39;
+E                        &#39;            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n&#39;
+E                        &#39;              &lt;a t-attf-href=&#34;#{ root }/objects/#{ &#39;
+E                        &#39;object.id }&#34;&gt;\n&#39;
+E                        &#39;                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n&#39;
+E                        &#39;              &lt;/a&gt;\n&#39;
+E                        &#39;            &lt;/li&gt;\n&#39;
+E                        &#39;          &lt;/ul&gt;\n&#39;
+E                        &#39;        &lt;/template&gt;\n&#39;
+E                        &#39;        &lt;template id=&#34;object&#34;&gt;\n&#39;
+E                        &#39;          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n&#39;
+E                        &#39;          &lt;dl&gt;\n&#39;
+E                        &#39;            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n&#39;
+E                        &#39;              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n&#39;
+E                        &#39;              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n&#39;
+E                        &#39;            &lt;/t&gt;\n&#39;
+E                        &#39;          &lt;/dl&gt;\n&#39;
+E                        &#39;        &lt;/template&gt;\n&#39;],
+E      &#39;views.xml&#39;: [&#39;\n&#39;
+E                    &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;agb_torneo.list&#34;&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;name&#34;&gt;agb_torneo list&lt;/field&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E                    &#39;        &lt;tree&gt;\n&#39;
+E                    &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E                    &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E                    &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E                    &#39;        &lt;/tree&gt;\n&#39;
+E                    &#39;      &lt;/field&gt;\n&#39;
+E                    &#39;    &lt;/record&gt;\n&#39;,
+E                    &#39;\n&#39;
+E                    &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E                    &#39;id=&#34;agb_torneo.action_window&#34;&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;name&#34;&gt;agb_torneo window&lt;/field&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;res_model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E                    &#39;    &lt;/record&gt;\n&#39;,
+E                    &#39;\n&#39;
+E                    &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+E                    &#39;id=&#34;agb_torneo.action_server&#34;&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;name&#34;&gt;agb_torneo server&lt;/field&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;model_id&#34; &#39;
+E                    &#39;ref=&#34;model_agb_torneo_agb_torneo&#34;/&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E                    &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E                    &#39;        action = {\n&#39;
+E                    &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E                    &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E                    &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E                    &#39;        }\n&#39;
+E                    &#39;      &lt;/field&gt;\n&#39;
+E                    &#39;    &lt;/record&gt;\n&#39;]}
+E     
+E     Full diff:
+E     - {}
+E     + {
+E     +     &#39;demo.xml&#39;: [
+E     +         &#39;\n&#39;
+E     +         &#39;          &lt;record id=&#34;object0&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n&#39;
+E     +         &#39;          &lt;/record&gt;\n&#39;
+E     +         &#39;\n&#39;
+E     +         &#39;          &lt;record id=&#34;object1&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n&#39;
+E     +         &#39;          &lt;/record&gt;\n&#39;
+E     +         &#39;\n&#39;
+E     +         &#39;          &lt;record id=&#34;object2&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n&#39;
+E     +         &#39;          &lt;/record&gt;\n&#39;
+E     +         &#39;\n&#39;
+E     +         &#39;          &lt;record id=&#34;object3&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n&#39;
+E     +         &#39;          &lt;/record&gt;\n&#39;
+E     +         &#39;\n&#39;
+E     +         &#39;          &lt;record id=&#34;object4&#34; model=&#34;agb_torneo.agb_torneo&#34;&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n&#39;
+E     +         &#39;            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n&#39;
+E     +         &#39;          &lt;/record&gt;\n&#39;,
+E     +     ],
+E     +     &#39;templates.xml&#39;: [
+E     +         &#39;\n&#39;
+E     +         &#39;        &lt;template id=&#34;listing&#34;&gt;\n&#39;
+E     +         &#39;          &lt;ul&gt;\n&#39;
+E     +         &#39;            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n&#39;
+E     +         &#39;              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n&#39;
+E     +         &#39;                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n&#39;
+E     +         &#39;              &lt;/a&gt;\n&#39;
+E     +         &#39;            &lt;/li&gt;\n&#39;
+E     +         &#39;          &lt;/ul&gt;\n&#39;
+E     +         &#39;        &lt;/template&gt;\n&#39;
+E     +         &#39;        &lt;template id=&#34;object&#34;&gt;\n&#39;
+E     +         &#39;          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n&#39;
+E     +         &#39;          &lt;dl&gt;\n&#39;
+E     +         &#39;            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n&#39;
+E     +         &#39;              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n&#39;
+E     +         &#39;              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n&#39;
+E     +         &#39;            &lt;/t&gt;\n&#39;
+E     +         &#39;          &lt;/dl&gt;\n&#39;
+E     +         &#39;        &lt;/template&gt;\n&#39;,
+E     +     ],
+E     +     &#39;views.xml&#39;: [
+E     +         &#39;\n&#39;
+E     +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;agb_torneo.list&#34;&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;name&#34;&gt;agb_torneo list&lt;/field&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E     +         &#39;        &lt;tree&gt;\n&#39;
+E     +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E     +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E     +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E     +         &#39;        &lt;/tree&gt;\n&#39;
+E     +         &#39;      &lt;/field&gt;\n&#39;
+E     +         &#39;    &lt;/record&gt;\n&#39;,
+E     +         &#39;\n&#39;
+E     +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E     +         &#39;id=&#34;agb_torneo.action_window&#34;&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;name&#34;&gt;agb_torneo window&lt;/field&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;res_model&#34;&gt;agb_torneo.agb_torneo&lt;/field&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E     +         &#39;    &lt;/record&gt;\n&#39;,
+E     +         &#39;\n&#39;
+E     +         &#39;    &lt;record model=&#34;ir.actions.server&#34; id=&#34;agb_torneo.action_server&#34;&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;name&#34;&gt;agb_torneo server&lt;/field&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;model_id&#34; ref=&#34;model_agb_torneo_agb_torneo&#34;/&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E     +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E     +         &#39;        action = {\n&#39;
+E     +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E     +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E     +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E     +         &#39;        }\n&#39;
+E     +         &#39;      &lt;/field&gt;\n&#39;
+E     +         &#39;    &lt;/record&gt;\n&#39;,
+E     +     ],
+E     + }
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:417: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="d96b23f8-1717-449a-a25d-ac62b82bc47b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_no_hay_codigo_python_comentado</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.196 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Se ha encontrado código Python comentado {&#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n-#     _name = \&#39;agb_torneo.agb_torneo\&#39;\n-#     _description = \&#39;agb_torneo.agb_torneo\&#39;\n-#     name = fields.Char()\n-#     value = fields.Integer()\n-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n-#     description = fields.Text()\n-#             record.value2 = float(record.value) / 100\n&#39;, &#39;controllers.py&#39;: &#39;-# from odoo import http\n-#         return &#34;Hello, world&#34;\n-#             \&#39;root\&#39;: \&#39;/agb_torneo/agb_torneo\&#39;,\n-#             \&#39;objects\&#39;: http.request.env[\&#39;agb_torneo.agb_torneo\&#39;].search([]),\n-#         })\n-#         })\n&#39;} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+assert {&#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n-#     _name = \&#39;agb_torneo.agb_torneo\&#39;\n-#     _description = \&#39;agb_torneo.agb_torneo\&#39;\n-#     name = fields.Char()\n-#     value = fields.Integer()\n-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n-#     description = fields.Text()\n-#             record.value2 = float(record.value) / 100\n&#39;, &#39;controllers.py&#39;: &#39;-# from odoo import http\n-#         return &#34;Hello, world&#34;\n-#             \&#39;root\&#39;: \&#39;/agb_torneo/agb_torneo\&#39;,\n-#             \&#39;objects\&#39;: http.request.env[\&#39;agb_torneo.agb_torneo\&#39;].search([]),\n-#         })\n-#         })\n&#39;} == {}
+  
+  Left contains 2 more items:
+  {&#39;controllers.py&#39;: &#39;-# from odoo import http\n&#39;
+                     &#39;-#         return &#34;Hello, world&#34;\n&#39;
+                     &#34;-#             &#39;root&#39;: &#39;/agb_torneo/agb_torneo&#39;,\n&#34;
+                     &#34;-#             &#39;objects&#39;: &#34;
+                     &#34;http.request.env[&#39;agb_torneo.agb_torneo&#39;].search([]),\n&#34;
+                     &#39;-#         })\n&#39;
+                     &#39;-#         })\n&#39;,
+   &#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n&#39;
+                &#34;-#     _name = &#39;agb_torneo.agb_torneo&#39;\n&#34;
+                &#34;-#     _description = &#39;agb_torneo.agb_torneo&#39;\n&#34;
+                &#39;-#     name = fields.Char()\n&#39;
+                &#39;-#     value = fields.Integer()\n&#39;
+                &#39;-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n&#39;
+                &#39;-#     description = fields.Text()\n&#39;
+                &#39;-#             record.value2 = float(record.value) / 100\n&#39;}
+  
+  Full diff:
+  - {}
+  + {
+  +     &#39;controllers.py&#39;: &#39;-# from odoo import http\n&#39;
+  +     &#39;-#         return &#34;Hello, world&#34;\n&#39;
+  +     &#34;-#             &#39;root&#39;: &#39;/agb_torneo/agb_torneo&#39;,\n&#34;
+  +     &#34;-#             &#39;objects&#39;: &#34;
+  +     &#34;http.request.env[&#39;agb_torneo.agb_torneo&#39;].search([]),\n&#34;
+  +     &#39;-#         })\n&#39;
+  +     &#39;-#         })\n&#39;,
+  +     &#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n&#39;
+  +     &#34;-#     _name = &#39;agb_torneo.agb_torneo&#39;\n&#34;
+  +     &#34;-#     _description = &#39;agb_torneo.agb_torneo&#39;\n&#34;
+  +     &#39;-#     name = fields.Char()\n&#39;
+  +     &#39;-#     value = fields.Integer()\n&#39;
+  +     &#39;-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n&#39;
+  +     &#39;-#     description = fields.Text()\n&#39;
+  +     &#39;-#             record.value2 = float(record.value) / 100\n&#39;,
+  + }</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFCalidad object at 0x7fe422e642e0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7fe422eb2730&gt;
+
+&gt;   ???
+E   AssertionError: Se ha encontrado código Python comentado {&#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n-#     _name = \&#39;agb_torneo.agb_torneo\&#39;\n-#     _description = \&#39;agb_torneo.agb_torneo\&#39;\n-#     name = fields.Char()\n-#     value = fields.Integer()\n-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n-#     description = fields.Text()\n-#             record.value2 = float(record.value) / 100\n&#39;, &#39;controllers.py&#39;: &#39;-# from odoo import http\n-#         return &#34;Hello, world&#34;\n-#             \&#39;root\&#39;: \&#39;/agb_torneo/agb_torneo\&#39;,\n-#             \&#39;objects\&#39;: http.request.env[\&#39;agb_torneo.agb_torneo\&#39;].search([]),\n-#         })\n-#         })\n&#39;} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+E   assert {&#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n-#     _name = \&#39;agb_torneo.agb_torneo\&#39;\n-#     _description = \&#39;agb_torneo.agb_torneo\&#39;\n-#     name = fields.Char()\n-#     value = fields.Integer()\n-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n-#     description = fields.Text()\n-#             record.value2 = float(record.value) / 100\n&#39;, &#39;controllers.py&#39;: &#39;-# from odoo import http\n-#         return &#34;Hello, world&#34;\n-#             \&#39;root\&#39;: \&#39;/agb_torneo/agb_torneo\&#39;,\n-#             \&#39;objects\&#39;: http.request.env[\&#39;agb_torneo.agb_torneo\&#39;].search([]),\n-#         })\n-#         })\n&#39;} == {}
+E     
+E     Left contains 2 more items:
+E     {&#39;controllers.py&#39;: &#39;-# from odoo import http\n&#39;
+E                        &#39;-#         return &#34;Hello, world&#34;\n&#39;
+E                        &#34;-#             &#39;root&#39;: &#39;/agb_torneo/agb_torneo&#39;,\n&#34;
+E                        &#34;-#             &#39;objects&#39;: &#34;
+E                        &#34;http.request.env[&#39;agb_torneo.agb_torneo&#39;].search([]),\n&#34;
+E                        &#39;-#         })\n&#39;
+E                        &#39;-#         })\n&#39;,
+E      &#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n&#39;
+E                   &#34;-#     _name = &#39;agb_torneo.agb_torneo&#39;\n&#34;
+E                   &#34;-#     _description = &#39;agb_torneo.agb_torneo&#39;\n&#34;
+E                   &#39;-#     name = fields.Char()\n&#39;
+E                   &#39;-#     value = fields.Integer()\n&#39;
+E                   &#39;-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n&#39;
+E                   &#39;-#     description = fields.Text()\n&#39;
+E                   &#39;-#             record.value2 = float(record.value) / 100\n&#39;}
+E     
+E     Full diff:
+E     - {}
+E     + {
+E     +     &#39;controllers.py&#39;: &#39;-# from odoo import http\n&#39;
+E     +     &#39;-#         return &#34;Hello, world&#34;\n&#39;
+E     +     &#34;-#             &#39;root&#39;: &#39;/agb_torneo/agb_torneo&#39;,\n&#34;
+E     +     &#34;-#             &#39;objects&#39;: &#34;
+E     +     &#34;http.request.env[&#39;agb_torneo.agb_torneo&#39;].search([]),\n&#34;
+E     +     &#39;-#         })\n&#39;
+E     +     &#39;-#         })\n&#39;,
+E     +     &#39;models.py&#39;: &#39;-# from odoo import models, fields, api\n&#39;
+E     +     &#34;-#     _name = &#39;agb_torneo.agb_torneo&#39;\n&#34;
+E     +     &#34;-#     _description = &#39;agb_torneo.agb_torneo&#39;\n&#34;
+E     +     &#39;-#     name = fields.Char()\n&#39;
+E     +     &#39;-#     value = fields.Integer()\n&#39;
+E     +     &#39;-#     value2 = fields.Float(compute=&#34;_value_pc&#34;, store=True)\n&#39;
+E     +     &#39;-#     description = fields.Text()\n&#39;
+E     +     &#39;-#             record.value2 = float(record.value) / 100\n&#39;,
+E     + }
+
+/home/madrid/Escritorio/SGE/SGE-odoo-project-tester-2DAMB/test_minimal_requirements.py:428: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="c6f89566-9c72-45a5-9462-3fed7b0973a0"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_log_servidor_sin_errores</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionales</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="1560cbc1-882d-4e1b-ad6e-510c90dd4fa8"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban[/kanban]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="25f5dad9-8447-40d9-a8c2-3dee3a937d23"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban[/kanban[@default_group_by]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="84359545-c398-44a3-b3f5-4bacc90f06ac"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search[/search]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="e24743f6-09ce-4cf6-9729-14d98af45548"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search[/search//filter[@domain]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="cdc4607c-76d0-4211-bf47-a09ec43ab033"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search[/search//group//filter[@context]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="f9d0c1a8-26a2-4a16-bbfe-4f4e509c312b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[activity]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="afa37cbc-13f3-44ab-88e0-09ce67c6d0d2"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[calendar]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="2a6b83ad-2c0e-4684-9c5f-baf9fc484a45"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[graph]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="6a6be008-c81c-4982-a03f-315ce3a80abc"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[pivot]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="20e47687-fe7d-4ddc-b742-45b6a28b109c"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_seguridad_con_grupos_propios</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="d7d62211-74f3-4a44-b926-cc6a5b4d6e1f"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_vistas_con_position</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="88eb94b0-94a7-48ee-884a-44f4fa211dfc"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_vistas_con_inherit_id</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="84af6e34-f1cf-43bf-9951-96bdfbd8396f"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_modelos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="7b5d06e7-42e4-495e-8384-bb7e0e634d31"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[binary]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="d9f010e3-917d-49f7-90fb-f1a8578b497b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[many2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="1f6e512f-ed77-4fdc-927c-f1bd6567726f"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[many2one]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="848e4f72-b127-4594-b75b-1488cf881cf9"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_i18n</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="d70e8f76-ba28-4773-911a-63b5ac7fbc50"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes[report]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="0add2c41-86e7-4976-a350-e2a9e5aeefc2"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes[template]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestOtros</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="d434d2ad-f04e-4435-b7f6-2f1ad14f92d4"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_log_sin_warnings</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>3.821 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+
+
+<p class="footer">
+    Generated by junit2html
+</p>
+</body>
+</html>

@@ -8,7 +8,7 @@ PRIVATE_IP=$(ifconfig $(route -n |awk '/0[.]0[.]0[.]0/{print $NF;exit}') | awk '
 cd "${TESTER_PATH}"
 source run.sh
 source .venv/bin/activate
-main "$FUNCION" all # "updated"
+main "$FUNCION" "updated"
 
 cp -r "${TESTER_PATH}/projects/${RESULTS_DIR}/${REPORTS_DIR}/*" "${PUBLIC_PATH}/docs/" 
 cp -r "${TESTER_PATH}/projects/${RESULTS_DIR}/*-git.log" "${PUBLIC_PATH}/docs/"

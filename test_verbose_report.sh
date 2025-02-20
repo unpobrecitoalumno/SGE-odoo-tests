@@ -32,6 +32,7 @@ generate_index() {
   echo "</head>" >> $output
   echo "<body>" >> $output
   echo "<h1>Índice de Archivos en el Directorio: $dir</h1>" >> $output
+  echo "<h3>Última ejecución: $FECHA</h3>" >> $output
   echo "<ul>" >> $output
 
   # Listar todos los archivos y carpetas en el directorio

@@ -10,7 +10,7 @@ git reset --hard HEAD >& /dev/null
 git pull >& /dev/null
 source run.sh
 source .venv/bin/activate
-main "$FUNCION" "updated"
+main "$FUNCION" "all"
 
 cp ${TESTER_PATH}/projects/${RESULTS_DIR}/${REPORTS_DIR}/* "${PUBLIC_PATH}/docs/" 
 cp ${TESTER_PATH}/projects/${RESULTS_DIR}/*-git.log "${PUBLIC_PATH}/docs/"

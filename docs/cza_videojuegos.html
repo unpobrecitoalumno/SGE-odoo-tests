@@ -1,0 +1,2923 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cza_videojuegos-pytest.xml</title>
+    <style type="text/css">
+        body {
+    background-color: white;
+    padding-bottom: 20em;
+    margin: 0;
+    min-height: 15cm;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+    font-family: sans-serif;
+}
+
+h1 {
+    background-color: #007acc;
+    color: white;
+    padding: 3mm;
+    margin-top: 0;
+    margin-bottom: 1mm;
+}
+
+.footer {
+    font-style: italic;
+    font-size: small;
+    text-align: right;
+    padding: 1em;
+}
+
+.testsuite {
+    padding-bottom: 2em;
+    margin-left: 1em;
+}
+
+.proplist {
+    width: 100%;
+    margin-bottom: 2em;
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+.proplist th {
+    background-color: silver;
+    width: 5em;
+    padding: 2px;
+    padding-right: 1em;
+    text-align: left;
+}
+
+.proplist td {
+    padding: 2px;
+}
+
+.index-table {
+    width: 90%;
+    margin-left: 1em;
+}
+
+.index-table td {
+    vertical-align: top;
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.failure-index {
+
+}
+
+.toc {
+    margin-bottom: 2em;
+    font-family: monospace;
+}
+
+.stdio, pre {
+    min-height: 1em;
+    background-color: #1e1e1e;
+    color: silver;
+    padding: 0.5em;
+}
+.tdpre {
+    background-color: #1e1e1e;
+}
+
+.test {
+    margin-left: 0.5cm;
+}
+
+.outcome {
+    border-left: 1em;
+    padding: 2px;
+}
+
+.outcome-failed {
+    border-left: 1em solid lightcoral;
+}
+
+.outcome-passed {
+    border-left: 1em solid lightgreen;
+}
+
+.outcome-skipped {
+    border-left: 1em dotted silver;
+}
+
+.stats-table {
+}
+
+.stats-table td {
+    min-width: 4em;
+    text-align: right;
+}
+
+.stats-table .failed {
+    background-color: lightcoral;
+}
+
+.stats-table .passed {
+    background-color: lightgreen;
+}
+
+.matrix-table {
+    table-layout: fixed;
+    border-spacing: 0;
+    width: available;
+    margin-left: 1em;
+}
+
+.matrix-table td {
+    vertical-align: center;
+}
+
+.matrix-table td:last-child {
+    width: 0;
+}
+
+.matrix-table tr:hover {
+    background-color: yellow;
+}
+
+.matrix-axis-name {
+    white-space: nowrap;
+    padding-right: 0.5em;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    text-align: right;
+}
+
+.matrix-axis-line {
+    border-left: 1px solid black;
+    width: 0.5em;
+}
+
+.matrix-classname {
+    text-align: left;
+    width: 100%;
+    border-top: 2px solid grey;
+    border-bottom: 1px solid silver;
+}
+
+.matrix-casename {
+    text-align: left;
+    font-weight: normal;
+    font-style: italic;
+    padding-left: 1em;
+    border-bottom: 1px solid silver;
+}
+
+.matrix-result {
+    display: block;
+    width: 1em;
+    text-align: center;
+    padding: 1mm;
+    margin: 0;
+}
+
+.matrix-result-combined {
+    white-space: nowrap;
+    padding-right: 0.2em;
+    text-align: right;
+}
+
+.matrix-result-failed {
+    background-color: lightcoral;
+}
+
+.matrix-result-passed {
+    background-color: lightgreen;
+}
+
+.matrix-result-skipped {
+    background-color: lightyellow;
+}
+
+.matrix-even {
+    background-color: lightgray;
+}
+    </style>
+</head>
+<body>
+    
+<h1>
+    Test Report : cza_videojuegos-pytest.xml
+</h1>
+<a id="toc"></a>
+<table class="index-table">
+    <tr>
+        <td>
+            <ul class="toc">
+            
+                
+                <li>test_minimal_requirements.TestRNF1
+                <ul>
+                    
+                    <li><a href="#24ec5c3b-e525-4e09-b320-42f72189be90">test_app_tiene_al_menos_4_modelos</a></li>
+                    
+                    <li><a href="#798fddd4-fc44-4766-8e44-85976296df8e">test_modelos_en_ficheros_individuales</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF2
+                <ul>
+                    
+                    <li><a href="#801f61e0-0683-4259-8d17-8c49feb9d6f3">test_relacion_many2many</a></li>
+                    
+                    <li><a href="#31ef74ee-81b5-45a1-9307-b6e17e89da4d">test_modelos_tienen_algun_campo_relacion[one2many]</a></li>
+                    
+                    <li><a href="#3c3cf6c9-3c3a-416e-a457-e6ac33d5f95d">test_modelos_tienen_algun_campo_relacion[many2one]</a></li>
+                    
+                    <li><a href="#2fe54d9f-4e27-4f20-91d0-21ef51398ae8">test_unknown_comodel_name</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF3
+                <ul>
+                    
+                    <li><a href="#de5665e0-6b94-4f59-97ed-1f95c4cfd75f">test_modelos_tienen_vista[tree]</a></li>
+                    
+                    <li><a href="#41fd0481-f441-485a-a2c3-9ee69ba5869b">test_modelos_tienen_vista[form]</a></li>
+                    
+                    <li><a href="#35185851-a2d3-4e8d-bc80-c596c5004a72">test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</a></li>
+                    
+                    <li><a href="#1ba396fe-ed32-4b4a-afb8-41c650a27361">test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF4
+                <ul>
+                    
+                    <li><a href="#80204d95-3084-4928-b595-7add91c842ab">test_vistas_en_ficheros_individuales</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF5
+                <ul>
+                    
+                    <li><a href="#7fdfae66-1e04-4db5-84d4-376b6f7ea50a">test_modelos_tienen_algun_posible_campo_imagen</a></li>
+                    
+                    <li><a href="#8ac31f37-336d-48d2-ac34-772d35ab09a6">test_alguna_vista_tiene_campo_imagen</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF6
+                <ul>
+                    
+                    <li><a href="#c7b87358-0466-4674-8048-3458f79b4aa9">test_modelos_tienen_acciones</a></li>
+                    
+                    <li><a href="#209aa6de-d725-428e-998b-c335839f34fd">test_hay_elementos_de_menu[.//menuitem[@action]]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF7
+                <ul>
+                    
+                    <li><a href="#d6ca5937-0056-4a50-a33b-52f8fbbff976">test_modelos_tienen_permisos</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF8
+                <ul>
+                    
+                    <li><a href="#cccb5c85-c62b-4f73-b926-56cffc74eb09">test_app_tiene_icono</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF9
+                <ul>
+                    
+                    <li><a href="#548f36d6-bcca-4b6f-a694-8fe2aa50c663">test_modelos_tienen_datos_demo</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFGit
+                <ul>
+                    
+                    <li><a href="#90c571ab-1fdf-4424-b91f-81ad89da5fed">test_git_commit_frecuentes</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFCalidad
+                <ul>
+                    
+                    <li><a href="#ead17cb2-a0e3-40f2-85f1-99559c3a85b4">test_odoo_disponible</a></li>
+                    
+                    <li><a href="#5ae01eee-ff5f-4b87-93c8-9ace7aafc772">test_app_instalada</a></li>
+                    
+                    <li><a href="#dd5f145c-9a73-428a-9770-86175b6fa407">test_solo_una_app_entregada</a></li>
+                    
+                    <li><a href="#e2a5e9f6-4807-4d15-96c2-4daf5da7dc31">test_no_hay_elementos_xml_comentados</a></li>
+                    
+                    <li><a href="#476be668-9f48-4e9f-97fb-5226f4ef39f0">test_no_hay_codigo_python_comentado</a></li>
+                    
+                    <li><a href="#b15cc650-3f97-4f08-a017-dd7d95f7a323">test_log_servidor_sin_errores</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestOtros
+                <ul>
+                    
+                    <li><a href="#93de1192-68ef-4611-b850-d38eedfb1e10">test_log_sin_warnings</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesKanban
+                <ul>
+                    
+                    <li><a href="#06c104d0-515c-4e44-9885-19159e1b72b7">test_vista_kanban[/kanban]</a>[s]</li>
+                    
+                    <li><a href="#d5ba657d-169d-47e8-bc69-251bc6cbf58c">test_vista_kanban[/kanban[@default_group_by]]</a>[s]</li>
+                    
+                    <li><a href="#f943fb59-9aeb-4b80-88a9-b31402e8bfe7">test_vista_kanban_imagen[/img]</a>[s]</li>
+                    
+                    <li><a href="#44f7581d-a7bf-4a5a-b935-c35c51da905a">test_vista_kanban_imagen[/field[@preview_image]]</a>[s]</li>
+                    
+                    <li><a href="#b1980712-3d8f-4c2b-b1eb-92013ce378c6">test_vista_kanban_imagen[/field[@widget=&#34;image&#34;]]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesBusqueda
+                <ul>
+                    
+                    <li><a href="#79da4f1c-cad7-4495-9ce8-b9a7f3aef9f4">test_vista_search</a>[s]</li>
+                    
+                    <li><a href="#7df961a8-faa0-4bbc-9b8b-dc48bf4a281d">test_vista_search_compleja[.//filter[@domain]]</a></li>
+                    
+                    <li><a href="#c4e20d0d-6cce-45c9-97e5-0cd608e2ee9f">test_vista_search_compleja[.//group//filter[@context]]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesOtrasVistas
+                <ul>
+                    
+                    <li><a href="#ed0b02a9-7224-4575-8bf1-1642a846ab88">test_otras_vistas_adicionales[activity]</a>[s]</li>
+                    
+                    <li><a href="#09ee68db-0166-457f-a1ec-a298a76ddf90">test_otras_vistas_adicionales[calendar]</a>[s]</li>
+                    
+                    <li><a href="#77098650-6ab9-4ef0-b0f6-0734652ad526">test_otras_vistas_adicionales[graph]</a>[s]</li>
+                    
+                    <li><a href="#4a606f4e-1fee-4b4c-9e46-bcb8bf410551">test_otras_vistas_adicionales[pivot]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesConstraints
+                <ul>
+                    
+                    <li><a href="#ab5e4a13-defb-4931-ab4e-edbca1c628dd">test_constraints_sql</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesSeguridadAvanzada
+                <ul>
+                    
+                    <li><a href="#cb285232-33ce-4c1e-b7db-cc7683746b4c">test_seguridad_con_grupos_propios</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesDatosAvanzados
+                <ul>
+                    
+                    <li><a href="#2a18ba82-5172-45aa-9a74-7992062fc904">test_datos_maestros_o_demo_avanzados[binary]</a></li>
+                    
+                    <li><a href="#e9116c77-7aac-4b05-9585-3397753b5ef6">test_datos_maestros_o_demo_avanzados[many2many]</a>[s]</li>
+                    
+                    <li><a href="#52c062d8-3fa2-47f3-af62-78af5579bd74">test_datos_maestros_o_demo_avanzados[many2one]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesHerenciaVistas
+                <ul>
+                    
+                    <li><a href="#955dd835-212b-4105-b5ee-79a909b912e7">test_herencia_en_vistas_con_position</a>[s]</li>
+                    
+                    <li><a href="#dc97e531-c2e0-4655-a090-baccd27a4291">test_herencia_en_vistas_con_inherit_id</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesHerenciaModelos
+                <ul>
+                    
+                    <li><a href="#a1e355e5-df2a-47df-b767-8a64bbf1ecd0">test_modelos_existentes_modificados_por_herencia</a>[s]</li>
+                    
+                    <li><a href="#00b89761-60ac-4000-9631-e22f62b95b38">test_nuevos_modelos_con_herencia</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesTraducciones
+                <ul>
+                    
+                    <li><a href="#d93cce33-b5f1-4896-8176-7e7d1f7369a8">test_i18n</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesInformes
+                <ul>
+                    
+                    <li><a href="#2f1eda31-dd0f-4de3-8d32-fc6372ad499e">test_informes[report]</a>[s]</li>
+                    
+                    <li><a href="#48f26588-1571-4280-95b0-4d17a516da88">test_informes[template]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesChatter
+                <ul>
+                    
+                    <li><a href="#6cbc18bd-9f3e-46fe-9ff3-f4c0e63f4087">test_chatter[mail_thread]</a>[s]</li>
+                    
+                    <li><a href="#e541277b-2539-48b9-8441-ac541ae78c90">test_chatter[mail_activity_mixin]</a>[s]</li>
+                    
+                    <li><a href="#0d9fcf88-17db-470f-8e76-2de6fd61b7f0">test_chatter_tracking</a>[s]</li>
+                    
+                    <li><a href="#c4c6228b-b245-434c-9a94-f12dc57930eb">test_vista_chatter_div</a>[s]</li>
+                    
+                    <li><a href="#08399de5-83bd-4bea-b4af-e35cf841d4e1">test_vista_chatter_fields[.//field[@name=&#34;message_follower_ids&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#2a12b2f8-bd7d-4df9-9d18-09a46ae49756">test_vista_chatter_fields[.//field[@name=&#34;activity_ids&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#66519c1c-f409-4998-b704-6809f672666b">test_vista_chatter_fields[.//field[@name=&#34;message_ids&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#8e7e3477-33b4-448d-a395-f89368096d08">test_vista_chatter_fields[.//field[@widget=&#34;mail_followers&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#2f55c65e-93a4-4078-8efd-6ef17b63ef01">test_vista_chatter_fields[.//field[@widget=&#34;mail_thread&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#3c049cbd-2007-447a-898b-4623a7f12ddf">test_vista_chatter_fields[.//field[@widget=&#34;mail_activity&#34;]]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+            
+            </ul>
+        </td>
+        <td class="failure-index">
+            <ul class="toc">
+            
+                
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="#1ba396fe-ed32-4b4a-afb8-41c650a27361">[F] test_minimal_requirements.TestRNF3 : test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <li><a href="#8ac31f37-336d-48d2-ac34-772d35ab09a6">[F] test_minimal_requirements.TestRNF5 : test_alguna_vista_tiene_campo_imagen</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="#e2a5e9f6-4807-4d15-96c2-4daf5da7dc31">[F] test_minimal_requirements.TestRNFCalidad : test_no_hay_elementos_xml_comentados</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+            
+            </ul>
+        </td>
+    </tr>
+</table>
+
+
+    <div class="testsuite">
+        <h2>Test Suite: pytest</h2>
+        <a id="e7c4df3f-6ffa-4f48-b55e-1a4f6e6e1b9c"></a>
+        
+        
+        <h3>Results</h3>
+        <table class="proplist">
+            <tr>
+                <th>Duration</th><td>36.868 sec</td>
+            </tr>
+            <tr>
+                <th>Tests</th><td>60</td>
+            </tr>
+            <tr>
+                <th>Failures</th><td>3</td>
+            </tr>
+        </table>
+
+        <div class="testclasses">
+            <h3>Tests</h3>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF1</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="24ec5c3b-e525-4e09-b320-42f72189be90"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_tiene_al_menos_4_modelos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>30.849 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="798fddd4-fc44-4766-8e44-85976296df8e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_en_ficheros_individuales</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF2</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="801f61e0-0683-4259-8d17-8c49feb9d6f3"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_relacion_many2many</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.025 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="31ef74ee-81b5-45a1-9307-b6e17e89da4d"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_campo_relacion[one2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.06 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="3c3cf6c9-3c3a-416e-a457-e6ac33d5f95d"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_campo_relacion[many2one]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.07 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="2fe54d9f-4e27-4f20-91d0-21ef51398ae8"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_unknown_comodel_name</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF3</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="de5665e0-6b94-4f59-97ed-1f95c4cfd75f"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_vista[tree]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.041 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="41fd0481-f441-485a-a2c3-9ee69ba5869b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_vista[form]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.043 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="35185851-a2d3-4e8d-bc80-c596c5004a72"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.066 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="1ba396fe-ed32-4b4a-afb8-41c650a27361"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.068 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No se ha encontrado tree/kanban anidado para campo &#39;videojuego_ids&#39; del modelo &#39;cza_videojuegos.usuario&#39; - Vistas **Form** y **Tree** específicas para cada clase. 
+      Todos los &lt;u&gt;formularios deberán incluir un elemento anidado Tree (u opcionalmente Kanban)&lt;/u&gt;
+      si el modelo del formulario puede tener relación con múltiples objetos de otro modelo.
+assert False
+ +  where False = any(&lt;generator object TestRNF3.test_formularios_tienen_vista_anidada_para_campos_X2many.&lt;locals&gt;.&lt;genexpr&gt; at 0x7ff2ca6c8900&gt;)</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x7ff2ca7867c0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7ff2ca6ebb50&gt;
+relationship = &#39;many2many&#39;
+
+    @pytest.mark.parametrize(&#34;relationship&#34;, [&#39;one2many&#39;, &#39;many2many&#39;])
+    def test_formularios_tienen_vista_anidada_para_campos_X2many(self, sut, relationship):
+        # @see https://www.cybrosys.com/blog/many2many-fields-and-its-widgets-odoo
+        alternative_widgets = (&#39;many2many_default&#39;,
+                                &#39;many2many_tags&#39;,
+                                &#39;many2many_checkboxes&#39;,
+                                &#39;many2many_kanban&#39;,
+                                &#39;many2many_binary&#39;,
+                                &#39;x2many_counter&#39;)
+        fields = sut.modelos_tienen_campos(relationship)
+        for f in fields:
+            if not sut.hay_form_con_vista_anidada_para_campo(f):
+&gt;               assert any(sut.hay_vista_con_campo_atributo_y_valor(&#39;form&#39;, f, &#39;widget&#39;, w) for w in alternative_widgets), f&#34;No se ha encontrado tree/kanban anidado para campo &#39;{f.get(&#39;name&#39;)}&#39; del modelo &#39;{f.get(&#39;model&#39;)}&#39; - {self.__doc__}&#34;
+E               AssertionError: No se ha encontrado tree/kanban anidado para campo &#39;videojuego_ids&#39; del modelo &#39;cza_videojuegos.usuario&#39; - Vistas **Form** y **Tree** específicas para cada clase. 
+E                     Todos los &lt;u&gt;formularios deberán incluir un elemento anidado Tree (u opcionalmente Kanban)&lt;/u&gt;
+E                     si el modelo del formulario puede tener relación con múltiples objetos de otro modelo.
+E               assert False
+E                +  where False = any(&lt;generator object TestRNF3.test_formularios_tienen_vista_anidada_para_campos_X2many.&lt;locals&gt;.&lt;genexpr&gt; at 0x7ff2ca6c8900&gt;)
+
+test_minimal_requirements.py:294: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF4</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="80204d95-3084-4928-b595-7add91c842ab"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vistas_en_ficheros_individuales</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF5</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="7fdfae66-1e04-4db5-84d4-376b6f7ea50a"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_posible_campo_imagen</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.059 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="8ac31f37-336d-48d2-ac34-772d35ab09a6"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_alguna_vista_tiene_campo_imagen</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.064 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Alguna vista Form deberá tener una **imagen representativa**, 
+      es decir, un campo que permita al usuario asociar una imagen a cada objeto del modelo.
+assert False
+ +  where False = any(&lt;generator object TestRNF5.test_alguna_vista_tiene_campo_imagen.&lt;locals&gt;.&lt;genexpr&gt; at 0x7ff2ca67b430&gt;)</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF5 object at 0x7ff2ca710430&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7ff2ca6ebb50&gt;
+
+    def test_alguna_vista_tiene_campo_imagen(self, sut):
+&gt;       assert any(sut.hay_vista_con_campo_atributo_y_valor(&#39;form&#39;, f, &#39;widget&#39;, &#39;image&#39;) for f in sut.modelos_tienen_campos(&#39;binary&#39;)), self.__doc__
+E       AssertionError: Alguna vista Form deberá tener una **imagen representativa**, 
+E             es decir, un campo que permita al usuario asociar una imagen a cada objeto del modelo.
+E       assert False
+E        +  where False = any(&lt;generator object TestRNF5.test_alguna_vista_tiene_campo_imagen.&lt;locals&gt;.&lt;genexpr&gt; at 0x7ff2ca67b430&gt;)
+
+test_minimal_requirements.py:316: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF6</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="c7b87358-0466-4674-8048-3458f79b4aa9"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_acciones</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.033 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="209aa6de-d725-428e-998b-c335839f34fd"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_hay_elementos_de_menu[.//menuitem[@action]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF7</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="d6ca5937-0056-4a50-a33b-52f8fbbff976"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_permisos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.042 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF8</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="cccb5c85-c62b-4f73-b926-56cffc74eb09"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_tiene_icono</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.015 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF9</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="548f36d6-bcca-4b6f-a694-8fe2aa50c663"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_datos_demo</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.035 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFGit</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="90c571ab-1fdf-4424-b91f-81ad89da5fed"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_git_commit_frecuentes</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFCalidad</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="ead17cb2-a0e3-40f2-85f1-99559c3a85b4"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_odoo_disponible</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.011 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="5ae01eee-ff5f-4b87-93c8-9ace7aafc772"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_instalada</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.016 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="dd5f145c-9a73-428a-9770-86175b6fa407"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_solo_una_app_entregada</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="e2a5e9f6-4807-4d15-96c2-4daf5da7dc31"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_no_hay_elementos_xml_comentados</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.008 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Se ha encontrado XML comentado {&#39;demo.xml&#39;: [&#39;\n        &lt;record id=&#34;cza_videojuegos.demo1&#34; model=&#34;cza_videojuegos.cza_videojuegos&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Zelda&lt;/field&gt;\n            &lt;field name=&#34;precio&#34;&gt;50&lt;/field&gt;\n            &lt;field name=&#34;acceso_anticipado&#34;&gt;true&lt;/field&gt;\n            &lt;field name=&#34;edicion&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n    &#39;], &#39;empresa.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;usuario.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;categoria.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;videojuego.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;desarrollador.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;]} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+assert {&#39;demo.xml&#39;: [&#39;\n        &lt;record id=&#34;cza_videojuegos.demo1&#34; model=&#34;cza_videojuegos.cza_videojuegos&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Zelda&lt;/field&gt;\n            &lt;field name=&#34;precio&#34;&gt;50&lt;/field&gt;\n            &lt;field name=&#34;acceso_anticipado&#34;&gt;true&lt;/field&gt;\n            &lt;field name=&#34;edicion&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n    &#39;], &#39;empresa.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;usuario.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;categoria.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;videojuego.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;desarrollador.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;]} == {}
+  
+  Left contains 6 more items:
+  {&#39;categoria.xml&#39;: [&#39;\n&#39;
+                     &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+                     &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+                     &#39;      &lt;field &#39;
+                     &#39;name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+                     &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+                     &#39;        &lt;tree&gt;\n&#39;
+                     &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+                     &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+                     &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+                     &#39;        &lt;/tree&gt;\n&#39;
+                     &#39;      &lt;/field&gt;\n&#39;
+                     &#39;    &lt;/record&gt;\n&#39;,
+                     &#39;\n&#39;
+                     &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+                     &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+                     &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+                     &#39;      &lt;field &#39;
+                     &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+                     &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+                     &#39;    &lt;/record&gt;\n&#39;,
+                     &#39;\n&#39;
+                     &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+                     &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+                     &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+                     &#39;      &lt;field name=&#34;model_id&#34; &#39;
+                     &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+                     &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+                     &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+                     &#39;        action = {\n&#39;
+                     &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+                     &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+                     &#39;          &#34;res_model&#34;: model._name,\n&#39;
+                     &#39;        }\n&#39;
+                     &#39;      &lt;/field&gt;\n&#39;
+                     &#39;    &lt;/record&gt;\n&#39;],
+   &#39;demo.xml&#39;: [&#39;\n&#39;
+                &#39;        &lt;record id=&#34;cza_videojuegos.demo1&#34; &#39;
+                &#39;model=&#34;cza_videojuegos.cza_videojuegos&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Zelda&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;precio&#34;&gt;50&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;acceso_anticipado&#34;&gt;true&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;edicion&#34;&gt;0&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;
+                &#39;    &#39;],
+   &#39;desarrollador.xml&#39;: [&#39;\n&#39;
+                         &#39;    &lt;record model=&#34;ir.ui.view&#34; &#39;
+                         &#39;id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+                         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+                         &#39;      &lt;field &#39;
+                         &#39;name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+                         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+                         &#39;        &lt;tree&gt;\n&#39;
+                         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+                         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+                         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+                         &#39;        &lt;/tree&gt;\n&#39;
+                         &#39;      &lt;/field&gt;\n&#39;
+                         &#39;    &lt;/record&gt;\n&#39;,
+                         &#39;\n&#39;
+                         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+                         &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+                         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos &#39;
+                         &#39;window&lt;/field&gt;\n&#39;
+                         &#39;      &lt;field &#39;
+                         &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+                         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+                         &#39;    &lt;/record&gt;\n&#39;,
+                         &#39;\n&#39;
+                         &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+                         &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+                         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos &#39;
+                         &#39;server&lt;/field&gt;\n&#39;
+                         &#39;      &lt;field name=&#34;model_id&#34; &#39;
+                         &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+                         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+                         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+                         &#39;        action = {\n&#39;
+                         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+                         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+                         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+                         &#39;        }\n&#39;
+                         &#39;      &lt;/field&gt;\n&#39;
+                         &#39;    &lt;/record&gt;\n&#39;],
+   &#39;empresa.xml&#39;: [&#39;\n&#39;
+                   &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+                   &#39;      &lt;field &#39;
+                   &#39;name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+                   &#39;        &lt;tree&gt;\n&#39;
+                   &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+                   &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+                   &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+                   &#39;        &lt;/tree&gt;\n&#39;
+                   &#39;      &lt;/field&gt;\n&#39;
+                   &#39;    &lt;/record&gt;\n&#39;,
+                   &#39;\n&#39;
+                   &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+                   &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+                   &#39;      &lt;field &#39;
+                   &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+                   &#39;    &lt;/record&gt;\n&#39;,
+                   &#39;\n&#39;
+                   &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+                   &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;model_id&#34; &#39;
+                   &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+                   &#39;        action = {\n&#39;
+                   &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+                   &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+                   &#39;          &#34;res_model&#34;: model._name,\n&#39;
+                   &#39;        }\n&#39;
+                   &#39;      &lt;/field&gt;\n&#39;
+                   &#39;    &lt;/record&gt;\n&#39;],
+   &#39;usuario.xml&#39;: [&#39;\n&#39;
+                   &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+                   &#39;      &lt;field &#39;
+                   &#39;name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+                   &#39;        &lt;tree&gt;\n&#39;
+                   &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+                   &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+                   &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+                   &#39;        &lt;/tree&gt;\n&#39;
+                   &#39;      &lt;/field&gt;\n&#39;
+                   &#39;    &lt;/record&gt;\n&#39;,
+                   &#39;\n&#39;
+                   &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+                   &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+                   &#39;      &lt;field &#39;
+                   &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+                   &#39;    &lt;/record&gt;\n&#39;,
+                   &#39;\n&#39;
+                   &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+                   &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;model_id&#34; &#39;
+                   &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+                   &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+                   &#39;        action = {\n&#39;
+                   &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+                   &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+                   &#39;          &#34;res_model&#34;: model._name,\n&#39;
+                   &#39;        }\n&#39;
+                   &#39;      &lt;/field&gt;\n&#39;
+                   &#39;    &lt;/record&gt;\n&#39;],
+   &#39;videojuego.xml&#39;: [&#39;\n&#39;
+                      &#39;    &lt;record model=&#34;ir.ui.view&#34; &#39;
+                      &#39;id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+                      &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+                      &#39;      &lt;field &#39;
+                      &#39;name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+                      &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+                      &#39;        &lt;tree&gt;\n&#39;
+                      &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+                      &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+                      &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+                      &#39;        &lt;/tree&gt;\n&#39;
+                      &#39;      &lt;/field&gt;\n&#39;
+                      &#39;    &lt;/record&gt;\n&#39;,
+                      &#39;\n&#39;
+                      &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+                      &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+                      &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+                      &#39;      &lt;field &#39;
+                      &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+                      &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+                      &#39;    &lt;/record&gt;\n&#39;,
+                      &#39;\n&#39;
+                      &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+                      &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+                      &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+                      &#39;      &lt;field name=&#34;model_id&#34; &#39;
+                      &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+                      &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+                      &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+                      &#39;        action = {\n&#39;
+                      &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+                      &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+                      &#39;          &#34;res_model&#34;: model._name,\n&#39;
+                      &#39;        }\n&#39;
+                      &#39;      &lt;/field&gt;\n&#39;
+                      &#39;    &lt;/record&gt;\n&#39;]}
+  
+  Full diff:
+  - {}
+  + {
+  +     &#39;categoria.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+  +         &#39;        &lt;tree&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+  +         &#39;        &lt;/tree&gt;\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+  +         &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field &#39;
+  +         &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+  +         &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model_id&#34; &#39;
+  +         &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+  +         &#39;        action = {\n&#39;
+  +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+  +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+  +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+  +         &#39;        }\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +     ],
+  +     &#39;demo.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;        &lt;record id=&#34;cza_videojuegos.demo1&#34; &#39;
+  +         &#39;model=&#34;cza_videojuegos.cza_videojuegos&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Zelda&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;precio&#34;&gt;50&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;acceso_anticipado&#34;&gt;true&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;edicion&#34;&gt;0&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;
+  +         &#39;    &#39;,
+  +     ],
+  +     &#39;desarrollador.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+  +         &#39;        &lt;tree&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+  +         &#39;        &lt;/tree&gt;\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+  +         &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field &#39;
+  +         &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+  +         &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model_id&#34; &#39;
+  +         &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+  +         &#39;        action = {\n&#39;
+  +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+  +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+  +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+  +         &#39;        }\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +     ],
+  +     &#39;empresa.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+  +         &#39;        &lt;tree&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+  +         &#39;        &lt;/tree&gt;\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+  +         &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field &#39;
+  +         &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+  +         &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model_id&#34; &#39;
+  +         &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+  +         &#39;        action = {\n&#39;
+  +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+  +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+  +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+  +         &#39;        }\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +     ],
+  +     &#39;usuario.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+  +         &#39;        &lt;tree&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+  +         &#39;        &lt;/tree&gt;\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+  +         &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field &#39;
+  +         &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+  +         &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model_id&#34; &#39;
+  +         &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+  +         &#39;        action = {\n&#39;
+  +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+  +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+  +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+  +         &#39;        }\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +     ],
+  +     &#39;videojuego.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+  +         &#39;        &lt;tree&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+  +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+  +         &#39;        &lt;/tree&gt;\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+  +         &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field &#39;
+  +         &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +         &#39;\n&#39;
+  +         &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+  +         &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;model_id&#34; &#39;
+  +         &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+  +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+  +         &#39;        action = {\n&#39;
+  +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+  +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+  +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+  +         &#39;        }\n&#39;
+  +         &#39;      &lt;/field&gt;\n&#39;
+  +         &#39;    &lt;/record&gt;\n&#39;,
+  +     ],
+  + }</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFCalidad object at 0x7ff2ca718ac0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7ff2ca6ebb50&gt;
+
+    def test_no_hay_elementos_xml_comentados(self, sut):
+        # Expresión regular para verificar si la cadena parece tener marcado XML
+        xml_regex = re.compile(r&#39;&lt;[a-zA-Z0-9\s=&#34;\&#39;\.-]+&gt;(.|\n)*&lt;\/[a-zA-Z0-9\s=&#34;\&#39;\.-]+&gt;|&lt;[a-zA-Z0-9\s=&#34;\&#39;\.-]+\/&gt;&#39;)
+        ficheros_xml_comentado = {}
+        for f in sut.xml_files:
+            xml_comentado = []
+            parser = ET.XMLParser(target=ET.TreeBuilder(insert_comments=True))
+            tree = ET.parse(f, parser)
+    
+            # Get the comment nodes
+            for node in tree.iter():
+                if &#34;function Comment&#34; in str(node.tag) and re.findall(xml_regex, node.text):
+                    # Es un comentario y coincide con la expresión regular
+                    try:
+                        ET.ElementTree(ET.fromstring(f&#34;&lt;root&gt;{node.text}&lt;/root&gt;&#34;))
+                        xml_comentado.append(node.text)
+                    except:
+                        pass
+            if xml_comentado:
+                ficheros_xml_comentado[os.path.basename(f)] = xml_comentado
+    
+&gt;       assert ficheros_xml_comentado == {}, f&#34;Se ha encontrado XML comentado {ficheros_xml_comentado} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.&#34;
+E       AssertionError: Se ha encontrado XML comentado {&#39;demo.xml&#39;: [&#39;\n        &lt;record id=&#34;cza_videojuegos.demo1&#34; model=&#34;cza_videojuegos.cza_videojuegos&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Zelda&lt;/field&gt;\n            &lt;field name=&#34;precio&#34;&gt;50&lt;/field&gt;\n            &lt;field name=&#34;acceso_anticipado&#34;&gt;true&lt;/field&gt;\n            &lt;field name=&#34;edicion&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n    &#39;], &#39;empresa.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;usuario.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;categoria.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;videojuego.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;desarrollador.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;]} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+E       assert {&#39;demo.xml&#39;: [&#39;\n        &lt;record id=&#34;cza_videojuegos.demo1&#34; model=&#34;cza_videojuegos.cza_videojuegos&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Zelda&lt;/field&gt;\n            &lt;field name=&#34;precio&#34;&gt;50&lt;/field&gt;\n            &lt;field name=&#34;acceso_anticipado&#34;&gt;true&lt;/field&gt;\n            &lt;field name=&#34;edicion&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n    &#39;], &#39;empresa.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;usuario.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;categoria.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;videojuego.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;], &#39;desarrollador.xml&#39;: [&#39;\n    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n        &lt;tree&gt;\n          &lt;field name=&#34;name&#34;/&gt;\n          &lt;field name=&#34;value&#34;/&gt;\n          &lt;field name=&#34;value2&#34;/&gt;\n        &lt;/tree&gt;\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.act_window&#34; id=&#34;cza_videojuegos.action_window&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n      &lt;field name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n    &lt;/record&gt;\n&#39;, &#39;\n    &lt;record model=&#34;ir.actions.server&#34; id=&#34;cza_videojuegos.action_server&#34;&gt;\n      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n      &lt;field name=&#34;model_id&#34; ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n      &lt;field name=&#34;code&#34;&gt;\n        action = {\n          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n          &#34;view_mode&#34;: &#34;tree,form&#34;,\n          &#34;res_model&#34;: model._name,\n        }\n      &lt;/field&gt;\n    &lt;/record&gt;\n&#39;]} == {}
+E         
+E         Left contains 6 more items:
+E         {&#39;categoria.xml&#39;: [&#39;\n&#39;
+E                            &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+E                            &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+E                            &#39;      &lt;field &#39;
+E                            &#39;name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E                            &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E                            &#39;        &lt;tree&gt;\n&#39;
+E                            &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E                            &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E                            &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E                            &#39;        &lt;/tree&gt;\n&#39;
+E                            &#39;      &lt;/field&gt;\n&#39;
+E                            &#39;    &lt;/record&gt;\n&#39;,
+E                            &#39;\n&#39;
+E                            &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E                            &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+E                            &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+E                            &#39;      &lt;field &#39;
+E                            &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E                            &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E                            &#39;    &lt;/record&gt;\n&#39;,
+E                            &#39;\n&#39;
+E                            &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+E                            &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+E                            &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+E                            &#39;      &lt;field name=&#34;model_id&#34; &#39;
+E                            &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+E                            &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E                            &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E                            &#39;        action = {\n&#39;
+E                            &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E                            &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E                            &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E                            &#39;        }\n&#39;
+E                            &#39;      &lt;/field&gt;\n&#39;
+E                            &#39;    &lt;/record&gt;\n&#39;],
+E          &#39;demo.xml&#39;: [&#39;\n&#39;
+E                       &#39;        &lt;record id=&#34;cza_videojuegos.demo1&#34; &#39;
+E                       &#39;model=&#34;cza_videojuegos.cza_videojuegos&#34;&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;name&#34;&gt;Zelda&lt;/field&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;precio&#34;&gt;50&lt;/field&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;acceso_anticipado&#34;&gt;true&lt;/field&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;edicion&#34;&gt;0&lt;/field&gt;\n&#39;
+E                       &#39;          &lt;/record&gt;\n&#39;
+E                       &#39;    &#39;],
+E          &#39;desarrollador.xml&#39;: [&#39;\n&#39;
+E                                &#39;    &lt;record model=&#34;ir.ui.view&#34; &#39;
+E                                &#39;id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+E                                &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+E                                &#39;      &lt;field &#39;
+E                                &#39;name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E                                &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E                                &#39;        &lt;tree&gt;\n&#39;
+E                                &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E                                &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E                                &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E                                &#39;        &lt;/tree&gt;\n&#39;
+E                                &#39;      &lt;/field&gt;\n&#39;
+E                                &#39;    &lt;/record&gt;\n&#39;,
+E                                &#39;\n&#39;
+E                                &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E                                &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+E                                &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos &#39;
+E                                &#39;window&lt;/field&gt;\n&#39;
+E                                &#39;      &lt;field &#39;
+E                                &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E                                &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E                                &#39;    &lt;/record&gt;\n&#39;,
+E                                &#39;\n&#39;
+E                                &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+E                                &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+E                                &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos &#39;
+E                                &#39;server&lt;/field&gt;\n&#39;
+E                                &#39;      &lt;field name=&#34;model_id&#34; &#39;
+E                                &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+E                                &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E                                &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E                                &#39;        action = {\n&#39;
+E                                &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E                                &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E                                &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E                                &#39;        }\n&#39;
+E                                &#39;      &lt;/field&gt;\n&#39;
+E                                &#39;    &lt;/record&gt;\n&#39;],
+E          &#39;empresa.xml&#39;: [&#39;\n&#39;
+E                          &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+E                          &#39;      &lt;field &#39;
+E                          &#39;name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E                          &#39;        &lt;tree&gt;\n&#39;
+E                          &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E                          &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E                          &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E                          &#39;        &lt;/tree&gt;\n&#39;
+E                          &#39;      &lt;/field&gt;\n&#39;
+E                          &#39;    &lt;/record&gt;\n&#39;,
+E                          &#39;\n&#39;
+E                          &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E                          &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+E                          &#39;      &lt;field &#39;
+E                          &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E                          &#39;    &lt;/record&gt;\n&#39;,
+E                          &#39;\n&#39;
+E                          &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+E                          &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;model_id&#34; &#39;
+E                          &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E                          &#39;        action = {\n&#39;
+E                          &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E                          &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E                          &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E                          &#39;        }\n&#39;
+E                          &#39;      &lt;/field&gt;\n&#39;
+E                          &#39;    &lt;/record&gt;\n&#39;],
+E          &#39;usuario.xml&#39;: [&#39;\n&#39;
+E                          &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+E                          &#39;      &lt;field &#39;
+E                          &#39;name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E                          &#39;        &lt;tree&gt;\n&#39;
+E                          &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E                          &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E                          &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E                          &#39;        &lt;/tree&gt;\n&#39;
+E                          &#39;      &lt;/field&gt;\n&#39;
+E                          &#39;    &lt;/record&gt;\n&#39;,
+E                          &#39;\n&#39;
+E                          &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E                          &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+E                          &#39;      &lt;field &#39;
+E                          &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E                          &#39;    &lt;/record&gt;\n&#39;,
+E                          &#39;\n&#39;
+E                          &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+E                          &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;model_id&#34; &#39;
+E                          &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E                          &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E                          &#39;        action = {\n&#39;
+E                          &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E                          &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E                          &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E                          &#39;        }\n&#39;
+E                          &#39;      &lt;/field&gt;\n&#39;
+E                          &#39;    &lt;/record&gt;\n&#39;],
+E          &#39;videojuego.xml&#39;: [&#39;\n&#39;
+E                             &#39;    &lt;record model=&#34;ir.ui.view&#34; &#39;
+E                             &#39;id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+E                             &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+E                             &#39;      &lt;field &#39;
+E                             &#39;name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E                             &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E                             &#39;        &lt;tree&gt;\n&#39;
+E                             &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E                             &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E                             &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E                             &#39;        &lt;/tree&gt;\n&#39;
+E                             &#39;      &lt;/field&gt;\n&#39;
+E                             &#39;    &lt;/record&gt;\n&#39;,
+E                             &#39;\n&#39;
+E                             &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E                             &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+E                             &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+E                             &#39;      &lt;field &#39;
+E                             &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E                             &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E                             &#39;    &lt;/record&gt;\n&#39;,
+E                             &#39;\n&#39;
+E                             &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+E                             &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+E                             &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+E                             &#39;      &lt;field name=&#34;model_id&#34; &#39;
+E                             &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+E                             &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E                             &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E                             &#39;        action = {\n&#39;
+E                             &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E                             &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E                             &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E                             &#39;        }\n&#39;
+E                             &#39;      &lt;/field&gt;\n&#39;
+E                             &#39;    &lt;/record&gt;\n&#39;]}
+E         
+E         Full diff:
+E         - {}
+E         + {
+E         +     &#39;categoria.xml&#39;: [
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E         +         &#39;        &lt;tree&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E         +         &#39;        &lt;/tree&gt;\n&#39;
+E         +         &#39;      &lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E         +         &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field &#39;
+E         +         &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+E         +         &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;model_id&#34; &#39;
+E         +         &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E         +         &#39;        action = {\n&#39;
+E         +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E         +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E         +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E         +         &#39;        }\n&#39;
+E         +         &#39;      &lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +     ],
+E         +     &#39;demo.xml&#39;: [
+E         +         &#39;\n&#39;
+E         +         &#39;        &lt;record id=&#34;cza_videojuegos.demo1&#34; &#39;
+E         +         &#39;model=&#34;cza_videojuegos.cza_videojuegos&#34;&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;name&#34;&gt;Zelda&lt;/field&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;precio&#34;&gt;50&lt;/field&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;acceso_anticipado&#34;&gt;true&lt;/field&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;edicion&#34;&gt;0&lt;/field&gt;\n&#39;
+E         +         &#39;          &lt;/record&gt;\n&#39;
+E         +         &#39;    &#39;,
+E         +     ],
+E         +     &#39;desarrollador.xml&#39;: [
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E         +         &#39;        &lt;tree&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E         +         &#39;        &lt;/tree&gt;\n&#39;
+E         +         &#39;      &lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E         +         &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field &#39;
+E         +         &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+E         +         &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;model_id&#34; &#39;
+E         +         &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E         +         &#39;        action = {\n&#39;
+E         +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E         +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E         +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E         +         &#39;        }\n&#39;
+E         +         &#39;      &lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +     ],
+E         +     &#39;empresa.xml&#39;: [
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E         +         &#39;        &lt;tree&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E         +         &#39;        &lt;/tree&gt;\n&#39;
+E         +         &#39;      &lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E         +         &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field &#39;
+E         +         &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+E         +         &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;model_id&#34; &#39;
+E         +         &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E         +         &#39;        action = {\n&#39;
+E         +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E         +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E         +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E         +         &#39;        }\n&#39;
+E         +         &#39;      &lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +     ],
+E         +     &#39;usuario.xml&#39;: [
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E         +         &#39;        &lt;tree&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E         +         &#39;        &lt;/tree&gt;\n&#39;
+E         +         &#39;      &lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E         +         &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field &#39;
+E         +         &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+E         +         &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;model_id&#34; &#39;
+E         +         &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E         +         &#39;        action = {\n&#39;
+E         +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E         +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E         +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E         +         &#39;        }\n&#39;
+E         +         &#39;      &lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +     ],
+E         +     &#39;videojuego.xml&#39;: [
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.ui.view&#34; id=&#34;cza_videojuegos.list&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos list&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;arch&#34; type=&#34;xml&#34;&gt;\n&#39;
+E         +         &#39;        &lt;tree&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;name&#34;/&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;value&#34;/&gt;\n&#39;
+E         +         &#39;          &lt;field name=&#34;value2&#34;/&gt;\n&#39;
+E         +         &#39;        &lt;/tree&gt;\n&#39;
+E         +         &#39;      &lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.actions.act_window&#34; &#39;
+E         +         &#39;id=&#34;cza_videojuegos.action_window&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos window&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field &#39;
+E         +         &#39;name=&#34;res_model&#34;&gt;cza_videojuegos.cza_videojuegos&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;view_mode&#34;&gt;tree,form&lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +         &#39;\n&#39;
+E         +         &#39;    &lt;record model=&#34;ir.actions.server&#34; &#39;
+E         +         &#39;id=&#34;cza_videojuegos.action_server&#34;&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;name&#34;&gt;cza_videojuegos server&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;model_id&#34; &#39;
+E         +         &#39;ref=&#34;model_cza_videojuegos_cza_videojuegos&#34;/&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;state&#34;&gt;code&lt;/field&gt;\n&#39;
+E         +         &#39;      &lt;field name=&#34;code&#34;&gt;\n&#39;
+E         +         &#39;        action = {\n&#39;
+E         +         &#39;          &#34;type&#34;: &#34;ir.actions.act_window&#34;,\n&#39;
+E         +         &#39;          &#34;view_mode&#34;: &#34;tree,form&#34;,\n&#39;
+E         +         &#39;          &#34;res_model&#34;: model._name,\n&#39;
+E         +         &#39;        }\n&#39;
+E         +         &#39;      &lt;/field&gt;\n&#39;
+E         +         &#39;    &lt;/record&gt;\n&#39;,
+E         +     ],
+E         + }
+
+test_minimal_requirements.py:439: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="476be668-9f48-4e9f-97fb-5226f4ef39f0"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_no_hay_codigo_python_comentado</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.267 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="b15cc650-3f97-4f08-a017-dd7d95f7a323"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_log_servidor_sin_errores</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestOtros</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="93de1192-68ef-4611-b850-d38eedfb1e10"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_log_sin_warnings</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesKanban</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="06c104d0-515c-4e44-9885-19159e1b72b7"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban[/kanban]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="d5ba657d-169d-47e8-bc69-251bc6cbf58c"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban[/kanban[@default_group_by]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="f943fb59-9aeb-4b80-88a9-b31402e8bfe7"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban_imagen[/img]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="44f7581d-a7bf-4a5a-b935-c35c51da905a"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban_imagen[/field[@preview_image]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="b1980712-3d8f-4c2b-b1eb-92013ce378c6"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban_imagen[/field[@widget=&#34;image&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesBusqueda</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="79da4f1c-cad7-4495-9ce8-b9a7f3aef9f4"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.038 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="7df961a8-faa0-4bbc-9b8b-dc48bf4a281d"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search_compleja[.//filter[@domain]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="c4e20d0d-6cce-45c9-97e5-0cd608e2ee9f"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search_compleja[.//group//filter[@context]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesOtrasVistas</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="ed0b02a9-7224-4575-8bf1-1642a846ab88"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[activity]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.039 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="09ee68db-0166-457f-a1ec-a298a76ddf90"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[calendar]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.04 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="77098650-6ab9-4ef0-b0f6-0734652ad526"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[graph]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.039 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="4a606f4e-1fee-4b4c-9e46-bcb8bf410551"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[pivot]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.042 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesConstraints</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="ab5e4a13-defb-4931-ab4e-edbca1c628dd"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_constraints_sql</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.019 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesSeguridadAvanzada</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="cb285232-33ce-4c1e-b7db-cc7683746b4c"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_seguridad_con_grupos_propios</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesDatosAvanzados</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="2a18ba82-5172-45aa-9a74-7992062fc904"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[binary]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.056 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="e9116c77-7aac-4b05-9585-3397753b5ef6"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[many2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.068 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="52c062d8-3fa2-47f3-af62-78af5579bd74"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[many2one]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.077 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesHerenciaVistas</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="955dd835-212b-4105-b5ee-79a909b912e7"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_vistas_con_position</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="dc97e531-c2e0-4655-a090-baccd27a4291"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_vistas_con_inherit_id</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesHerenciaModelos</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="a1e355e5-df2a-47df-b767-8a64bbf1ecd0"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_existentes_modificados_por_herencia</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="00b89761-60ac-4000-9631-e22f62b95b38"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_nuevos_modelos_con_herencia</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesTraducciones</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="d93cce33-b5f1-4896-8176-7e7d1f7369a8"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_i18n</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesInformes</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="2f1eda31-dd0f-4de3-8d32-fc6372ad499e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes[report]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="48f26588-1571-4280-95b0-4d17a516da88"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes[template]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesChatter</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="6cbc18bd-9f3e-46fe-9ff3-f4c0e63f4087"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_chatter[mail_thread]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="e541277b-2539-48b9-8441-ac541ae78c90"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_chatter[mail_activity_mixin]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="0d9fcf88-17db-470f-8e76-2de6fd61b7f0"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_chatter_tracking</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.008 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="c4c6228b-b245-434c-9a94-f12dc57930eb"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_div</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="08399de5-83bd-4bea-b4af-e35cf841d4e1"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@name=&#34;message_follower_ids&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="2a12b2f8-bd7d-4df9-9d18-09a46ae49756"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@name=&#34;activity_ids&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="66519c1c-f409-4998-b704-6809f672666b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@name=&#34;message_ids&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="8e7e3477-33b4-448d-a395-f89368096d08"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@widget=&#34;mail_followers&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="2f55c65e-93a4-4078-8efd-6ef17b63ef01"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@widget=&#34;mail_thread&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="3c049cbd-2007-447a-898b-4623a7f12ddf"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@widget=&#34;mail_activity&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>4.061 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+
+
+<p class="footer">
+    Generated by junit2html
+</p>
+</body>
+</html>

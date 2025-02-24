@@ -6,6 +6,8 @@ FECHA=$(date +'%Y%m%d_%H%M%S')
 PRIVATE_IP=$(ifconfig $(route -n |awk '/0[.]0[.]0[.]0/{print $NF;exit}') | awk '/inet/{print $2}' | grep -F .)
 
 cd "${TESTER_PATH}"
+git reset --hard HEAD >& /dev/null
+git pull >& /dev/null
 source run.sh
 source .venv/bin/activate
 main "$FUNCION" "all" # "updated"
@@ -14,8 +16,6 @@ cp ${TESTER_PATH}/projects/${RESULTS_DIR}/${REPORTS_DIR}/* "${PUBLIC_PATH}/docs/
 cp ${TESTER_PATH}/projects/${RESULTS_DIR}/*-git.log "${PUBLIC_PATH}/docs/"
 
 cd "$PUBLIC_PATH"
-
-#!/bin/bash
 
 # Función para generar el index.html en un directorio dado
 generate_index() {

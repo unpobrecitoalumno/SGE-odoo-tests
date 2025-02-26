@@ -5,6 +5,8 @@ FUNCION="accion_01_test_verbose_report"
 FECHA=$(date +'%Y%m%d_%H%M%S')
 PRIVATE_IP=$(ifconfig $(route -n |awk '/0[.]0[.]0[.]0/{print $NF;exit}') | awk '/inet/{print $2}' | grep -F .)
 
+docker rm -f $(docker ps -aq)
+
 cd "${TESTER_PATH}"
 git reset --hard HEAD >& /dev/null
 git pull >& /dev/null

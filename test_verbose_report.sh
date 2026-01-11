@@ -58,7 +58,7 @@ generate_index() {
 
 generate_index "docs/${GROUP}"
 # Recorrer todos los directorios dentro de docs y generar el índice
-for dir in docs/*; do
+for dir in docs/${GROUP}/*; do
   if [ -d "$dir" ]; then
     generate_index "$dir"
 

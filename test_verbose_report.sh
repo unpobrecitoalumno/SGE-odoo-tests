@@ -16,8 +16,8 @@ source run.sh
 source .venv/bin/activate
 main "$FUNCION" "all"
 
-cp ${TESTER_PATH}/projects/${RESULTS_DIR}/${REPORTS_DIR}/* "${PUBLIC_PATH}/docs/" 
-cp ${TESTER_PATH}/projects/${RESULTS_DIR}/*-git.log "${PUBLIC_PATH}/docs/"
+cp ${TESTER_PATH}/projects/${RESULTS_DIR}/${REPORTS_DIR}/* "${PUBLIC_PATH}/docs/${GROUP}/" 
+cp ${TESTER_PATH}/projects/${RESULTS_DIR}/*-git.log "${PUBLIC_PATH}/docs/${GROUP}/"
 
 cd "$PUBLIC_PATH"
 
@@ -56,7 +56,7 @@ generate_index() {
   echo "El archivo index.html ha sido creado en: $dir"
 }
 
-generate_index "docs/"
+generate_index "docs/${GROUP}"
 # Recorrer todos los directorios dentro de docs y generar el índice
 for dir in docs/*; do
   if [ -d "$dir" ]; then

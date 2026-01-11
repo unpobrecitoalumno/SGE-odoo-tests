@@ -1,6 +1,7 @@
 #!/bin/bash
-PUBLIC_PATH="/home/datos/html/SGE-odoo-tests/"
-TESTER_PATH="/home/madrid/Escritorio/SGE/SGE-odoo-project-tester"
+GROUP="$1"
+PUBLIC_PATH="/home/ubuntu/public"
+TESTER_PATH="/home/ubuntu/SGE-tester-$GROUP"
 FUNCION="accion_01_test_verbose_report"
 FECHA=$(date +'%Y%m%d_%H%M%S')
 PRIVATE_IP=$(ifconfig $(route -n |awk '/0[.]0[.]0[.]0/{print $NF;exit}') | awk '/inet/{print $2}' | grep -F .)
@@ -72,6 +73,8 @@ done
 
 
 chmod +rx -R docs
+cp -r docs /home/ubuntu/SGE-odoo-tests/
+cd /home/ubuntu/SGE-odoo-tests
 
 git pull
 git add docs/\*

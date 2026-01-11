@@ -1,0 +1,2495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>daj_vehicles-pytest.xml</title>
+    <style type="text/css">
+        body {
+    background-color: white;
+    padding-bottom: 20em;
+    margin: 0;
+    min-height: 15cm;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+    font-family: sans-serif;
+}
+
+h1 {
+    background-color: #007acc;
+    color: white;
+    padding: 3mm;
+    margin-top: 0;
+    margin-bottom: 1mm;
+}
+
+.footer {
+    font-style: italic;
+    font-size: small;
+    text-align: right;
+    padding: 1em;
+}
+
+.testsuite {
+    padding-bottom: 2em;
+    margin-left: 1em;
+}
+
+.proplist {
+    width: 100%;
+    margin-bottom: 2em;
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+.proplist th {
+    background-color: silver;
+    width: 5em;
+    padding: 2px;
+    padding-right: 1em;
+    text-align: left;
+}
+
+.proplist td {
+    padding: 2px;
+}
+
+.index-table {
+    width: 90%;
+    margin-left: 1em;
+}
+
+.index-table td {
+    vertical-align: top;
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.failure-index {
+
+}
+
+.toc {
+    margin-bottom: 2em;
+    font-family: monospace;
+}
+
+.stdio, pre {
+    min-height: 1em;
+    background-color: #1e1e1e;
+    color: silver;
+    padding: 0.5em;
+}
+.tdpre {
+    background-color: #1e1e1e;
+}
+
+.test {
+    margin-left: 0.5cm;
+}
+
+.outcome {
+    border-left: 1em;
+    padding: 2px;
+}
+
+.outcome-failed {
+    border-left: 1em solid lightcoral;
+}
+
+.outcome-passed {
+    border-left: 1em solid lightgreen;
+}
+
+.outcome-skipped {
+    border-left: 1em dotted silver;
+}
+
+.stats-table {
+}
+
+.stats-table td {
+    min-width: 4em;
+    text-align: right;
+}
+
+.stats-table .failed {
+    background-color: lightcoral;
+}
+
+.stats-table .passed {
+    background-color: lightgreen;
+}
+
+.matrix-table {
+    table-layout: fixed;
+    border-spacing: 0;
+    width: available;
+    margin-left: 1em;
+}
+
+.matrix-table td {
+    vertical-align: center;
+}
+
+.matrix-table td:last-child {
+    width: 0;
+}
+
+.matrix-table tr:hover {
+    background-color: yellow;
+}
+
+.matrix-axis-name {
+    white-space: nowrap;
+    padding-right: 0.5em;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    text-align: right;
+}
+
+.matrix-axis-line {
+    border-left: 1px solid black;
+    width: 0.5em;
+}
+
+.matrix-classname {
+    text-align: left;
+    width: 100%;
+    border-top: 2px solid grey;
+    border-bottom: 1px solid silver;
+}
+
+.matrix-casename {
+    text-align: left;
+    font-weight: normal;
+    font-style: italic;
+    padding-left: 1em;
+    border-bottom: 1px solid silver;
+}
+
+.matrix-result {
+    display: block;
+    width: 1em;
+    text-align: center;
+    padding: 1mm;
+    margin: 0;
+}
+
+.matrix-result-combined {
+    white-space: nowrap;
+    padding-right: 0.2em;
+    text-align: right;
+}
+
+.matrix-result-failed {
+    background-color: lightcoral;
+}
+
+.matrix-result-passed {
+    background-color: lightgreen;
+}
+
+.matrix-result-skipped {
+    background-color: lightyellow;
+}
+
+.matrix-even {
+    background-color: lightgray;
+}
+    </style>
+</head>
+<body>
+    
+<h1>
+    Test Report : daj_vehicles-pytest.xml
+</h1>
+<a id="toc"></a>
+<table class="index-table">
+    <tr>
+        <td>
+            <ul class="toc">
+            
+                
+                <li>test_minimal_requirements.TestRNF1
+                <ul>
+                    
+                    <li><a href="#5040316f-82ec-410a-a9fd-08a48938da61">test_app_tiene_al_menos_4_modelos</a></li>
+                    
+                    <li><a href="#f854d50a-6e0a-42ca-91d7-374e56d54292">test_modelos_en_ficheros_individuales</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF2
+                <ul>
+                    
+                    <li><a href="#16a96d2a-2aac-48c7-ab9d-32158a3ea403">test_relacion_many2many</a></li>
+                    
+                    <li><a href="#661fe12a-0087-4dc9-83ed-867d6c70f0d1">test_modelos_tienen_algun_campo_relacion[one2many]</a></li>
+                    
+                    <li><a href="#e21ae917-77eb-48af-a958-9904087a8a90">test_modelos_tienen_algun_campo_relacion[many2one]</a></li>
+                    
+                    <li><a href="#7232b50d-0f48-489a-aef8-244c75a52ff5">test_unknown_comodel_name</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF3
+                <ul>
+                    
+                    <li><a href="#54be4d42-0765-44c1-8a26-d79f6a173771">test_modelos_tienen_vista[tree]</a></li>
+                    
+                    <li><a href="#a4ef3678-288a-4996-b719-439348b2d883">test_modelos_tienen_vista[form]</a></li>
+                    
+                    <li><a href="#f05e4e33-cd9b-4a4e-9dbe-0850fcdf42ed">test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</a></li>
+                    
+                    <li><a href="#3ab74d39-bc29-4534-a036-fcc90897525b">test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF4
+                <ul>
+                    
+                    <li><a href="#55f309d1-5c05-4983-88de-dac53b43939a">test_vistas_en_ficheros_individuales</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF5
+                <ul>
+                    
+                    <li><a href="#ba506738-a776-43d4-8d3d-dfea01eb1d4d">test_modelos_tienen_algun_posible_campo_imagen</a></li>
+                    
+                    <li><a href="#38cce484-bcb9-459e-90e1-555ea8f8bdd8">test_alguna_vista_tiene_campo_imagen</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF6
+                <ul>
+                    
+                    <li><a href="#73d36a14-5430-42f4-b697-887a0db048bc">test_modelos_tienen_acciones</a></li>
+                    
+                    <li><a href="#94eb1f9b-1279-4960-b0d9-b4a26369516e">test_hay_elementos_de_menu[.//menuitem[@action]]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF7
+                <ul>
+                    
+                    <li><a href="#873b164a-55d1-4d11-9c45-c9a6a20dd5ca">test_modelos_tienen_permisos</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF8
+                <ul>
+                    
+                    <li><a href="#021212ce-6393-4105-9914-0988a5433d8f">test_app_tiene_icono</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF9
+                <ul>
+                    
+                    <li><a href="#84764b4c-9abe-4ffe-86c6-8b2ca430b0c4">test_modelos_tienen_datos_demo</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFGit
+                <ul>
+                    
+                    <li><a href="#f20f20ee-8bb3-4c41-88d2-1ae27418edf7">test_git_commit_frecuentes</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFCalidad
+                <ul>
+                    
+                    <li><a href="#6f2cc4ba-f88c-498f-813f-aa84a01eb885">test_odoo_disponible</a></li>
+                    
+                    <li><a href="#9a6413d1-eeee-4398-976d-6858d964399b">test_app_instalada</a></li>
+                    
+                    <li><a href="#40d59ab6-17b2-4265-bd60-b5c15c1376fa">test_otras_apps_entregadas_son_dependencias</a></li>
+                    
+                    <li><a href="#a1ad0a70-3a96-4c26-9b08-a97d1ed93525">test_no_hay_elementos_xml_comentados</a></li>
+                    
+                    <li><a href="#ba6df128-e8e8-4ce4-9d32-48fde2ff7a57">test_no_hay_codigo_python_comentado</a></li>
+                    
+                    <li><a href="#727adc9a-dae0-4fc6-ba64-462be00bb327">test_log_servidor_sin_errores</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestOtros
+                <ul>
+                    
+                    <li><a href="#db8cd0ad-696c-4849-8c70-765c58ce4ec0">test_log_sin_warnings</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesKanban
+                <ul>
+                    
+                    <li><a href="#781fcaf7-b498-4ee0-b199-ec08d186e257">test_vista_kanban[/kanban]</a>[s]</li>
+                    
+                    <li><a href="#8cafe018-b258-4779-913e-ff7b10d45fdb">test_vista_kanban[/kanban[@default_group_by]]</a>[s]</li>
+                    
+                    <li><a href="#c236a374-1f2b-494e-8ac3-664b3a0da33e">test_vista_kanban_imagen[/img]</a>[s]</li>
+                    
+                    <li><a href="#c7ba3d72-45b7-4fd3-8512-15b0013217e5">test_vista_kanban_imagen[/field[@preview_image]]</a>[s]</li>
+                    
+                    <li><a href="#12c673ec-61b0-49b1-bd29-406358f53e04">test_vista_kanban_imagen[/field[@widget=&#34;image&#34;]]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesBusqueda
+                <ul>
+                    
+                    <li><a href="#3b1a595c-9360-4a53-9e1c-ec7dbf7c128c">test_vista_search[/search]</a></li>
+                    
+                    <li><a href="#f880c13c-fc02-44f7-9d48-3a425bc17ab7">test_vista_search_compleja[/filter[@domain]]</a></li>
+                    
+                    <li><a href="#293ae891-b3f9-4b45-9fb2-a13e4427b2b8">test_vista_search_compleja[/group//filter[@context]]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesOtrasVistas
+                <ul>
+                    
+                    <li><a href="#0d5a65a0-246d-4ec5-bfd3-eac0f4d1dbd1">test_otras_vistas_adicionales[activity]</a>[s]</li>
+                    
+                    <li><a href="#2bd302eb-1127-4e6a-8d7a-db11eb48e5df">test_otras_vistas_adicionales[calendar]</a>[s]</li>
+                    
+                    <li><a href="#7c7a82e5-6f39-4be4-b539-f823777740e9">test_otras_vistas_adicionales[graph]</a>[s]</li>
+                    
+                    <li><a href="#b96a0915-6376-467d-b2ba-581d0d56316c">test_otras_vistas_adicionales[pivot]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesConstraints
+                <ul>
+                    
+                    <li><a href="#e332a92f-9184-40bb-b540-44111cb3e0f1">test_constraints_sql</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesSeguridadAvanzada
+                <ul>
+                    
+                    <li><a href="#92589238-bd43-45eb-a149-0d5f6597cbbd">test_seguridad_con_grupos_propios</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesDatosAvanzados
+                <ul>
+                    
+                    <li><a href="#e7afdb76-0ff2-4a84-bd39-35861c8bc22c">test_datos_maestros_o_demo_avanzados[binary]</a>[s]</li>
+                    
+                    <li><a href="#19ff1330-8495-4818-840e-27a3a917d622">test_datos_maestros_o_demo_avanzados[many2many]</a>[s]</li>
+                    
+                    <li><a href="#84b10f29-532c-4f33-b746-88303d89cba1">test_datos_maestros_o_demo_avanzados[many2one]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesHerenciaVistas
+                <ul>
+                    
+                    <li><a href="#b195184c-2ce9-4b02-9773-82e23143f542">test_herencia_en_vistas_con_position</a>[s]</li>
+                    
+                    <li><a href="#65869c2c-8ff9-4564-b2e7-ba87bd34e757">test_herencia_en_vistas_con_inherit_id</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesHerenciaModelos
+                <ul>
+                    
+                    <li><a href="#b3cea930-6a4c-4e99-bd07-dd609fc09fe6">test_modelos_existentes_modificados_por_herencia</a>[s]</li>
+                    
+                    <li><a href="#1fba76d7-0780-4fcf-a871-503a9a9b793b">test_nuevos_modelos_con_herencia</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesTraducciones
+                <ul>
+                    
+                    <li><a href="#3da4b52c-9984-404e-82c8-189cc8d90424">test_i18n</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesInformes
+                <ul>
+                    
+                    <li><a href="#f715b72e-76a8-4267-aef8-aec5bb67c7a6">test_informes[report]</a>[s]</li>
+                    
+                    <li><a href="#34d4f53c-d23f-4b91-b4ef-4799c7449851">test_informes[template]</a></li>
+                    
+                    <li><a href="#00a40e47-4ab1-46cd-83c4-03e49a6d5a47">test_informes_complejos[/t[@t-foreach]]</a>[s]</li>
+                    
+                    <li><a href="#0c150d05-8af1-4c32-9889-0b80a25a8ac6">test_informes_complejos[/img[@t-att-src]]</a>[s]</li>
+                    
+                    <li><a href="#016d85cd-3945-4cae-8042-26d940e004b5">test_informes_complejos[/t[@t-call and not(@t-call=&#34;web.external_layout&#34; or @t-call=&#34;web.html_container&#34;)]]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesChatter
+                <ul>
+                    
+                    <li><a href="#1c4fa4ad-cfcc-4f20-b9f9-95274fbe1d59">test_chatter[mail_thread]</a>[s]</li>
+                    
+                    <li><a href="#727a188a-6cc1-4570-8366-d723d9e31bc8">test_chatter[mail_activity_mixin]</a>[s]</li>
+                    
+                    <li><a href="#d4c67ff2-492d-46b8-89fd-60d31836649b">test_chatter_tracking</a>[s]</li>
+                    
+                    <li><a href="#83355a8c-156e-4b8e-af81-08bb4cf647f4">test_vista_chatter_div</a>[s]</li>
+                    
+                    <li><a href="#141e38df-98d6-48c6-9fc1-dd27ed426145">test_vista_chatter_fields[.//field[@name=&#34;message_follower_ids&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#7d8f4d1c-fc4b-4759-adc2-3487bcce109c">test_vista_chatter_fields[.//field[@name=&#34;activity_ids&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#393ffab9-5d45-436b-96f3-0843b974dc94">test_vista_chatter_fields[.//field[@name=&#34;message_ids&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#397db06a-f040-4596-a1ad-ac9a75726f1e">test_vista_chatter_fields[.//field[@widget=&#34;mail_followers&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#29cedf79-d5d9-44da-988c-63167f0c0c7a">test_vista_chatter_fields[.//field[@widget=&#34;mail_thread&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#85486792-f678-49e5-bee3-f4b8731eddfe">test_vista_chatter_fields[.//field[@widget=&#34;mail_activity&#34;]]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+            
+            </ul>
+        </td>
+        <td class="failure-index">
+            <ul class="toc">
+            
+                
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="#3ab74d39-bc29-4534-a036-fcc90897525b">[F] test_minimal_requirements.TestRNF3 : test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#84764b4c-9abe-4ffe-86c6-8b2ca430b0c4">[F] test_minimal_requirements.TestRNF9 : test_modelos_tienen_datos_demo</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#f20f20ee-8bb3-4c41-88d2-1ae27418edf7">[F] test_minimal_requirements.TestRNFGit : test_git_commit_frecuentes</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    <li><a href="#40d59ab6-17b2-4265-bd60-b5c15c1376fa">[F] test_minimal_requirements.TestRNFCalidad : test_otras_apps_entregadas_son_dependencias</a></li>
+                    
+                    
+                    
+                    <li><a href="#a1ad0a70-3a96-4c26-9b08-a97d1ed93525">[F] test_minimal_requirements.TestRNFCalidad : test_no_hay_elementos_xml_comentados</a></li>
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+            
+            </ul>
+        </td>
+    </tr>
+</table>
+
+
+    <div class="testsuite">
+        <h2>Test Suite: pytest</h2>
+        <a id="0b441f33-77c1-4f33-8478-52f1f5f8a6a8"></a>
+        
+        
+        <h3>Results</h3>
+        <table class="proplist">
+            <tr>
+                <th>Duration</th><td>40.627 sec</td>
+            </tr>
+            <tr>
+                <th>Tests</th><td>63</td>
+            </tr>
+            <tr>
+                <th>Failures</th><td>5</td>
+            </tr>
+        </table>
+
+        <div class="testclasses">
+            <h3>Tests</h3>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF1</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="5040316f-82ec-410a-a9fd-08a48938da61"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_tiene_al_menos_4_modelos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>36.942 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="f854d50a-6e0a-42ca-91d7-374e56d54292"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_en_ficheros_individuales</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF2</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="16a96d2a-2aac-48c7-ab9d-32158a3ea403"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_relacion_many2many</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.026 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="661fe12a-0087-4dc9-83ed-867d6c70f0d1"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_campo_relacion[one2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.053 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="e21ae917-77eb-48af-a958-9904087a8a90"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_campo_relacion[many2one]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.056 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="7232b50d-0f48-489a-aef8-244c75a52ff5"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_unknown_comodel_name</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF3</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="54be4d42-0765-44c1-8a26-d79f6a173771"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_vista[tree]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.115 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="a4ef3678-288a-4996-b719-439348b2d883"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_vista[form]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.034 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="f05e4e33-cd9b-4a4e-9dbe-0850fcdf42ed"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.056 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="3ab74d39-bc29-4534-a036-fcc90897525b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.058 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No se ha encontrado tree/kanban anidado para campo &#39;vehicle_ids&#39; del modelo &#39;daj_vehicles.equipment&#39; - Vistas **Form** y **Tree** específicas para cada clase. 
+      Todos los &lt;u&gt;formularios deberán incluir un elemento anidado Tree (u opcionalmente Kanban)&lt;/u&gt;
+      si el modelo del formulario puede tener relación con múltiples objetos de otro modelo.
+assert False
+ +  where False = any(&lt;generator object TestRNF3.test_formularios_tienen_vista_anidada_para_campos_X2many.&lt;locals&gt;.&lt;genexpr&gt; at 0x714e5d696940&gt;)</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x714e5d63fc80&gt;, sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x714e5df7dfa0&gt;
+relationship = &#39;many2many&#39;
+
+    @pytest.mark.parametrize(&#34;relationship&#34;, [&#39;one2many&#39;, &#39;many2many&#39;])
+    def test_formularios_tienen_vista_anidada_para_campos_X2many(self, sut, relationship):
+        # @see https://www.cybrosys.com/blog/many2many-fields-and-its-widgets-odoo
+        alternative_widgets = (&#39;many2many_default&#39;,
+                                &#39;many2many_tags&#39;,
+                                &#39;many2many_checkboxes&#39;,
+                                &#39;many2many_kanban&#39;,
+                                &#39;many2many_binary&#39;,
+                                &#39;x2many_counter&#39;)
+        fields = sut.modelos_tienen_campos(relationship)
+        for f in fields:
+            if not sut.hay_form_con_vista_anidada_para_campo(f):
+&gt;               assert any(sut.hay_vista_con_campo_atributo_y_valor(&#39;form&#39;, f, &#39;widget&#39;, w) for w in alternative_widgets), f&#34;No se ha encontrado tree/kanban anidado para campo &#39;{f.get(&#39;name&#39;)}&#39; del modelo &#39;{f.get(&#39;model&#39;)}&#39; - {self.__doc__}&#34;
+E               AssertionError: No se ha encontrado tree/kanban anidado para campo &#39;vehicle_ids&#39; del modelo &#39;daj_vehicles.equipment&#39; - Vistas **Form** y **Tree** específicas para cada clase. 
+E                     Todos los &lt;u&gt;formularios deberán incluir un elemento anidado Tree (u opcionalmente Kanban)&lt;/u&gt;
+E                     si el modelo del formulario puede tener relación con múltiples objetos de otro modelo.
+E               assert False
+E                +  where False = any(&lt;generator object TestRNF3.test_formularios_tienen_vista_anidada_para_campos_X2many.&lt;locals&gt;.&lt;genexpr&gt; at 0x714e5d696940&gt;)
+
+test_minimal_requirements.py:301: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF4</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="55f309d1-5c05-4983-88de-dac53b43939a"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vistas_en_ficheros_individuales</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF5</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="ba506738-a776-43d4-8d3d-dfea01eb1d4d"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_posible_campo_imagen</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.052 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="38cce484-bcb9-459e-90e1-555ea8f8bdd8"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_alguna_vista_tiene_campo_imagen</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.054 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF6</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="73d36a14-5430-42f4-b697-887a0db048bc"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_acciones</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.028 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="94eb1f9b-1279-4960-b0d9-b4a26369516e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_hay_elementos_de_menu[.//menuitem[@action]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.003 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF7</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="873b164a-55d1-4d11-9c45-c9a6a20dd5ca"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_permisos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.037 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF8</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="021212ce-6393-4105-9914-0988a5433d8f"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_tiene_icono</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.136 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF9</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="84764b4c-9abe-4ffe-86c6-8b2ca430b0c4"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_datos_demo</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.031 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Datos de demo básicos (que al menos den valor a campos con tipos de datos sencillos).
+assert 0 &gt; 0</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF9 object at 0x714e5d6759a0&gt;, sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x714e5df7dfa0&gt;
+
+    def test_modelos_tienen_datos_demo(self, sut):
+        total_demo_records = 0
+        demo_records_en_todos = sut.app_models != []
+        assert sut.app_models, &#34;No hay modelos de datos&#34;
+        for app_model in sut.app_models:
+            model_name = app_model.get(&#39;model&#39;)
+            print(model_name)
+            demo_records = sut.execute_kw(model_name, &#39;search&#39;, [[]])
+            demo_records_en_todos = demo_records_en_todos and demo_records
+            total_demo_records += len(demo_records)
+&gt;       assert total_demo_records &gt; 0, self.__doc__
+E       AssertionError: Datos de demo básicos (que al menos den valor a campos con tipos de datos sencillos).
+E       assert 0 &gt; 0
+
+test_minimal_requirements.py:385: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFGit</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="f20f20ee-8bb3-4c41-88d2-1ae27418edf7"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_git_commit_frecuentes</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: El proyecto se desarrollará a partir de un _fork_ del repositorio javnitram/SGE-odoo-it-yourself, 
+      sincronizando frecuentemente (mínimo 1 _commit_ &amp; _push_ por semana)
+assert 2 &gt; 5
+ +  where 2 = len([&#39;commit 9ce41c659c72f6d379e43e1e29063ebc3630b450\n&#39;, &#39;commit e141bc4b6821aff1afdea0c32c046d54d6e90670\n&#39;])</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFGit object at 0x714e5d675df0&gt;, sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x714e5df7dfa0&gt;
+
+    def test_git_commit_frecuentes(self, sut):
+        with open(sut.git_log, &#34;r&#34;) as f:
+            content = f.readlines()
+            content = list(filter(lambda x: x.startswith(&#34;commit&#34;), content))
+            print(*content)
+&gt;           assert len(content) &gt; 5, self.__doc__
+E           AssertionError: El proyecto se desarrollará a partir de un _fork_ del repositorio javnitram/SGE-odoo-it-yourself, 
+E                 sincronizando frecuentemente (mínimo 1 _commit_ &amp; _push_ por semana)
+E           assert 2 &gt; 5
+E            +  where 2 = len([&#39;commit 9ce41c659c72f6d379e43e1e29063ebc3630b450\n&#39;, &#39;commit e141bc4b6821aff1afdea0c32c046d54d6e90670\n&#39;])
+
+test_minimal_requirements.py:399: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFCalidad</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="6f2cc4ba-f88c-498f-813f-aa84a01eb885"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_odoo_disponible</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.01 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="9a6413d1-eeee-4398-976d-6858d964399b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_instalada</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.125 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="40d59ab6-17b2-4265-bd60-b5c15c1376fa"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_apps_entregadas_son_dependencias</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.017 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Parece que tu aplicación no depende de sge_libreria, al instalar la tuya esta no ha quedado instalada automáticamente - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+assert &#39;uninstalled&#39; == &#39;installed&#39;
+  
+  - installed
+  + uninstalled
+  ? ++</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFCalidad object at 0x714e5d676930&gt;, sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x714e5df7dfa0&gt;
+
+    def test_otras_apps_entregadas_son_dependencias(self, sut):
+        for third_party_app in buscar_dependencias_de_terceros_entregadas(sut):
+            ids = sut.execute_kw(&#39;ir.module.module&#39;, &#39;search&#39;, [[(&#39;name&#39;, &#39;=&#39;, third_party_app)]])
+            assert len(ids) == 1, f&#34;No se ha encontrado la aplicación {third_party_app}, ¿hay dependencia de esta aplicación?&#34;
+            app = sut.execute_kw(&#39;ir.module.module&#39;, &#39;read&#39;, [ids], {&#39;fields&#39;: [&#39;name&#39;, &#39;icon_image&#39;, &#39;state&#39;]}).pop()
+&gt;           assert app.get(&#34;state&#34;) == &#39;installed&#39;, f&#34;Parece que tu aplicación no depende de {third_party_app}, al instalar la tuya esta no ha quedado instalada automáticamente - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.&#34;
+E           AssertionError: Parece que tu aplicación no depende de sge_libreria, al instalar la tuya esta no ha quedado instalada automáticamente - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+E           assert &#39;uninstalled&#39; == &#39;installed&#39;
+E             
+E             - installed
+E             + uninstalled
+E             ? ++
+
+test_minimal_requirements.py:423: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="a1ad0a70-3a96-4c26-9b08-a97d1ed93525"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_no_hay_elementos_xml_comentados</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.004 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Se ha encontrado XML comentado {&#39;daj_vehicles_vehicle.xml&#39;: [&#39; &lt;group string=&#34;Equipamiento&#34; col=&#34;2&#34;&gt;\n                &lt;field name=&#34;equipment_ids&#34; widget=&#34;many2many_tags&#34; options=&#34;{\&#39;no_create\&#39;: False}&#34; /&gt;\n              &lt;/group&gt; &#39;], &#39;templates.xml&#39;: [&#39;\n        &lt;template id=&#34;listing&#34;&gt;\n          &lt;ul&gt;\n            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n              &lt;/a&gt;\n            &lt;/li&gt;\n          &lt;/ul&gt;\n        &lt;/template&gt;\n        &lt;template id=&#34;object&#34;&gt;\n          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n          &lt;dl&gt;\n            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n            &lt;/t&gt;\n          &lt;/dl&gt;\n        &lt;/template&gt;\n&#39;], &#39;demo.xml&#39;: [&#39;\n          &lt;record id=&#34;object0&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object1&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object2&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object3&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object4&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n          &lt;/record&gt;\n&#39;]} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+assert {&#39;daj_vehicles_vehicle.xml&#39;: [&#39; &lt;group string=&#34;Equipamiento&#34; col=&#34;2&#34;&gt;\n                &lt;field name=&#34;equipment_ids&#34; widget=&#34;many2many_tags&#34; options=&#34;{\&#39;no_create\&#39;: False}&#34; /&gt;\n              &lt;/group&gt; &#39;], &#39;templates.xml&#39;: [&#39;\n        &lt;template id=&#34;listing&#34;&gt;\n          &lt;ul&gt;\n            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n              &lt;/a&gt;\n            &lt;/li&gt;\n          &lt;/ul&gt;\n        &lt;/template&gt;\n        &lt;template id=&#34;object&#34;&gt;\n          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n          &lt;dl&gt;\n            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n            &lt;/t&gt;\n          &lt;/dl&gt;\n        &lt;/template&gt;\n&#39;], &#39;demo.xml&#39;: [&#39;\n          &lt;record id=&#34;object0&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object1&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object2&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object3&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object4&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n          &lt;/record&gt;\n&#39;]} == {}
+  
+  Left contains 3 more items:
+  {&#39;daj_vehicles_vehicle.xml&#39;: [&#39; &lt;group string=&#34;Equipamiento&#34; col=&#34;2&#34;&gt;\n&#39;
+                                &#39;                &lt;field name=&#34;equipment_ids&#34; &#39;
+                                &#39;widget=&#34;many2many_tags&#34; &#39;
+                                &#39;options=&#34;{\&#39;no_create\&#39;: False}&#34; /&gt;\n&#39;
+                                &#39;              &lt;/group&gt; &#39;],
+   &#39;demo.xml&#39;: [&#39;\n&#39;
+                &#39;          &lt;record id=&#34;object0&#34; &#39;
+                &#39;model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;
+                &#39;\n&#39;
+                &#39;          &lt;record id=&#34;object1&#34; &#39;
+                &#39;model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;
+                &#39;\n&#39;
+                &#39;          &lt;record id=&#34;object2&#34; &#39;
+                &#39;model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;
+                &#39;\n&#39;
+                &#39;          &lt;record id=&#34;object3&#34; &#39;
+                &#39;model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;
+                &#39;\n&#39;
+                &#39;          &lt;record id=&#34;object4&#34; &#39;
+                &#39;model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+                &#39;            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n&#39;
+                &#39;            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n&#39;
+                &#39;          &lt;/record&gt;\n&#39;],
+   &#39;templates.xml&#39;: [&#39;\n&#39;
+                     &#39;        &lt;template id=&#34;listing&#34;&gt;\n&#39;
+                     &#39;          &lt;ul&gt;\n&#39;
+                     &#39;            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n&#39;
+                     &#39;              &lt;a t-attf-href=&#34;#{ root }/objects/#{ &#39;
+                     &#39;object.id }&#34;&gt;\n&#39;
+                     &#39;                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n&#39;
+                     &#39;              &lt;/a&gt;\n&#39;
+                     &#39;            &lt;/li&gt;\n&#39;
+                     &#39;          &lt;/ul&gt;\n&#39;
+                     &#39;        &lt;/template&gt;\n&#39;
+                     &#39;        &lt;template id=&#34;object&#34;&gt;\n&#39;
+                     &#39;          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n&#39;
+                     &#39;          &lt;dl&gt;\n&#39;
+                     &#39;            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n&#39;
+                     &#39;              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n&#39;
+                     &#39;              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n&#39;
+                     &#39;            &lt;/t&gt;\n&#39;
+                     &#39;          &lt;/dl&gt;\n&#39;
+                     &#39;        &lt;/template&gt;\n&#39;]}
+  
+  Full diff:
+  - {}
+  + {
+  +     &#39;daj_vehicles_vehicle.xml&#39;: [
+  +         &#39; &lt;group string=&#34;Equipamiento&#34; col=&#34;2&#34;&gt;\n&#39;
+  +         &#39;                &lt;field name=&#34;equipment_ids&#34; widget=&#34;many2many_tags&#34; &#39;
+  +         &#39;options=&#34;{\&#39;no_create\&#39;: False}&#34; /&gt;\n&#39;
+  +         &#39;              &lt;/group&gt; &#39;,
+  +     ],
+  +     &#39;demo.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object0&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object1&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object2&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object3&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;
+  +         &#39;\n&#39;
+  +         &#39;          &lt;record id=&#34;object4&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n&#39;
+  +         &#39;            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n&#39;
+  +         &#39;          &lt;/record&gt;\n&#39;,
+  +     ],
+  +     &#39;templates.xml&#39;: [
+  +         &#39;\n&#39;
+  +         &#39;        &lt;template id=&#34;listing&#34;&gt;\n&#39;
+  +         &#39;          &lt;ul&gt;\n&#39;
+  +         &#39;            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n&#39;
+  +         &#39;              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n&#39;
+  +         &#39;                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n&#39;
+  +         &#39;              &lt;/a&gt;\n&#39;
+  +         &#39;            &lt;/li&gt;\n&#39;
+  +         &#39;          &lt;/ul&gt;\n&#39;
+  +         &#39;        &lt;/template&gt;\n&#39;
+  +         &#39;        &lt;template id=&#34;object&#34;&gt;\n&#39;
+  +         &#39;          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n&#39;
+  +         &#39;          &lt;dl&gt;\n&#39;
+  +         &#39;            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n&#39;
+  +         &#39;              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n&#39;
+  +         &#39;              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n&#39;
+  +         &#39;            &lt;/t&gt;\n&#39;
+  +         &#39;          &lt;/dl&gt;\n&#39;
+  +         &#39;        &lt;/template&gt;\n&#39;,
+  +     ],
+  + }</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFCalidad object at 0x714e5d676d50&gt;, sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x714e5df7dfa0&gt;
+
+    def test_no_hay_elementos_xml_comentados(self, sut):
+        # Expresión regular para verificar si la cadena parece tener marcado XML
+        xml_regex = re.compile(r&#39;&lt;[a-zA-Z0-9\s=&#34;\&#39;\.-]+&gt;(.|\n)*&lt;\/[a-zA-Z0-9\s=&#34;\&#39;\.-]+&gt;|&lt;[a-zA-Z0-9\s=&#34;\&#39;\.-]+\/&gt;&#39;)
+        ficheros_xml_comentado = {}
+        for f in sut.xml_files:
+            xml_comentado = []
+            parser = ET.XMLParser(target=ET.TreeBuilder(insert_comments=True))
+            tree = ET.parse(f, parser)
+    
+            # Get the comment nodes
+            for node in tree.iter():
+                if &#34;function Comment&#34; in str(node.tag) and re.findall(xml_regex, node.text):
+                    # Es un comentario y coincide con la expresión regular
+                    try:
+                        ET.ElementTree(ET.fromstring(f&#34;&lt;root&gt;{node.text}&lt;/root&gt;&#34;))
+                        xml_comentado.append(node.text)
+                    except:
+                        pass
+            if xml_comentado:
+                ficheros_xml_comentado[os.path.basename(f)] = xml_comentado
+    
+&gt;       assert ficheros_xml_comentado == {}, f&#34;Se ha encontrado XML comentado {ficheros_xml_comentado} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.&#34;
+E       AssertionError: Se ha encontrado XML comentado {&#39;daj_vehicles_vehicle.xml&#39;: [&#39; &lt;group string=&#34;Equipamiento&#34; col=&#34;2&#34;&gt;\n                &lt;field name=&#34;equipment_ids&#34; widget=&#34;many2many_tags&#34; options=&#34;{\&#39;no_create\&#39;: False}&#34; /&gt;\n              &lt;/group&gt; &#39;], &#39;templates.xml&#39;: [&#39;\n        &lt;template id=&#34;listing&#34;&gt;\n          &lt;ul&gt;\n            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n              &lt;/a&gt;\n            &lt;/li&gt;\n          &lt;/ul&gt;\n        &lt;/template&gt;\n        &lt;template id=&#34;object&#34;&gt;\n          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n          &lt;dl&gt;\n            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n            &lt;/t&gt;\n          &lt;/dl&gt;\n        &lt;/template&gt;\n&#39;], &#39;demo.xml&#39;: [&#39;\n          &lt;record id=&#34;object0&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object1&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object2&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object3&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object4&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n          &lt;/record&gt;\n&#39;]} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+E       assert {&#39;daj_vehicles_vehicle.xml&#39;: [&#39; &lt;group string=&#34;Equipamiento&#34; col=&#34;2&#34;&gt;\n                &lt;field name=&#34;equipment_ids&#34; widget=&#34;many2many_tags&#34; options=&#34;{\&#39;no_create\&#39;: False}&#34; /&gt;\n              &lt;/group&gt; &#39;], &#39;templates.xml&#39;: [&#39;\n        &lt;template id=&#34;listing&#34;&gt;\n          &lt;ul&gt;\n            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n              &lt;/a&gt;\n            &lt;/li&gt;\n          &lt;/ul&gt;\n        &lt;/template&gt;\n        &lt;template id=&#34;object&#34;&gt;\n          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n          &lt;dl&gt;\n            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n            &lt;/t&gt;\n          &lt;/dl&gt;\n        &lt;/template&gt;\n&#39;], &#39;demo.xml&#39;: [&#39;\n          &lt;record id=&#34;object0&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object1&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object2&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object3&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n          &lt;/record&gt;\n\n          &lt;record id=&#34;object4&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n          &lt;/record&gt;\n&#39;]} == {}
+E         
+E         Left contains 3 more items:
+E         {&#39;daj_vehicles_vehicle.xml&#39;: [&#39; &lt;group string=&#34;Equipamiento&#34; col=&#34;2&#34;&gt;\n&#39;
+E                                       &#39;                &lt;field name=&#34;equipment_ids&#34; &#39;
+E                                       &#39;widget=&#34;many2many_tags&#34; &#39;
+E                                       &#39;options=&#34;{\&#39;no_create\&#39;: False}&#34; /&gt;\n&#39;
+E                                       &#39;              &lt;/group&gt; &#39;],
+E          &#39;demo.xml&#39;: [&#39;\n&#39;
+E                       &#39;          &lt;record id=&#34;object0&#34; &#39;
+E                       &#39;model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n&#39;
+E                       &#39;          &lt;/record&gt;\n&#39;
+E                       &#39;\n&#39;
+E                       &#39;          &lt;record id=&#34;object1&#34; &#39;
+E                       &#39;model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n&#39;
+E                       &#39;          &lt;/record&gt;\n&#39;
+E                       &#39;\n&#39;
+E                       &#39;          &lt;record id=&#34;object2&#34; &#39;
+E                       &#39;model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n&#39;
+E                       &#39;          &lt;/record&gt;\n&#39;
+E                       &#39;\n&#39;
+E                       &#39;          &lt;record id=&#34;object3&#34; &#39;
+E                       &#39;model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n&#39;
+E                       &#39;          &lt;/record&gt;\n&#39;
+E                       &#39;\n&#39;
+E                       &#39;          &lt;record id=&#34;object4&#34; &#39;
+E                       &#39;model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n&#39;
+E                       &#39;            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n&#39;
+E                       &#39;          &lt;/record&gt;\n&#39;],
+E          &#39;templates.xml&#39;: [&#39;\n&#39;
+E                            &#39;        &lt;template id=&#34;listing&#34;&gt;\n&#39;
+E                            &#39;          &lt;ul&gt;\n&#39;
+E                            &#39;            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n&#39;
+E                            &#39;              &lt;a t-attf-href=&#34;#{ root }/objects/#{ &#39;
+E                            &#39;object.id }&#34;&gt;\n&#39;
+E                            &#39;                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n&#39;
+E                            &#39;              &lt;/a&gt;\n&#39;
+E                            &#39;            &lt;/li&gt;\n&#39;
+E                            &#39;          &lt;/ul&gt;\n&#39;
+E                            &#39;        &lt;/template&gt;\n&#39;
+E                            &#39;        &lt;template id=&#34;object&#34;&gt;\n&#39;
+E                            &#39;          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n&#39;
+E                            &#39;          &lt;dl&gt;\n&#39;
+E                            &#39;            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n&#39;
+E                            &#39;              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n&#39;
+E                            &#39;              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n&#39;
+E                            &#39;            &lt;/t&gt;\n&#39;
+E                            &#39;          &lt;/dl&gt;\n&#39;
+E                            &#39;        &lt;/template&gt;\n&#39;]}
+E         
+E         Full diff:
+E         - {}
+E         + {
+E         +     &#39;daj_vehicles_vehicle.xml&#39;: [
+E         +         &#39; &lt;group string=&#34;Equipamiento&#34; col=&#34;2&#34;&gt;\n&#39;
+E         +         &#39;                &lt;field name=&#34;equipment_ids&#34; widget=&#34;many2many_tags&#34; &#39;
+E         +         &#39;options=&#34;{\&#39;no_create\&#39;: False}&#34; /&gt;\n&#39;
+E         +         &#39;              &lt;/group&gt; &#39;,
+E         +     ],
+E         +     &#39;demo.xml&#39;: [
+E         +         &#39;\n&#39;
+E         +         &#39;          &lt;record id=&#34;object0&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 0&lt;/field&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;value&#34;&gt;0&lt;/field&gt;\n&#39;
+E         +         &#39;          &lt;/record&gt;\n&#39;
+E         +         &#39;\n&#39;
+E         +         &#39;          &lt;record id=&#34;object1&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 1&lt;/field&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;value&#34;&gt;10&lt;/field&gt;\n&#39;
+E         +         &#39;          &lt;/record&gt;\n&#39;
+E         +         &#39;\n&#39;
+E         +         &#39;          &lt;record id=&#34;object2&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 2&lt;/field&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;value&#34;&gt;20&lt;/field&gt;\n&#39;
+E         +         &#39;          &lt;/record&gt;\n&#39;
+E         +         &#39;\n&#39;
+E         +         &#39;          &lt;record id=&#34;object3&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 3&lt;/field&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;value&#34;&gt;30&lt;/field&gt;\n&#39;
+E         +         &#39;          &lt;/record&gt;\n&#39;
+E         +         &#39;\n&#39;
+E         +         &#39;          &lt;record id=&#34;object4&#34; model=&#34;daj_vehicles.daj_vehicles&#34;&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;name&#34;&gt;Object 4&lt;/field&gt;\n&#39;
+E         +         &#39;            &lt;field name=&#34;value&#34;&gt;40&lt;/field&gt;\n&#39;
+E         +         &#39;          &lt;/record&gt;\n&#39;,
+E         +     ],
+E         +     &#39;templates.xml&#39;: [
+E         +         &#39;\n&#39;
+E         +         &#39;        &lt;template id=&#34;listing&#34;&gt;\n&#39;
+E         +         &#39;          &lt;ul&gt;\n&#39;
+E         +         &#39;            &lt;li t-foreach=&#34;objects&#34; t-as=&#34;object&#34;&gt;\n&#39;
+E         +         &#39;              &lt;a t-attf-href=&#34;#{ root }/objects/#{ object.id }&#34;&gt;\n&#39;
+E         +         &#39;                &lt;t t-esc=&#34;object.display_name&#34;/&gt;\n&#39;
+E         +         &#39;              &lt;/a&gt;\n&#39;
+E         +         &#39;            &lt;/li&gt;\n&#39;
+E         +         &#39;          &lt;/ul&gt;\n&#39;
+E         +         &#39;        &lt;/template&gt;\n&#39;
+E         +         &#39;        &lt;template id=&#34;object&#34;&gt;\n&#39;
+E         +         &#39;          &lt;h1&gt;&lt;t t-esc=&#34;object.display_name&#34;/&gt;&lt;/h1&gt;\n&#39;
+E         +         &#39;          &lt;dl&gt;\n&#39;
+E         +         &#39;            &lt;t t-foreach=&#34;object._fields&#34; t-as=&#34;field&#34;&gt;\n&#39;
+E         +         &#39;              &lt;dt&gt;&lt;t t-esc=&#34;field&#34;/&gt;&lt;/dt&gt;\n&#39;
+E         +         &#39;              &lt;dd&gt;&lt;t t-esc=&#34;object[field]&#34;/&gt;&lt;/dd&gt;\n&#39;
+E         +         &#39;            &lt;/t&gt;\n&#39;
+E         +         &#39;          &lt;/dl&gt;\n&#39;
+E         +         &#39;        &lt;/template&gt;\n&#39;,
+E         +     ],
+E         + }
+
+test_minimal_requirements.py:453: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="ba6df128-e8e8-4ce4-9d32-48fde2ff7a57"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_no_hay_codigo_python_comentado</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.27 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="727adc9a-dae0-4fc6-ba64-462be00bb327"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_log_servidor_sin_errores</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestOtros</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="db8cd0ad-696c-4849-8c70-765c58ce4ec0"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_log_sin_warnings</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesKanban</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="781fcaf7-b498-4ee0-b199-ec08d186e257"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban[/kanban]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.003 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="8cafe018-b258-4779-913e-ff7b10d45fdb"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban[/kanban[@default_group_by]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.003 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="c236a374-1f2b-494e-8ac3-664b3a0da33e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban_imagen[/img]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.003 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="c7ba3d72-45b7-4fd3-8512-15b0013217e5"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban_imagen[/field[@preview_image]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.003 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="12c673ec-61b0-49b1-bd29-406358f53e04"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban_imagen[/field[@widget=&#34;image&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.003 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesBusqueda</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="3b1a595c-9360-4a53-9e1c-ec7dbf7c128c"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search[/search]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.003 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="f880c13c-fc02-44f7-9d48-3a425bc17ab7"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search_compleja[/filter[@domain]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.003 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="293ae891-b3f9-4b45-9fb2-a13e4427b2b8"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search_compleja[/group//filter[@context]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.003 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesOtrasVistas</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="0d5a65a0-246d-4ec5-bfd3-eac0f4d1dbd1"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[activity]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.033 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="2bd302eb-1127-4e6a-8d7a-db11eb48e5df"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[calendar]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.033 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="7c7a82e5-6f39-4be4-b539-f823777740e9"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[graph]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.034 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="b96a0915-6376-467d-b2ba-581d0d56316c"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[pivot]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.034 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesConstraints</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="e332a92f-9184-40bb-b540-44111cb3e0f1"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_constraints_sql</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.022 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesSeguridadAvanzada</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="92589238-bd43-45eb-a149-0d5f6597cbbd"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_seguridad_con_grupos_propios</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesDatosAvanzados</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="e7afdb76-0ff2-4a84-bd39-35861c8bc22c"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[binary]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.054 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="19ff1330-8495-4818-840e-27a3a917d622"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[many2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.054 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="84b10f29-532c-4f33-b746-88303d89cba1"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[many2one]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.064 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesHerenciaVistas</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="b195184c-2ce9-4b02-9773-82e23143f542"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_vistas_con_position</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.005 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="65869c2c-8ff9-4564-b2e7-ba87bd34e757"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_vistas_con_inherit_id</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesHerenciaModelos</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="b3cea930-6a4c-4e99-bd07-dd609fc09fe6"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_existentes_modificados_por_herencia</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="1fba76d7-0780-4fcf-a871-503a9a9b793b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_nuevos_modelos_con_herencia</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesTraducciones</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="3da4b52c-9984-404e-82c8-189cc8d90424"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_i18n</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesInformes</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="f715b72e-76a8-4267-aef8-aec5bb67c7a6"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes[report]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="34d4f53c-d23f-4b91-b4ef-4799c7449851"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes[template]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="00a40e47-4ab1-46cd-83c4-03e49a6d5a47"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes_complejos[/t[@t-foreach]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="0c150d05-8af1-4c32-9889-0b80a25a8ac6"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes_complejos[/img[@t-att-src]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="016d85cd-3945-4cae-8042-26d940e004b5"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes_complejos[/t[@t-call and not(@t-call=&#34;web.external_layout&#34; or @t-call=&#34;web.html_container&#34;)]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesChatter</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="1c4fa4ad-cfcc-4f20-b9f9-95274fbe1d59"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_chatter[mail_thread]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="727a188a-6cc1-4570-8366-d723d9e31bc8"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_chatter[mail_activity_mixin]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="d4c67ff2-492d-46b8-89fd-60d31836649b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_chatter_tracking</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.014 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="83355a8c-156e-4b8e-af81-08bb4cf647f4"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_div</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.003 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="141e38df-98d6-48c6-9fc1-dd27ed426145"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@name=&#34;message_follower_ids&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="7d8f4d1c-fc4b-4759-adc2-3487bcce109c"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@name=&#34;activity_ids&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="393ffab9-5d45-436b-96f3-0843b974dc94"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@name=&#34;message_ids&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="397db06a-f040-4596-a1ad-ac9a75726f1e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@widget=&#34;mail_followers&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="29cedf79-d5d9-44da-988c-63167f0c0c7a"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@widget=&#34;mail_thread&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.002 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="85486792-f678-49e5-bee3-f4b8731eddfe"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@widget=&#34;mail_activity&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>1.359 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+
+
+<p class="footer">
+    Generated by junit2html
+</p>
+</body>
+</html>

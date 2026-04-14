@@ -1,0 +1,2695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>gsm_prep_planner-pytest.xml</title>
+    <style type="text/css">
+        body {
+    background-color: white;
+    padding-bottom: 20em;
+    margin: 0;
+    min-height: 15cm;
+}
+
+h1, h2, h3, h4, h5, h6, h7 {
+    font-family: sans-serif;
+}
+
+h1 {
+    background-color: #007acc;
+    color: white;
+    padding: 3mm;
+    margin-top: 0;
+    margin-bottom: 1mm;
+}
+
+.footer {
+    font-style: italic;
+    font-size: small;
+    text-align: right;
+    padding: 1em;
+}
+
+.testsuite {
+    padding-bottom: 2em;
+    margin-left: 1em;
+}
+
+.proplist {
+    width: 100%;
+    margin-bottom: 2em;
+    border-collapse: collapse;
+    border: 1px solid grey;
+}
+
+.proplist th {
+    background-color: silver;
+    width: 5em;
+    padding: 2px;
+    padding-right: 1em;
+    text-align: left;
+}
+
+.proplist td {
+    padding: 2px;
+}
+
+.index-table {
+    width: 90%;
+    margin-left: 1em;
+}
+
+.index-table td {
+    vertical-align: top;
+    max-width: 200px;
+    word-wrap: break-word;
+}
+
+.failure-index {
+
+}
+
+.toc {
+    margin-bottom: 2em;
+    font-family: monospace;
+}
+
+.stdio, pre {
+    min-height: 1em;
+    background-color: #1e1e1e;
+    color: silver;
+    padding: 0.5em;
+}
+.tdpre {
+    background-color: #1e1e1e;
+}
+
+.test {
+    margin-left: 0.5cm;
+}
+
+.outcome {
+    border-left: 1em;
+    padding: 2px;
+}
+
+.outcome-failed {
+    border-left: 1em solid lightcoral;
+}
+
+.outcome-passed {
+    border-left: 1em solid lightgreen;
+}
+
+.outcome-skipped {
+    border-left: 1em dotted silver;
+}
+
+.stats-table {
+}
+
+.stats-table td {
+    min-width: 4em;
+    text-align: right;
+}
+
+.stats-table .failed {
+    background-color: lightcoral;
+}
+
+.stats-table .passed {
+    background-color: lightgreen;
+}
+
+.matrix-table {
+    table-layout: fixed;
+    border-spacing: 0;
+    width: available;
+    margin-left: 1em;
+}
+
+.matrix-table td {
+    vertical-align: center;
+}
+
+.matrix-table td:last-child {
+    width: 0;
+}
+
+.matrix-table tr:hover {
+    background-color: yellow;
+}
+
+.matrix-axis-name {
+    white-space: nowrap;
+    padding-right: 0.5em;
+    border-left: 1px solid black;
+    border-top: 1px solid black;
+    text-align: right;
+}
+
+.matrix-axis-line {
+    border-left: 1px solid black;
+    width: 0.5em;
+}
+
+.matrix-classname {
+    text-align: left;
+    width: 100%;
+    border-top: 2px solid grey;
+    border-bottom: 1px solid silver;
+}
+
+.matrix-casename {
+    text-align: left;
+    font-weight: normal;
+    font-style: italic;
+    padding-left: 1em;
+    border-bottom: 1px solid silver;
+}
+
+.matrix-result {
+    display: block;
+    width: 1em;
+    text-align: center;
+    padding: 1mm;
+    margin: 0;
+}
+
+.matrix-result-combined {
+    white-space: nowrap;
+    padding-right: 0.2em;
+    text-align: right;
+}
+
+.matrix-result-failed {
+    background-color: lightcoral;
+}
+
+.matrix-result-passed {
+    background-color: lightgreen;
+}
+
+.matrix-result-skipped {
+    background-color: lightyellow;
+}
+
+.matrix-even {
+    background-color: lightgray;
+}
+    </style>
+</head>
+<body>
+    
+<h1>
+    Test Report : gsm_prep_planner-pytest.xml
+</h1>
+<a id="toc"></a>
+<table class="index-table">
+    <tr>
+        <td>
+            <ul class="toc">
+            
+                
+                <li>test_minimal_requirements.TestRNF1
+                <ul>
+                    
+                    <li><a href="#038ca2c0-556f-457d-ae4f-a1109d96ac84">test_app_tiene_al_menos_4_modelos</a></li>
+                    
+                    <li><a href="#ff6e9da4-8de1-46c5-b4f2-7d7a61b8a119">test_modelos_en_ficheros_individuales</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF2
+                <ul>
+                    
+                    <li><a href="#97797352-94e6-43b0-aa6b-996934f050cc">test_relacion_many2many</a></li>
+                    
+                    <li><a href="#305a4452-e92f-4d17-9dbb-2eb30607912e">test_modelos_tienen_algun_campo_relacion[one2many]</a></li>
+                    
+                    <li><a href="#b2ec2aa7-b2cd-4146-bb4a-8a9ca3861f11">test_modelos_tienen_algun_campo_relacion[many2one]</a></li>
+                    
+                    <li><a href="#33900900-e063-49aa-a12f-a7be87a617ec">test_unknown_comodel_name</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF3
+                <ul>
+                    
+                    <li><a href="#e5257b5d-2b64-406a-aa38-23c5c2935215">test_modelos_tienen_vista[tree]</a></li>
+                    
+                    <li><a href="#74e9eb66-8e5a-4864-b860-1f05ab75d599">test_modelos_tienen_vista[form]</a></li>
+                    
+                    <li><a href="#03f93813-032f-4106-b36c-387fb2603635">test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</a></li>
+                    
+                    <li><a href="#dd4944ae-d1f6-42ff-aaaf-360f93d0420c">test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF4
+                <ul>
+                    
+                    <li><a href="#1180c57e-6917-4afc-89f3-8edf56117efd">test_vistas_en_ficheros_individuales</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF5
+                <ul>
+                    
+                    <li><a href="#0b5484ea-90d5-4c60-9b5d-c84b0fe6ca6e">test_modelos_tienen_algun_posible_campo_imagen</a></li>
+                    
+                    <li><a href="#3314913c-83c1-4718-a6f5-5a2fa0b17d55">test_alguna_vista_tiene_campo_imagen</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF6
+                <ul>
+                    
+                    <li><a href="#880cfc26-abff-4acd-baea-18e51386a575">test_modelos_tienen_acciones</a></li>
+                    
+                    <li><a href="#7e7ecabb-105a-43a0-8662-95a374816c78">test_hay_elementos_de_menu[.//menuitem[@action]]</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF7
+                <ul>
+                    
+                    <li><a href="#227e4649-b4cb-4780-a31d-7f7b1a2a0019">test_modelos_tienen_permisos</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF8
+                <ul>
+                    
+                    <li><a href="#74185607-b2be-4155-8a53-3d3663b157d1">test_app_tiene_icono</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNF9
+                <ul>
+                    
+                    <li><a href="#75c612ed-4263-49c5-adae-e55b185979a8">test_modelos_tienen_datos_demo</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFGit
+                <ul>
+                    
+                    <li><a href="#9ced6c45-e7f5-4749-a94f-bb0302d3812d">test_git_commit_frecuentes</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFCalidad
+                <ul>
+                    
+                    <li><a href="#b2374f6b-75c9-425a-b8e0-4a47f6f4f6ec">test_odoo_disponible</a></li>
+                    
+                    <li><a href="#a4bf8164-5a02-4f3f-bde7-9f81171a2ff1">test_app_instalada</a></li>
+                    
+                    <li><a href="#ef07bcdb-a694-4251-a384-b21247262a86">test_otras_apps_entregadas_son_dependencias</a></li>
+                    
+                    <li><a href="#c8f2321e-f2de-4189-b6af-fa678578938e">test_no_hay_elementos_xml_comentados</a></li>
+                    
+                    <li><a href="#b93647d0-73ec-47ff-95f9-015e3ee67566">test_no_hay_codigo_python_comentado</a></li>
+                    
+                    <li><a href="#2a45c846-32bc-47a9-99c7-a87367d4134b">test_log_servidor_sin_errores</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestOtros
+                <ul>
+                    
+                    <li><a href="#5e1aaf73-956f-4563-a6c8-f9338604f355">test_log_sin_warnings</a></li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesKanban
+                <ul>
+                    
+                    <li><a href="#20f2f981-a9e5-4b68-a9fe-9dd777d3b93a">test_vista_kanban[/kanban]</a>[s]</li>
+                    
+                    <li><a href="#a6fdfc1c-c141-410a-8b4b-91df125f0223">test_vista_kanban[/kanban[@default_group_by]]</a>[s]</li>
+                    
+                    <li><a href="#5cd9fc7b-8a02-4c9f-b343-8006f402e4b3">test_vista_kanban_imagen[/img]</a>[s]</li>
+                    
+                    <li><a href="#4487df24-37fe-410d-ba5d-bd576bff7fc8">test_vista_kanban_imagen[/field[@preview_image]]</a>[s]</li>
+                    
+                    <li><a href="#891a0995-4f4e-4a49-908b-0cbb2288248e">test_vista_kanban_imagen[/field[@widget=&#34;image&#34;]]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesBusqueda
+                <ul>
+                    
+                    <li><a href="#34fe16c9-ecd1-4eec-ae6a-fe6eccbb2df6">test_vista_search[/search]</a>[s]</li>
+                    
+                    <li><a href="#3ae18ebf-2f32-481a-92ae-ef672c11769a">test_vista_search_compleja[/filter[@domain]]</a>[s]</li>
+                    
+                    <li><a href="#7427f9cb-6b71-4783-8b2f-812592746d27">test_vista_search_compleja[/group//filter[@context]]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesOtrasVistas
+                <ul>
+                    
+                    <li><a href="#36baefdf-1009-4cb4-a6d8-3c5935861d29">test_otras_vistas_adicionales[activity]</a>[s]</li>
+                    
+                    <li><a href="#7d3f5377-54dd-4651-aa1b-bf1592d4b626">test_otras_vistas_adicionales[calendar]</a>[s]</li>
+                    
+                    <li><a href="#98f1fa20-02b6-46b7-a8d8-42df956af883">test_otras_vistas_adicionales[graph]</a>[s]</li>
+                    
+                    <li><a href="#6223f1f5-6e7f-4d13-a999-44059003162e">test_otras_vistas_adicionales[pivot]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesConstraints
+                <ul>
+                    
+                    <li><a href="#16f3639e-6fc0-4d04-8f6a-ee698e4da839">test_constraints_sql</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesSeguridadAvanzada
+                <ul>
+                    
+                    <li><a href="#da1280fa-db50-48b0-95c5-00c9017df3cc">test_seguridad_con_grupos_propios</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesDatosAvanzados
+                <ul>
+                    
+                    <li><a href="#d76ccad1-b18d-4647-830f-81e30994256b">test_datos_maestros_o_demo_avanzados[binary]</a>[s]</li>
+                    
+                    <li><a href="#c73d0941-2f74-46c3-b167-e8fd81a8fd59">test_datos_maestros_o_demo_avanzados[many2many]</a>[s]</li>
+                    
+                    <li><a href="#075d3575-beb0-46b4-88bd-895cd8ecc4cc">test_datos_maestros_o_demo_avanzados[many2one]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesHerenciaVistas
+                <ul>
+                    
+                    <li><a href="#c0fbf2f1-c029-4b4a-830a-ed93b0bfd99c">test_herencia_en_vistas_con_position</a>[s]</li>
+                    
+                    <li><a href="#37602b51-14e8-4abc-9463-152a6c6da113">test_herencia_en_vistas_con_inherit_id</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesHerenciaModelos
+                <ul>
+                    
+                    <li><a href="#43d95980-4eec-4936-9b15-f05ce605eaca">test_modelos_existentes_modificados_por_herencia</a>[s]</li>
+                    
+                    <li><a href="#db61b2a4-635e-4908-9f6c-06ea34d323d0">test_nuevos_modelos_con_herencia</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesTraducciones
+                <ul>
+                    
+                    <li><a href="#3b6137b2-875c-4021-8c31-03cef9744e25">test_i18n</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesInformes
+                <ul>
+                    
+                    <li><a href="#85bd3edf-bb9f-45b1-b9f6-b16827866d32">test_informes[report]</a>[s]</li>
+                    
+                    <li><a href="#2f77f8fe-7fe1-4269-af12-c6f90c365ba0">test_informes[template]</a>[s]</li>
+                    
+                    <li><a href="#6e55ce20-3e05-45c6-9ab3-bf1dbf9a055b">test_informes_complejos[/t[@t-foreach]]</a>[s]</li>
+                    
+                    <li><a href="#b9a9b436-3e1d-451a-9c15-4500b0179dab">test_informes_complejos[/img[@t-att-src]]</a>[s]</li>
+                    
+                    <li><a href="#ecc67218-6fd6-4e24-b867-d085fe9e232a">test_informes_complejos[/t[@t-call and not(@t-call=&#34;web.external_layout&#34; or @t-call=&#34;web.html_container&#34;)]]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+                <li>test_minimal_requirements.TestRNFAdicionalesChatter
+                <ul>
+                    
+                    <li><a href="#cc15695b-297a-4b70-b02a-e37531948204">test_chatter[mail_thread]</a>[s]</li>
+                    
+                    <li><a href="#d56ea549-8789-4d95-b7bc-7bec22ebb8d5">test_chatter[mail_activity_mixin]</a>[s]</li>
+                    
+                    <li><a href="#ac0f33cf-66c5-4448-9617-b1cc47326c8c">test_chatter_tracking</a>[s]</li>
+                    
+                    <li><a href="#4d71feb8-a13e-4a5f-90c1-fc91d40fbe50">test_vista_chatter_div</a>[s]</li>
+                    
+                    <li><a href="#c1b22f48-2afb-4206-97c0-6880f082f37b">test_vista_chatter_fields[.//field[@name=&#34;message_follower_ids&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#e21b0726-e4f1-4842-a6f0-985d0f93d08f">test_vista_chatter_fields[.//field[@name=&#34;activity_ids&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#ac178979-1e7a-4950-b3b0-9bbf53acd7f9">test_vista_chatter_fields[.//field[@name=&#34;message_ids&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#3ed0c999-a8d0-4ada-ac5b-ae645cff2f7b">test_vista_chatter_fields[.//field[@widget=&#34;mail_followers&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#bb4c8070-63ac-4834-ba33-79603b099d18">test_vista_chatter_fields[.//field[@widget=&#34;mail_thread&#34;]]</a>[s]</li>
+                    
+                    <li><a href="#092f4126-e72a-42e4-99f4-8c5b1b779a50">test_vista_chatter_fields[.//field[@widget=&#34;mail_activity&#34;]]</a>[s]</li>
+                    
+                </ul>
+                </li>
+                
+            
+            </ul>
+        </td>
+        <td class="failure-index">
+            <ul class="toc">
+            
+                
+                    
+                    
+                    <li><a href="#038ca2c0-556f-457d-ae4f-a1109d96ac84">[F] test_minimal_requirements.TestRNF1 : test_app_tiene_al_menos_4_modelos</a></li>
+                    
+                    
+                    
+                    <li><a href="#ff6e9da4-8de1-46c5-b4f2-7d7a61b8a119">[F] test_minimal_requirements.TestRNF1 : test_modelos_en_ficheros_individuales</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#97797352-94e6-43b0-aa6b-996934f050cc">[F] test_minimal_requirements.TestRNF2 : test_relacion_many2many</a></li>
+                    
+                    
+                    
+                    <li><a href="#305a4452-e92f-4d17-9dbb-2eb30607912e">[F] test_minimal_requirements.TestRNF2 : test_modelos_tienen_algun_campo_relacion[one2many]</a></li>
+                    
+                    
+                    
+                    <li><a href="#b2ec2aa7-b2cd-4146-bb4a-8a9ca3861f11">[F] test_minimal_requirements.TestRNF2 : test_modelos_tienen_algun_campo_relacion[many2one]</a></li>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#e5257b5d-2b64-406a-aa38-23c5c2935215">[F] test_minimal_requirements.TestRNF3 : test_modelos_tienen_vista[tree]</a></li>
+                    
+                    
+                    
+                    <li><a href="#74e9eb66-8e5a-4864-b860-1f05ab75d599">[F] test_minimal_requirements.TestRNF3 : test_modelos_tienen_vista[form]</a></li>
+                    
+                    
+                    
+                    <li><a href="#03f93813-032f-4106-b36c-387fb2603635">[F] test_minimal_requirements.TestRNF3 : test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</a></li>
+                    
+                    
+                    
+                    <li><a href="#dd4944ae-d1f6-42ff-aaaf-360f93d0420c">[F] test_minimal_requirements.TestRNF3 : test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#0b5484ea-90d5-4c60-9b5d-c84b0fe6ca6e">[F] test_minimal_requirements.TestRNF5 : test_modelos_tienen_algun_posible_campo_imagen</a></li>
+                    
+                    
+                    
+                    <li><a href="#3314913c-83c1-4718-a6f5-5a2fa0b17d55">[F] test_minimal_requirements.TestRNF5 : test_alguna_vista_tiene_campo_imagen</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#880cfc26-abff-4acd-baea-18e51386a575">[F] test_minimal_requirements.TestRNF6 : test_modelos_tienen_acciones</a></li>
+                    
+                    
+                    
+                    <li><a href="#7e7ecabb-105a-43a0-8662-95a374816c78">[F] test_minimal_requirements.TestRNF6 : test_hay_elementos_de_menu[.//menuitem[@action]]</a></li>
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#227e4649-b4cb-4780-a31d-7f7b1a2a0019">[F] test_minimal_requirements.TestRNF7 : test_modelos_tienen_permisos</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    <li><a href="#75c612ed-4263-49c5-adae-e55b185979a8">[F] test_minimal_requirements.TestRNF9 : test_modelos_tienen_datos_demo</a></li>
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    <li><a href="#a4bf8164-5a02-4f3f-bde7-9f81171a2ff1">[F] test_minimal_requirements.TestRNFCalidad : test_app_instalada</a></li>
+                    
+                    
+                    
+                    <li><a href="#ef07bcdb-a694-4251-a384-b21247262a86">[F] test_minimal_requirements.TestRNFCalidad : test_otras_apps_entregadas_son_dependencias</a></li>
+                    
+                    
+                    
+                    <li><a href="#c8f2321e-f2de-4189-b6af-fa678578938e">[F] test_minimal_requirements.TestRNFCalidad : test_no_hay_elementos_xml_comentados</a></li>
+                    
+                    
+                    
+                    <li><a href="#b93647d0-73ec-47ff-95f9-015e3ee67566">[F] test_minimal_requirements.TestRNFCalidad : test_no_hay_codigo_python_comentado</a></li>
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                
+            
+            </ul>
+        </td>
+    </tr>
+</table>
+
+
+    <div class="testsuite">
+        <h2>Test Suite: pytest</h2>
+        <a id="fe5d9893-5a04-48ec-91f1-6ac977a72cac"></a>
+        
+        
+        <h3>Results</h3>
+        <table class="proplist">
+            <tr>
+                <th>Duration</th><td>74.214 sec</td>
+            </tr>
+            <tr>
+                <th>Tests</th><td>63</td>
+            </tr>
+            <tr>
+                <th>Failures</th><td>19</td>
+            </tr>
+        </table>
+
+        <div class="testclasses">
+            <h3>Tests</h3>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF1</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="038ca2c0-556f-457d-ae4f-a1109d96ac84"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_tiene_al_menos_4_modelos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>70.376 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No se han implementado suficientes clases o el atributo _name de alguna de ellas no tiene prefijo &#39;gsm_prep_planner.&#39;
+assert 0 &gt;= 4
+ +  where 0 = len([])
+ +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.basename_app_models
+ +  and   4 = &lt;test_minimal_requirements.TestRNF1 object at 0x7a38b726e5c0&gt;.MIN</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF1 object at 0x7a38b726e5c0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;
+
+    def test_app_tiene_al_menos_4_modelos(self, sut):
+&gt;       assert len(sut.basename_app_models) &gt;= self.MIN, f&#34;No se han implementado suficientes clases o el atributo _name de alguna de ellas no tiene prefijo &#39;{sut.app_prefix}.&#39;&#34;
+E       AssertionError: No se han implementado suficientes clases o el atributo _name de alguna de ellas no tiene prefijo &#39;gsm_prep_planner.&#39;
+E       assert 0 &gt;= 4
+E        +  where 0 = len([])
+E        +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.basename_app_models
+E        +  and   4 = &lt;test_minimal_requirements.TestRNF1 object at 0x7a38b726e5c0&gt;.MIN
+
+test_minimal_requirements.py:250: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="ff6e9da4-8de1-46c5-b4f2-7d7a61b8a119"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_en_ficheros_individuales</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No coinciden el número de modelos de datos de la aplicación con el número de ficheros Python en el paquete models - Al menos **4 clases**, implementadas en ficheros diferentes.
+assert (0 + 0) == 4
+ +  where 0 = len([])
+ +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.basename_app_models
+ +  and   0 = len([])
+ +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.basename_app_extended_existing_models
+ +  and   4 = len([&#39;gsm_prep_planner_recipe_ingredient.py&#39;, &#39;gsm_prep_planner_period.py&#39;, &#39;product_template.py&#39;, &#39;gsm_prep_planner_recipe.py&#39;])
+ +    where [&#39;gsm_prep_planner_recipe_ingredient.py&#39;, &#39;gsm_prep_planner_period.py&#39;, &#39;product_template.py&#39;, &#39;gsm_prep_planner_recipe.py&#39;] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.basename_model_files</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF1 object at 0x7a38b726e920&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;
+
+    def test_modelos_en_ficheros_individuales(self, sut):
+&gt;       assert (len(sut.basename_app_models) + len(sut.basename_app_extended_existing_models)) == len(sut.basename_model_files), f&#34;No coinciden el número de modelos de datos de la aplicación con el número de ficheros Python en el paquete models - {self.__doc__}&#34;
+E       AssertionError: No coinciden el número de modelos de datos de la aplicación con el número de ficheros Python en el paquete models - Al menos **4 clases**, implementadas en ficheros diferentes.
+E       assert (0 + 0) == 4
+E        +  where 0 = len([])
+E        +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.basename_app_models
+E        +  and   0 = len([])
+E        +    where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.basename_app_extended_existing_models
+E        +  and   4 = len([&#39;gsm_prep_planner_recipe_ingredient.py&#39;, &#39;gsm_prep_planner_period.py&#39;, &#39;product_template.py&#39;, &#39;gsm_prep_planner_recipe.py&#39;])
+E        +    where [&#39;gsm_prep_planner_recipe_ingredient.py&#39;, &#39;gsm_prep_planner_period.py&#39;, &#39;product_template.py&#39;, &#39;gsm_prep_planner_recipe.py&#39;] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.basename_model_files
+
+test_minimal_requirements.py:253: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF2</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="97797352-94e6-43b0-aa6b-996934f050cc"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_relacion_many2many</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.021 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Diferentes tipos de campos simples y relacionales (_one2many_, _many2one_ y _many2many_).
+      En tu proyecto se debe implementar **al menos uno de cada tipo**.
+assert 0 &gt;= 1
+ +  where 0 = len([])
+ +  and   1 = &lt;test_minimal_requirements.TestRNF2 object at 0x7a38b726ed70&gt;.MIN</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF2 object at 0x7a38b726ed70&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;
+
+    def test_relacion_many2many(self, sut):
+            app_id = sut.execute_kw(&#39;ir.module.module&#39;, &#39;search&#39;, [[(&#39;name&#39;, &#39;=&#39;, sut.app_prefix)]]).pop()
+            ids = sut.execute_kw(&#39;ir.model.relation&#39;, &#39;search&#39;, [[(&#39;module&#39;, &#39;=&#39;, app_id)]])
+            app_many2many_rels = sut.execute_kw(&#39;ir.model.relation&#39;, &#39;read&#39;, [ids], {&#39;fields&#39;: [&#39;name&#39;, &#39;model&#39;, &#39;module&#39;, &#39;display_name&#39;]})
+&gt;           assert len(app_many2many_rels) &gt;= self.MIN, self.__doc__
+E           AssertionError: Diferentes tipos de campos simples y relacionales (_one2many_, _many2one_ y _many2many_).
+E                 En tu proyecto se debe implementar **al menos uno de cada tipo**.
+E           assert 0 &gt;= 1
+E            +  where 0 = len([])
+E            +  and   1 = &lt;test_minimal_requirements.TestRNF2 object at 0x7a38b726ed70&gt;.MIN
+
+test_minimal_requirements.py:267: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="305a4452-e92f-4d17-9dbb-2eb30607912e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_campo_relacion[one2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF2 object at 0x7a38b726f1c0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, relationship = &#39;one2many&#39;
+
+    @pytest.mark.parametrize(&#34;relationship&#34;, [&#39;one2many&#39;, &#39;many2one&#39;])
+    def test_modelos_tienen_algun_campo_relacion(self, sut, relationship):
+&gt;       assert len(sut.modelos_tienen_campos(relationship)) &gt;= self.MIN, f&#34;Diferentes tipos de campos (...) relacionales (...) _{relationship}_. En tu proyecto se debe implementar **al menos uno de cada tipo**.&#34;
+
+test_minimal_requirements.py:271: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, type = &#39;one2many&#39;
+
+    def modelos_tienen_campos(self, type):
+        r = []
+&gt;       assert self.app_models, &#34;No hay modelos de datos&#34;
+E       AssertionError: No hay modelos de datos
+E       assert []
+E        +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models
+
+test_minimal_requirements.py:147: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="b2ec2aa7-b2cd-4146-bb4a-8a9ca3861f11"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_campo_relacion[many2one]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF2 object at 0x7a38b726f250&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, relationship = &#39;many2one&#39;
+
+    @pytest.mark.parametrize(&#34;relationship&#34;, [&#39;one2many&#39;, &#39;many2one&#39;])
+    def test_modelos_tienen_algun_campo_relacion(self, sut, relationship):
+&gt;       assert len(sut.modelos_tienen_campos(relationship)) &gt;= self.MIN, f&#34;Diferentes tipos de campos (...) relacionales (...) _{relationship}_. En tu proyecto se debe implementar **al menos uno de cada tipo**.&#34;
+
+test_minimal_requirements.py:271: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, type = &#39;many2one&#39;
+
+    def modelos_tienen_campos(self, type):
+        r = []
+&gt;       assert self.app_models, &#34;No hay modelos de datos&#34;
+E       AssertionError: No hay modelos de datos
+E       assert []
+E        +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models
+
+test_minimal_requirements.py:147: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="33900900-e063-49aa-a12f-a7be87a617ec"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_unknown_comodel_name</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF3</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="e5257b5d-2b64-406a-aa38-23c5c2935215"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_vista[tree]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x7a38b726fe20&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, view_type = &#39;tree&#39;
+
+    @pytest.mark.parametrize(&#34;view_type&#34;, [&#39;tree&#39;, &#39;form&#39;])
+    def test_modelos_tienen_vista(self, sut, view_type):
+&gt;       assert len(sut.basename_app_models) == sut.modelos_tienen_vista(view_type) , f&#34;No coinciden el número de modelos de datos de la aplicación con el número de vistas {view_type} - {self.__doc__}&#34;
+
+test_minimal_requirements.py:287: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, type = &#39;tree&#39;
+
+    def modelos_tienen_vista(self, type):
+        r = 0
+&gt;       assert self.app_models
+E       assert []
+E        +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models
+
+test_minimal_requirements.py:157: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="74e9eb66-8e5a-4864-b860-1f05ab75d599"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_vista[form]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x7a38b726ff10&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, view_type = &#39;form&#39;
+
+    @pytest.mark.parametrize(&#34;view_type&#34;, [&#39;tree&#39;, &#39;form&#39;])
+    def test_modelos_tienen_vista(self, sut, view_type):
+&gt;       assert len(sut.basename_app_models) == sut.modelos_tienen_vista(view_type) , f&#34;No coinciden el número de modelos de datos de la aplicación con el número de vistas {view_type} - {self.__doc__}&#34;
+
+test_minimal_requirements.py:287: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, type = &#39;form&#39;
+
+    def modelos_tienen_vista(self, type):
+        r = 0
+&gt;       assert self.app_models
+E       assert []
+E        +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models
+
+test_minimal_requirements.py:157: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="03f93813-032f-4106-b36c-387fb2603635"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_formularios_tienen_vista_anidada_para_campos_X2many[one2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x7a38b72a0430&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, relationship = &#39;one2many&#39;
+
+    @pytest.mark.parametrize(&#34;relationship&#34;, [&#39;one2many&#39;, &#39;many2many&#39;])
+    def test_formularios_tienen_vista_anidada_para_campos_X2many(self, sut, relationship):
+        # @see https://www.cybrosys.com/blog/many2many-fields-and-its-widgets-odoo
+        alternative_widgets = (&#39;many2many_default&#39;,
+                                &#39;many2many_tags&#39;,
+                                &#39;many2many_checkboxes&#39;,
+                                &#39;many2many_kanban&#39;,
+                                &#39;many2many_binary&#39;,
+                                &#39;x2many_counter&#39;)
+&gt;       fields = sut.modelos_tienen_campos(relationship)
+
+test_minimal_requirements.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, type = &#39;one2many&#39;
+
+    def modelos_tienen_campos(self, type):
+        r = []
+&gt;       assert self.app_models, &#34;No hay modelos de datos&#34;
+E       AssertionError: No hay modelos de datos
+E       assert []
+E        +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models
+
+test_minimal_requirements.py:147: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="dd4944ae-d1f6-42ff-aaaf-360f93d0420c"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_formularios_tienen_vista_anidada_para_campos_X2many[many2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF3 object at 0x7a38b72a04f0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, relationship = &#39;many2many&#39;
+
+    @pytest.mark.parametrize(&#34;relationship&#34;, [&#39;one2many&#39;, &#39;many2many&#39;])
+    def test_formularios_tienen_vista_anidada_para_campos_X2many(self, sut, relationship):
+        # @see https://www.cybrosys.com/blog/many2many-fields-and-its-widgets-odoo
+        alternative_widgets = (&#39;many2many_default&#39;,
+                                &#39;many2many_tags&#39;,
+                                &#39;many2many_checkboxes&#39;,
+                                &#39;many2many_kanban&#39;,
+                                &#39;many2many_binary&#39;,
+                                &#39;x2many_counter&#39;)
+&gt;       fields = sut.modelos_tienen_campos(relationship)
+
+test_minimal_requirements.py:298: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, type = &#39;many2many&#39;
+
+    def modelos_tienen_campos(self, type):
+        r = []
+&gt;       assert self.app_models, &#34;No hay modelos de datos&#34;
+E       AssertionError: No hay modelos de datos
+E       assert []
+E        +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models
+
+test_minimal_requirements.py:147: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF4</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="1180c57e-6917-4afc-89f3-8edf56117efd"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vistas_en_ficheros_individuales</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF5</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="0b5484ea-90d5-4c60-9b5d-c84b0fe6ca6e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_algun_posible_campo_imagen</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF5 object at 0x7a38b72a0e20&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;
+
+    def test_modelos_tienen_algun_posible_campo_imagen(self, sut):
+&gt;       posibles_campos_imagenes = sut.modelos_tienen_campos(&#39;binary&#39;)
+
+test_minimal_requirements.py:318: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, type = &#39;binary&#39;
+
+    def modelos_tienen_campos(self, type):
+        r = []
+&gt;       assert self.app_models, &#34;No hay modelos de datos&#34;
+E       AssertionError: No hay modelos de datos
+E       assert []
+E        +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models
+
+test_minimal_requirements.py:147: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="3314913c-83c1-4718-a6f5-5a2fa0b17d55"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_alguna_vista_tiene_campo_imagen</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF5 object at 0x7a38b72a0b80&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;
+
+    def test_alguna_vista_tiene_campo_imagen(self, sut):
+&gt;       assert any(sut.hay_vista_con_campo_atributo_y_valor(&#39;form&#39;, f, &#39;widget&#39;, &#39;image&#39;) for f in sut.modelos_tienen_campos(&#39;binary&#39;)), self.__doc__
+
+test_minimal_requirements.py:323: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, type = &#39;binary&#39;
+
+    def modelos_tienen_campos(self, type):
+        r = []
+&gt;       assert self.app_models, &#34;No hay modelos de datos&#34;
+E       AssertionError: No hay modelos de datos
+E       assert []
+E        +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models
+
+test_minimal_requirements.py:147: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF6</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="880cfc26-abff-4acd-baea-18e51386a575"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_acciones</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.basename_app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF6 object at 0x7a38b72a1270&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;
+
+    def test_modelos_tienen_acciones(self, sut):
+&gt;       assert sut.basename_app_models
+E       assert []
+E        +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.basename_app_models
+
+test_minimal_requirements.py:330: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="7e7ecabb-105a-43a0-8662-95a374816c78"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_hay_elementos_de_menu[.//menuitem[@action]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>xml.etree.ElementTree.ParseError: no element found: line 12, column 11</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF6 object at 0x7a38b72a1720&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;, xpath = &#39;.//menuitem[@action]&#39;
+
+    @pytest.mark.parametrize(&#34;xpath&#34;, [&#39;.//menuitem[@action]&#39;]) # @parent si quiero comparar submenús, pero son opcionales
+    def test_hay_elementos_de_menu(self, sut, xpath):
+        ejemplos = []
+        for xml in sut.xml_files:
+&gt;           if hay_xml_con_xpath_valido(xml, xpath):
+
+test_minimal_requirements.py:338: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+test_minimal_requirements.py:57: in hay_xml_con_xpath_valido
+    tree = ET.parse(xml_file)
+/usr/lib/python3.10/xml/etree/ElementTree.py:1222: in parse
+    tree.parse(source, parser)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;xml.etree.ElementTree.ElementTree object at 0x7a38b7149c60&gt;
+source = &lt;_io.BufferedReader name=&#39;/home/ubuntu/SGE-tester-V/projects/gsm_prep_planner/odoo/addons/gsm_prep_planner/data/gsm_prep_planner_uom_data.xml&#39;&gt;
+parser = &lt;xml.etree.ElementTree.XMLParser object at 0x7a38b713a170&gt;
+
+    def parse(self, source, parser=None):
+        &#34;&#34;&#34;Load external XML document into element tree.
+    
+        *source* is a file name or file object, *parser* is an optional parser
+        instance that defaults to XMLParser.
+    
+        ParseError is raised if the parser fails to parse the document.
+    
+        Returns the root element of the given source document.
+    
+        &#34;&#34;&#34;
+        close_source = False
+        if not hasattr(source, &#34;read&#34;):
+            source = open(source, &#34;rb&#34;)
+            close_source = True
+        try:
+            if parser is None:
+                # If no parser was specified, create a default XMLParser
+                parser = XMLParser()
+                if hasattr(parser, &#39;_parse_whole&#39;):
+                    # The default XMLParser, when it comes from an accelerator,
+                    # can define an internal _parse_whole API for efficiency.
+                    # It can be used to parse the whole source without feeding
+                    # it with chunks.
+&gt;                   self._root = parser._parse_whole(source)
+E                   xml.etree.ElementTree.ParseError: no element found: line 12, column 11
+
+/usr/lib/python3.10/xml/etree/ElementTree.py:580: ParseError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF7</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="227e4649-b4cb-4780-a31d-7f7b1a2a0019"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_permisos</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF7 object at 0x7a38b72a1c00&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;
+
+    def test_modelos_tienen_permisos(self, sut):
+&gt;       assert sut.app_models
+E       assert []
+E        +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models
+
+test_minimal_requirements.py:351: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF8</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="74185607-b2be-4155-8a53-3d3663b157d1"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_tiene_icono</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.023 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNF9</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="75c612ed-4263-49c5-adae-e55b185979a8"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_tienen_datos_demo</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: No hay modelos de datos
+assert []
+ +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNF9 object at 0x7a38b72a2530&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;
+
+    def test_modelos_tienen_datos_demo(self, sut):
+        total_demo_records = 0
+        demo_records_en_todos = sut.app_models != []
+&gt;       assert sut.app_models, &#34;No hay modelos de datos&#34;
+E       AssertionError: No hay modelos de datos
+E       assert []
+E        +  where [] = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;.app_models
+
+test_minimal_requirements.py:378: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFGit</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="9ced6c45-e7f5-4749-a94f-bb0302d3812d"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_git_commit_frecuentes</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFCalidad</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="b2374f6b-75c9-425a-b8e0-4a47f6f4f6ec"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_odoo_disponible</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.01 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="a4bf8164-5a02-4f3f-bde7-9f81171a2ff1"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_app_instalada</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.027 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: La aplicación no ha quedado instalada con éxito - El módulo tiene que ser instalable a partir del código entregado sin necesidad de hacer ningún cambio o modificación.
+assert &#39;uninstalled&#39; == &#39;installed&#39;
+  
+  - installed
+  + uninstalled
+  ? ++</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFCalidad object at 0x7a38b72a31c0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;
+
+    def test_app_instalada(self, sut):
+        ids = sut.execute_kw(&#39;ir.module.module&#39;, &#39;search&#39;, [[(&#39;name&#39;, &#39;=&#39;, sut.app_prefix)]])
+        assert len(ids) == 1, &#34;No se ha encontrado la aplicación&#34;
+        app = sut.execute_kw(&#39;ir.module.module&#39;, &#39;read&#39;, [ids], {&#39;fields&#39;: [&#39;name&#39;, &#39;icon_image&#39;, &#39;state&#39;]}).pop()
+&gt;       assert app.get(&#34;state&#34;) == &#39;installed&#39;, &#34;La aplicación no ha quedado instalada con éxito - El módulo tiene que ser instalable a partir del código entregado sin necesidad de hacer ningún cambio o modificación.&#34;
+E       AssertionError: La aplicación no ha quedado instalada con éxito - El módulo tiene que ser instalable a partir del código entregado sin necesidad de hacer ningún cambio o modificación.
+E       assert &#39;uninstalled&#39; == &#39;installed&#39;
+E         
+E         - installed
+E         + uninstalled
+E         ? ++
+
+test_minimal_requirements.py:416: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="ef07bcdb-a694-4251-a384-b21247262a86"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_apps_entregadas_son_dependencias</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.027 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Parece que tu aplicación no depende de gsm_prep_planner, al instalar la tuya esta no ha quedado instalada automáticamente - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+assert &#39;uninstalled&#39; == &#39;installed&#39;
+  
+  - installed
+  + uninstalled
+  ? ++</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFCalidad object at 0x7a38b72a35e0&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;
+
+    def test_otras_apps_entregadas_son_dependencias(self, sut):
+        for third_party_app in buscar_dependencias_de_terceros_entregadas(sut):
+            ids = sut.execute_kw(&#39;ir.module.module&#39;, &#39;search&#39;, [[(&#39;name&#39;, &#39;=&#39;, third_party_app)]])
+            assert len(ids) == 1, f&#34;No se ha encontrado la aplicación {third_party_app}, ¿hay dependencia de esta aplicación?&#34;
+            app = sut.execute_kw(&#39;ir.module.module&#39;, &#39;read&#39;, [ids], {&#39;fields&#39;: [&#39;name&#39;, &#39;icon_image&#39;, &#39;state&#39;]}).pop()
+&gt;           assert app.get(&#34;state&#34;) == &#39;installed&#39;, f&#34;Parece que tu aplicación no depende de {third_party_app}, al instalar la tuya esta no ha quedado instalada automáticamente - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.&#34;
+E           AssertionError: Parece que tu aplicación no depende de gsm_prep_planner, al instalar la tuya esta no ha quedado instalada automáticamente - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+E           assert &#39;uninstalled&#39; == &#39;installed&#39;
+E             
+E             - installed
+E             + uninstalled
+E             ? ++
+
+test_minimal_requirements.py:423: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="c8f2321e-f2de-4189-b6af-fa678578938e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_no_hay_elementos_xml_comentados</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>xml.etree.ElementTree.ParseError: no element found: line 12, column 11</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFCalidad object at 0x7a38b72a3a00&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;
+
+    def test_no_hay_elementos_xml_comentados(self, sut):
+        # Expresión regular para verificar si la cadena parece tener marcado XML
+        xml_regex = re.compile(r&#39;&lt;[a-zA-Z0-9\s=&#34;\&#39;\.-]+&gt;(.|\n)*&lt;\/[a-zA-Z0-9\s=&#34;\&#39;\.-]+&gt;|&lt;[a-zA-Z0-9\s=&#34;\&#39;\.-]+\/&gt;&#39;)
+        ficheros_xml_comentado = {}
+        for f in sut.xml_files:
+            xml_comentado = []
+            parser = ET.XMLParser(target=ET.TreeBuilder(insert_comments=True))
+&gt;           tree = ET.parse(f, parser)
+
+test_minimal_requirements.py:439: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+/usr/lib/python3.10/xml/etree/ElementTree.py:1222: in parse
+    tree.parse(source, parser)
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;xml.etree.ElementTree.ElementTree object at 0x7a38b7119180&gt;
+source = &lt;_io.BufferedReader name=&#39;/home/ubuntu/SGE-tester-V/projects/gsm_prep_planner/odoo/addons/gsm_prep_planner/data/gsm_prep_planner_uom_data.xml&#39;&gt;
+parser = &lt;xml.etree.ElementTree.XMLParser object at 0x7a38b713a200&gt;
+
+    def parse(self, source, parser=None):
+        &#34;&#34;&#34;Load external XML document into element tree.
+    
+        *source* is a file name or file object, *parser* is an optional parser
+        instance that defaults to XMLParser.
+    
+        ParseError is raised if the parser fails to parse the document.
+    
+        Returns the root element of the given source document.
+    
+        &#34;&#34;&#34;
+        close_source = False
+        if not hasattr(source, &#34;read&#34;):
+            source = open(source, &#34;rb&#34;)
+            close_source = True
+        try:
+            if parser is None:
+                # If no parser was specified, create a default XMLParser
+                parser = XMLParser()
+                if hasattr(parser, &#39;_parse_whole&#39;):
+                    # The default XMLParser, when it comes from an accelerator,
+                    # can define an internal _parse_whole API for efficiency.
+                    # It can be used to parse the whole source without feeding
+                    # it with chunks.
+                    self._root = parser._parse_whole(source)
+                    return self._root
+            while True:
+                data = source.read(65536)
+                if not data:
+                    break
+                parser.feed(data)
+&gt;           self._root = parser.close()
+E           xml.etree.ElementTree.ParseError: no element found: line 12, column 11
+
+/usr/lib/python3.10/xml/etree/ElementTree.py:587: ParseError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-failed">
+                        <a id="b93647d0-73ec-47ff-95f9-015e3ee67566"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_no_hay_codigo_python_comentado</b></td></tr>
+                            <tr><th>Outcome:</th><td>Failed</td></tr>
+                            <tr><th>Duration:</th><td>0.261 sec</td></tr>
+                        
+                            <tr><th>Failed</th><td>AssertionError: Se ha encontrado código Python comentado {&#39;gsm_prep_planner_recipe.py&#39;: &#34;-    # cost = fields.Float(string=&#39;Cost per unit&#39;, compute=&#39;_get_cost&#39;)\n&#34;} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+assert {&#39;gsm_prep_planner_recipe.py&#39;: &#34;-    # cost = fields.Float(string=&#39;Cost per unit&#39;, compute=&#39;_get_cost&#39;)\n&#34;} == {}
+  
+  Left contains 1 more item:
+  {&#39;gsm_prep_planner_recipe.py&#39;: &#34;-    # cost = fields.Float(string=&#39;Cost per &#34;
+                                 &#34;unit&#39;, compute=&#39;_get_cost&#39;)\n&#34;}
+  
+  Full diff:
+  - {}
+  + {
+  +     &#39;gsm_prep_planner_recipe.py&#39;: &#34;-    # cost = fields.Float(string=&#39;Cost per unit&#39;, compute=&#39;_get_cost&#39;)\n&#34;,
+  + }</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        <pre>self = &lt;test_minimal_requirements.TestRNFCalidad object at 0x7a38b72a3e20&gt;
+sut = &lt;test_minimal_requirements.SystemUnderTest object at 0x7a38b72c35b0&gt;
+
+    def test_no_hay_codigo_python_comentado(self, sut):
+        ficheros_codigo_comentado = {}
+        for f in sut.py_files:
+            eradicate = subprocess.run([&#39;eradicate&#39;, f], stdout=subprocess.PIPE)
+            grep = subprocess.run(&#34;grep -e &#39;-\\s*#.*&#39;&#34;, shell=True, input=eradicate.stdout, stdout=subprocess.PIPE)
+            codigo_comentado = grep.stdout.decode(&#39;utf-8&#39;)
+            if codigo_comentado:
+                ficheros_codigo_comentado[os.path.basename(f)] = codigo_comentado
+    
+&gt;       assert ficheros_codigo_comentado == {}, f&#34;Se ha encontrado código Python comentado {ficheros_codigo_comentado} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.&#34;
+E       AssertionError: Se ha encontrado código Python comentado {&#39;gsm_prep_planner_recipe.py&#39;: &#34;-    # cost = fields.Float(string=&#39;Cost per unit&#39;, compute=&#39;_get_cost&#39;)\n&#34;} - Tu código debe estar bien probado, documentado, sin código comentado, sin ficheros innecesarios y con un *manifest* cuidado.
+E       assert {&#39;gsm_prep_planner_recipe.py&#39;: &#34;-    # cost = fields.Float(string=&#39;Cost per unit&#39;, compute=&#39;_get_cost&#39;)\n&#34;} == {}
+E         
+E         Left contains 1 more item:
+E         {&#39;gsm_prep_planner_recipe.py&#39;: &#34;-    # cost = fields.Float(string=&#39;Cost per &#34;
+E                                        &#34;unit&#39;, compute=&#39;_get_cost&#39;)\n&#34;}
+E         
+E         Full diff:
+E         - {}
+E         + {
+E         +     &#39;gsm_prep_planner_recipe.py&#39;: &#34;-    # cost = fields.Float(string=&#39;Cost per unit&#39;, compute=&#39;_get_cost&#39;)\n&#34;,
+E         + }
+
+test_minimal_requirements.py:464: AssertionError</pre>
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="2a45c846-32bc-47a9-99c7-a87367d4134b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_log_servidor_sin_errores</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestOtros</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-passed">
+                        <a id="5e1aaf73-956f-4563-a6c8-f9338604f355"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_log_sin_warnings</b></td></tr>
+                            <tr><th>Outcome:</th><td>Passed</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                        </table>
+
+                        
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesKanban</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="20f2f981-a9e5-4b68-a9fe-9dd777d3b93a"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban[/kanban]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="a6fdfc1c-c141-410a-8b4b-91df125f0223"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban[/kanban[@default_group_by]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="5cd9fc7b-8a02-4c9f-b343-8006f402e4b3"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban_imagen[/img]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="4487df24-37fe-410d-ba5d-bd576bff7fc8"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban_imagen[/field[@preview_image]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="891a0995-4f4e-4a49-908b-0cbb2288248e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_kanban_imagen[/field[@widget=&#34;image&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesBusqueda</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="34fe16c9-ecd1-4eec-ae6a-fe6eccbb2df6"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search[/search]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="3ae18ebf-2f32-481a-92ae-ef672c11769a"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search_compleja[/filter[@domain]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="7427f9cb-6b71-4783-8b2f-812592746d27"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_search_compleja[/group//filter[@context]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesOtrasVistas</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="36baefdf-1009-4cb4-a6d8-3c5935861d29"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[activity]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="7d3f5377-54dd-4651-aa1b-bf1592d4b626"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[calendar]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="98f1fa20-02b6-46b7-a8d8-42df956af883"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[graph]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="6223f1f5-6e7f-4d13-a999-44059003162e"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_otras_vistas_adicionales[pivot]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesConstraints</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="16f3639e-6fc0-4d04-8f6a-ee698e4da839"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_constraints_sql</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.02 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesSeguridadAvanzada</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="da1280fa-db50-48b0-95c5-00c9017df3cc"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_seguridad_con_grupos_propios</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesDatosAvanzados</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="d76ccad1-b18d-4647-830f-81e30994256b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[binary]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="c73d0941-2f74-46c3-b167-e8fd81a8fd59"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[many2many]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="075d3575-beb0-46b4-88bd-895cd8ecc4cc"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_datos_maestros_o_demo_avanzados[many2one]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesHerenciaVistas</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="c0fbf2f1-c029-4b4a-830a-ed93b0bfd99c"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_vistas_con_position</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="37602b51-14e8-4abc-9463-152a6c6da113"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_herencia_en_vistas_con_inherit_id</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesHerenciaModelos</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="43d95980-4eec-4936-9b15-f05ce605eaca"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_modelos_existentes_modificados_por_herencia</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="db61b2a4-635e-4908-9f6c-06ea34d323d0"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_nuevos_modelos_con_herencia</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesTraducciones</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="3b6137b2-875c-4021-8c31-03cef9744e25"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_i18n</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesInformes</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="85bd3edf-bb9f-45b1-b9f6-b16827866d32"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes[report]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="2f77f8fe-7fe1-4269-af12-c6f90c365ba0"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes[template]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="6e55ce20-3e05-45c6-9ab3-bf1dbf9a055b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes_complejos[/t[@t-foreach]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="b9a9b436-3e1d-451a-9c15-4500b0179dab"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes_complejos[/img[@t-att-src]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="ecc67218-6fd6-4e24-b867-d085fe9e232a"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_informes_complejos[/t[@t-call and not(@t-call=&#34;web.external_layout&#34; or @t-call=&#34;web.html_container&#34;)]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="testclass">
+                <h4>test_minimal_requirements.TestRNFAdicionalesChatter</h4>
+                <div class="testcases">
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="cc15695b-297a-4b70-b02a-e37531948204"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_chatter[mail_thread]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="d56ea549-8789-4d95-b7bc-7bec22ebb8d5"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_chatter[mail_activity_mixin]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="ac0f33cf-66c5-4448-9617-b1cc47326c8c"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_chatter_tracking</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.015 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="4d71feb8-a13e-4a5f-90c1-fc91d40fbe50"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_div</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="c1b22f48-2afb-4206-97c0-6880f082f37b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@name=&#34;message_follower_ids&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="e21b0726-e4f1-4842-a6f0-985d0f93d08f"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@name=&#34;activity_ids&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="ac178979-1e7a-4950-b3b0-9bbf53acd7f9"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@name=&#34;message_ids&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="3ed0c999-a8d0-4ada-ac5b-ae645cff2f7b"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@widget=&#34;mail_followers&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="bb4c8070-63ac-4834-ba33-79603b099d18"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@widget=&#34;mail_thread&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>0.001 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                    <div class="test outcome outcome-skipped">
+                        <a id="092f4126-e72a-42e4-99f4-8c5b1b779a50"></a>
+                        <table class="proplist">
+                            <tr><th>Test case:</th><td><b>test_vista_chatter_fields[.//field[@widget=&#34;mail_activity&#34;]]</b></td></tr>
+                            <tr><th>Outcome:</th><td>Skipped</td></tr>
+                            <tr><th>Duration:</th><td>1.682 sec</td></tr>
+                        
+                        
+                            <tr><th>Skipped</th><td></td></tr>
+                        
+                        </table>
+
+                        
+                        
+                        <pre>skipped</pre>
+                        
+
+                        
+                        
+                        
+                    </div>
+                
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    
+
+
+
+<p class="footer">
+    Generated by junit2html
+</p>
+</body>
+</html>
